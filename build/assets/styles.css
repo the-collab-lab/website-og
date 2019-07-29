@@ -1,13 +1,11 @@
 :root {
     --page-width: 960px;
-};
+}
 
 body {
     background: white;
-    font: 16px/1.5 "Helvetica Neue", Helvetica, Sans-Serif;
-    margin: 1rem auto;
-    max-width: var(--page-width);
-    padding: 1rem;
+    color: black;
+    font: 16px/1.5 'Source Sans Pro', Sans-Serif;
 }
 
 header, main, footer {
