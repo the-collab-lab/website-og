@@ -1,5 +1,5 @@
 :root {
-    --page-width: 960px;
+    --page-width: 800px;
 }
 
 body {
@@ -11,6 +11,14 @@ body {
 header, main, footer {
     margin: 1rem auto;
     max-width: var(--page-width);
+}
+
+header {
+    border-bottom: solid 1px #666;
+}
+
+footer {
+    border-top: solid 1px #666;
 }
 
 .carousel {
