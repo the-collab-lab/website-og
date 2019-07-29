@@ -21,6 +21,14 @@ footer {
     border-top: solid 1px #666;
 }
 
+a {
+    color: blue;
+    text-decoration: none;
+}
+    a:hover {
+        border-bottom: solid 1px blue;
+    }
+
 .carousel {
     height: calc(var(--page-width)/3*2); /* 3:2 is the aspect ratio of our photos */
     margin: 1rem 0;
