@@ -21,6 +21,12 @@ footer {
     border-top: solid 1px #666;
 }
 
+blockquote {
+    border-left: solid 0.25rem #ccc;
+    margin-left: 0;
+    padding-left: 1.5rem;
+}
+
 a {
     color: blue;
     text-decoration: none;
