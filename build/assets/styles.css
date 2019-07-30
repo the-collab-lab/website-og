@@ -82,6 +82,9 @@ Photo credits behavior:
     padding: 1rem 2rem 1rem 1rem;
     position: absolute;
 }
+    .carousel-photo-credits summary {
+        padding: 0 0.5rem 0;
+    }
     .carousel-photo-credits a {
         color: white;
     }
@@ -95,7 +98,7 @@ Photo credits behavior:
     }
     .carousel-photo-credits li {
         margin: 0;
-        padding: 0 0 0 1rem;
+        padding: 0 0 0 1.5rem;
         position: relative;
     }
         .carousel-photo-credits li.selected::after {
