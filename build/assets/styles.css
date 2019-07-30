@@ -43,7 +43,7 @@ a {
     opacity: 0;
     position: absolute;
     top: 0;
-    transition: 0.5s opacity;
+    transition: 1s opacity;
     width: 100%;
 }
     .carousel-image.ready {
@@ -62,3 +62,34 @@ Photo credits behavior:
 3. When a photo credit has the 'selected' class, it should be shown with a caret pointing to the item
 
 */
+
+.carousel-photo-credits {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    bottom: 0;
+    left: 10px;
+    margin: 0;
+    padding: 1rem 2rem 1rem 1rem;
+    position: absolute;
+}
+    .carousel-photo-credits a {
+        color: white;
+    }
+        .carousel-photo-credits a:hover {
+            border-color: white;
+        }
+    .carousel-photo-credits ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .carousel-photo-credits li {
+        margin: 0;
+        padding: 0 0 0 1rem;
+        position: relative;
+    }
+        .carousel-photo-credits li.selected::after {
+            content: '→';
+            left: -0.5rem;
+            position: absolute;
+        }
