@@ -16,6 +16,9 @@ header, main, footer {
 header {
     border-bottom: solid 1px #666;
 }
+    header h1 {
+        margin-bottom: 0.75rem;
+    }
 
 footer {
     border-top: solid 1px #666;
