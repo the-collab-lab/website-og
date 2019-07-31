@@ -22,7 +22,17 @@ header {
 
 footer {
     border-top: solid 1px #666;
+    font-size: 85%;
 }
+    footer p {
+        margin: 1rem 0;
+    }
+        footer p:first-child {
+            float: left;
+        }
+        footer p:last-child {
+            text-align: right;
+        }
 
 blockquote {
     border-left: solid 0.25rem #ccc;
