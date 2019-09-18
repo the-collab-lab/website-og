@@ -50,11 +50,16 @@ a {
     }
 
 .carousel {
-    height: calc(var(--page-width)/3*2); /* 3:2 is the aspect ratio of our photos */
+    max-height: calc(var(--page-width)/3*2); /* 3:2 is the aspect ratio of our photos */
     margin: 1rem 0;
     padding: 0;
     position: relative;
-    width: var(--page-width);
+    max-width: var(--page-width);
+}
+
+.carousel-base-image, .carousel-image {
+    height: auto;
+    width: 100%;
 }
 
 .carousel-image {
@@ -64,7 +69,6 @@ a {
     position: absolute;
     top: 0;
     transition: 1s opacity;
-    width: 100%;
 }
     .carousel-image.ready {
         display: block;
@@ -87,12 +91,15 @@ Photo credits behavior:
     background: rgba(0, 0, 0, 0.5);
     color: white;
     bottom: 0;
-    left: 1rem;
+    left: 0;
     margin: 0;
-    padding: 1rem 2rem 1rem 1rem;
+    padding: 1rem;
     position: absolute;
+    right: 0;
 }
-    .carousel-photo-credits summary {
+    .carousel-photo-credits p {
+        display: inline-block;
+        margin: 0;
         padding: 0 0.5rem 0;
     }
     .carousel-photo-credits a {
@@ -101,18 +108,30 @@ Photo credits behavior:
         .carousel-photo-credits a:hover {
             border-color: white;
         }
-    .carousel-photo-credits ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    .carousel-photo-credits span {
+        display: none;
     }
-    .carousel-photo-credits li {
-        margin: 0;
-        padding: 0 0 0 1.5rem;
-        position: relative;
-    }
-        .carousel-photo-credits li.selected::after {
-            content: '→';
-            left: -0.5rem;
-            position: absolute;
+        .carousel-photo-credits span.selected {
+            display: inline-block;
         }
+
+/* small screens */
+/* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */
+@media screen and (max-width: 819px) {
+    body {
+        margin: auto 20px;
+    }
+    footer p:first-child {
+        float: none;
+    }
+    footer p:last-child {
+        text-align: left;
+    }
+    .carousel {
+        width: 100%;
+    }
+    .carousel-photo-credits {
+        bottom: 6px;
+        padding: 0.5rem;
+    }
+}
