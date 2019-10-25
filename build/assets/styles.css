@@ -50,9 +50,9 @@ q {
         content: '“';
         font-size: xx-large;
         font-weight: bold;
-        left: -1.05rem;
+        left: -1.1rem;
         position: absolute;
-        top: -0.33rem;
+        top: -0.36rem;
     }
     q::after {
         content: '';
