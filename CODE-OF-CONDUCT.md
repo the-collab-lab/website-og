@@ -1,7 +1,5 @@
 # The Collab Lab Code of Conduct
 
-> Note: While The Collab Lab team is forming, violations of the Code of Conduct may be directed to [Andrew Hedges](mailto:andrew@hedges.name). Once we have some volunteers for it in place, he will be replaced by a proper Response Team. Thanks for your understanding.
-
 The Collab Lab is dedicated to providing a harassment-free experience for everyone. We do not tolerate harassment of participants in any form.
 
 This code of conduct applies to all Collab Lab spaces, including but not limited to our GitHub and Slack teams, both online and off. Anyone who violates this code of conduct may be sanctioned or expelled from these spaces at the discretion of the RESPONSE TEAM.
@@ -31,13 +29,19 @@ The Collab Lab prioritizes marginalized people’s safety over privileged people
 
 ## Reporting
 
-If you are being harassed by a member of The Collab Lab, notice that someone else is being harassed, or have any other concerns, please contact the RESPONSE TEAM via DM. If the person who is harassing you is on the team, they will recuse themselves from handling your incident. We will respond as promptly as we can.
+If you are being harassed by a member of The Collab Lab, notice that someone else is being harassed, or have any other concerns, please contact the RESPONSE TEAM immediately. If the person who is harassing you is on the team, they will recuse themselves from handling your incident. We will respond as promptly as we can.
 
 This code of conduct applies to Collab Lab spaces, but if you are being harassed by a member of The Collab Lab outside our spaces, we still want to know about it. We will take all good-faith reports of harassment by Collab Lab members, especially Founder Andrew Hedges, seriously. This includes harassment outside our spaces and harassment that took place at any point in time. The abuse team reserves the right to exclude people from The Collab Lab based on their past behavior, including behavior outside Collab Lab spaces and behavior towards people who are not in The Collab Lab.
 
 In order to protect volunteers from abuse and burnout, we reserve the right to reject any report we believe to have been made in bad faith. Reports intended to silence legitimate criticism may be deleted without response.
 
 We will respect confidentiality requests for the purpose of protecting victims of abuse. At our discretion, we may publicly name a person about whom we’ve received harassment complaints, or privately warn third parties about them, if we believe that doing so will increase the safety of Collab Lab members or the general public. We will not name harassment victims without their affirmative consent.
+
+You can report violations in the following ways:
+
+- Email [Stacie Taylor-Cima](mailto:stacietaylorcima@gmail.com)
+- Direct message @stacie in the Collab Lab Slack workspace
+- Private message [@the_real_stacie](https://twitter.com/the_real_stacie) on Twitter
 
 ## Consequences
 
