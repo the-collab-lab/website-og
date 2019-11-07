@@ -51,6 +51,7 @@ blockquote {
     }
         blockquote a:hover {
             color: white;
+            border-bottom: solid 1px white;
         }
 
 .hang-it {
