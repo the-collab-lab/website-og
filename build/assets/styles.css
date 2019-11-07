@@ -13,15 +13,16 @@ header, main, footer {
     max-width: var(--page-width);
 }
 
-header {
-    border-bottom: solid 1px #666;
-}
+header {}
     header h1 {
-        margin-bottom: 0.75rem;
+        margin-bottom: 0.5rem;
+    }
+    header h2 {
+        margin-top: 0.5rem;
     }
 
 footer {
-    border-top: solid 1px #666;
+    border-top: solid 3px #ccc;
     font-size: 85%;
 }
     footer p {
@@ -34,11 +35,27 @@ footer {
             text-align: right;
         }
 
+h3 {
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
 blockquote {
-    border-left: solid 0.25rem #ccc;
-    color: #666;
-    margin-left: 0;
-    padding-left: 1.25rem;
+    background: #333;
+    color: white;
+    margin: 1.5rem -1rem;
+    padding: 1rem 2rem;
+}
+    blockquote a {
+        color: #ccc;
+    }
+        blockquote a:hover {
+            color: white;
+        }
+
+.hang-it {
+    display: inline-block;
+    margin-left: -0.5rem;
 }
 
 q {
@@ -57,6 +74,20 @@ q {
     q::after {
         content: '';
     }
+
+dl {}
+dt {
+    float: left;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+dd {
+    margin-left: 1rem;
+}
+
+h2 {
+    font-weight: normal;
+}
 
 a {
     color: blue;
