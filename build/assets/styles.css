@@ -47,6 +47,9 @@ blockquote {
     margin: 1.5rem -1rem;
     padding: 1rem 2rem;
 }
+    blockquote p, blockquote dl {
+        margin: 0;
+    }
     blockquote a {
         color: #ccc;
     }
