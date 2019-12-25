@@ -194,3 +194,15 @@ Photo credits behavior:
         padding: 0.5rem;
     }
 }
+
+#team-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 300px 300px 300px;
+}
+
+.team-member {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
