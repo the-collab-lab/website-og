@@ -195,13 +195,13 @@ Photo credits behavior:
     }
 }
 
-#team-gallery {
+.member-gallery {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 300px 300px 300px;
 }
 
-#container {
+.container {
     position: relative;
 }
 
