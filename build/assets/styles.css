@@ -197,8 +197,8 @@ Photo credits behavior:
 
 .member-gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 300px 300px 300px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 300px);
 }
 
 .container {
@@ -213,8 +213,8 @@ Photo credits behavior:
 
 .social-media-logo {
     float: right;
-    padding: 0 5px 0 5px;
+    padding: 0 5px
 }
     .social-media-logo a:hover {
-        border: none;
+        border-bottom: none;
     }
