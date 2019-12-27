@@ -13,7 +13,9 @@ header, main, footer {
     max-width: var(--page-width);
 }
 
-header {}
+header {
+    position: relative;
+}
     header h1 {
         font-size: 2.5rem;
         margin-bottom: 0.5rem;
@@ -21,6 +23,33 @@ header {}
     header h2 {
         margin-top: 0.5rem;
     }
+    header nav {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+            header nav ul li {
+                display: inline-block;
+                padding: 0 0.2rem;
+            }
+                header nav ul li:after {
+                    content: '|';
+                    position: relative;
+                    left: 0.3rem;
+                }
+                    header nav ul li:last-child {
+                        padding-right: 0;
+                    }
+                        header nav ul li:last-child:after {
+                            content: '';
+                        }
+
+
 
 footer {
     border-top: solid 3px #ccc;
@@ -192,5 +221,15 @@ Photo credits behavior:
     .carousel-photo-credits {
         bottom: 6px;
         padding: 0.5rem;
+    }
+}
+
+/* really small screens */
+@media screen and (max-width: 551px) {
+    header h1 {
+        padding-top: 1.25rem;
+    }
+    header nav {
+        top: -0.5rem;
     }
 }
