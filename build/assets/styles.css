@@ -224,11 +224,11 @@ Photo credits behavior:
 .member-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
 }
     .member-gallery .member-container {
         padding: 5px 0;
         position: relative;
-        margin: 0 3px;
     }
         .member-gallery .member-container.span-3 {
             grid-column: span 3;
@@ -249,6 +249,9 @@ Photo credits behavior:
     }
         .member-gallery .social-media-logo a:hover {
             border-bottom: none;
+        }
+        .member-gallery .social-media-logo img:hover {
+            filter: brightness(2);
         }
 
     .member-gallery .member-photo-credits {
