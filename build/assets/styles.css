@@ -15,14 +15,45 @@ header, main, footer {
     max-width: var(--page-width);
 }
 
-header {}
+header {
+    position: relative;
+}
     header h1 {
         font-size: 2.5rem;
+        line-height: 1;
         margin-bottom: 0.5rem;
+        margin-top: 2rem;
     }
     header h2 {
         margin-top: 0.5rem;
     }
+    header nav {
+        position: absolute;
+        right: 0;
+        top: -1.5rem;
+    }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+            header nav ul li {
+                display: inline-block;
+                padding: 0 0.2rem;
+            }
+                header nav ul li:after {
+                    content: '|';
+                    position: relative;
+                    left: 0.3rem;
+                }
+                    header nav ul li:last-child {
+                        padding-right: 0;
+                    }
+                        header nav ul li:last-child:after {
+                            content: '';
+                        }
+
+
 
 footer {
     border-top: solid 3px #ccc;
@@ -245,6 +276,9 @@ Photo credits behavior:
 @media screen and (max-width: 819px) {
     body {
         margin: auto 20px;
+    }
+    header h1 {
+        padding-top: 0.5rem;
     }
     footer p:first-child {
         float: none;
