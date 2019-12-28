@@ -225,8 +225,10 @@ Photo credits behavior:
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 5px;
+    padding-left: 0;
 }
     .member-gallery .member-container {
+        list-style: none;
         padding: 5px 0;
         position: relative;
     }
