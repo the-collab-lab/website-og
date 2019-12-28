@@ -18,7 +18,9 @@ header {
 }
     header h1 {
         font-size: 2.5rem;
+        line-height: 1;
         margin-bottom: 0.5rem;
+        margin-top: 2rem;
     }
     header h2 {
         margin-top: 0.5rem;
@@ -26,7 +28,7 @@ header {
     header nav {
         position: absolute;
         right: 0;
-        top: 0;
+        top: -1.5rem;
     }
         header nav ul {
             list-style: none;
@@ -209,6 +211,9 @@ Photo credits behavior:
     body {
         margin: auto 20px;
     }
+    header h1 {
+        padding-top: 0.5rem;
+    }
     footer p:first-child {
         float: none;
     }
@@ -221,15 +226,5 @@ Photo credits behavior:
     .carousel-photo-credits {
         bottom: 6px;
         padding: 0.5rem;
-    }
-}
-
-/* really small screens */
-@media screen and (max-width: 551px) {
-    header h1 {
-        padding-top: 1.25rem;
-    }
-    header nav {
-        top: -0.5rem;
     }
 }
