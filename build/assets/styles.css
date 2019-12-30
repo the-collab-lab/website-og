@@ -312,14 +312,10 @@ Photo credits behavior:
     }
     .member-gallery .member-container.span-3 {
         grid-column: auto;
+        justify-self: stretch;
         width: 100%;
     }
-    .member-gallery .column-1 {
-        justify-self: end;
-    }
-    .member-gallery .column-2 {
-        justify-self: start;
-    }
+
 }
 
 @media screen and (max-width: 440px) {
@@ -332,4 +328,5 @@ Photo credits behavior:
     .member-gallery .member-container.span-3 p:last-child {
         margin-bottom: 2rem;
     }
+
 }
