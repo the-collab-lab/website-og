@@ -224,15 +224,16 @@ Photo credits behavior:
 .member-gallery {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 0;
     padding-left: 0;
 }
     .member-gallery .member-container {
         height: 200px;
+        justify-self: center;
         list-style: none;
         margin: 0;
         padding: 0;
         position: relative;
+        width: 200px;
     }
         .member-gallery .member-container.span-3 {
             display: grid;
@@ -248,9 +249,8 @@ Photo credits behavior:
                 margin: 0 1rem;
             }
     .member-gallery .team-member-photo {
-        width: 100%;
+        width: 200px;
         height: 200px;
-        object-fit: cover;
     }
     .member-gallery .social-media-logo {}
         .member-gallery .social-media-logo img {
@@ -271,7 +271,6 @@ Photo credits behavior:
         bottom: 0;
         height: 1.5rem;
         left: 0;
-        line-height: 1.5;
         padding: 0.25rem 0.5rem;
         position: absolute;
         right: 0;
@@ -308,4 +307,26 @@ Photo credits behavior:
         bottom: 6px;
         padding: 0.5rem;
     }
+    .member-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .member-gallery .member-container.span-3 {
+        grid-column: auto;
+        justify-self: stretch;
+        width: 100%;
+    }
+
+}
+
+@media screen and (max-width: 440px) {
+    .member-gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .member-gallery .member-container.span-3 p {
+        margin-top: 1rem;
+    }
+    .member-gallery .member-container.span-3 p:last-child {
+        margin-bottom: 2rem;
+    }
+
 }
