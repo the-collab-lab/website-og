@@ -171,43 +171,4 @@ figure.float-right {
     footer p:last-child {
         text-align: left;
     }
-    .carousel {
-        width: 100%;
-    }
-    .carousel-photo-credits {
-        bottom: 6px;
-        padding: 0.5rem;
-    }
-    .member-gallery {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .member-gallery .member-container.span-3 {
-        grid-column: auto;
-        justify-self: stretch;
-        width: 100%;
-    }
-    .member-gallery .column-1 {
-        justify-self: end;
-    }
-    .member-gallery .column-2 {
-        justify-self: start;
-    }
-}
-
-@media screen and (max-width: 440px) {
-    .member-gallery {
-        grid-template-columns: repeat(1, 1fr);
-    }
-    .member-gallery .member-container.span-3 p {
-        margin-top: 1rem;
-    }
-    .member-gallery .member-container.span-3 p:last-child {
-        margin-bottom: 2rem;
-    }
-    .member-gallery .column-1 {
-        justify-self: center;
-    }
-    .member-gallery .column-2 {
-        justify-self: center;
-    }
 }
