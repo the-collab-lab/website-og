@@ -1,11 +1,16 @@
+@import 'carousel.css';
+@import 'members.css';
+
 :root {
     --page-width: 800px;
+    --base-font-size: 16px;
+    --small-font-size: 85%;
 }
 
 body {
     background: white;
     color: black;
-    font: 16px/1.5 'Source Sans Pro', Sans-Serif;
+    font: var(--base-font-size)/1.5 'Source Sans Pro', Sans-Serif;
 }
 
 header, main, footer {
@@ -13,18 +18,47 @@ header, main, footer {
     max-width: var(--page-width);
 }
 
-header {}
+header {
+    position: relative;
+}
     header h1 {
         font-size: 2.5rem;
+        line-height: 1;
         margin-bottom: 0.5rem;
+        margin-top: 2rem;
     }
     header h2 {
         margin-top: 0.5rem;
     }
+    header nav {
+        position: absolute;
+        right: 0;
+        top: -1.5rem;
+    }
+        header nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+            header nav ul li {
+                display: inline-block;
+                padding: 0 0.2rem;
+            }
+                header nav ul li:after {
+                    content: '|';
+                    position: relative;
+                    left: 0.3rem;
+                }
+                header nav ul li:last-child {
+                    padding-right: 0;
+                }
+                header nav ul li:last-child:after {
+                    content: '';
+                }
 
 footer {
     border-top: solid 3px #ccc;
-    font-size: 85%;
+    font-size: var(--small-font-size);
 }
     footer p {
         margin: 1rem 0;
@@ -81,14 +115,14 @@ q {
     }
 
 dl {}
-dt {
-    float: left;
-    font-weight: bold;
-    margin-right: 0.5rem;
-}
-dd {
-    margin-left: 1rem;
-}
+    dl dt {
+        float: left;
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+    dl dd {
+        margin-left: 1rem;
+    }
 
 h2 {
     font-weight: normal;
@@ -108,71 +142,19 @@ hr {
     color: silver;
 }
 
-.carousel {
-    max-height: calc(var(--page-width)/3*2); /* 3:2 is the aspect ratio of our photos */
-    margin: 1rem 0;
-    padding: 0;
-    position: relative;
-    max-width: var(--page-width);
+figure.float-right {
+    float: right;
+    margin: 0 0 1rem 1rem;
+    width: 50%;
 }
-
-.carousel-base-image, .carousel-image {
-    height: auto;
-    width: 100%;
-}
-
-.carousel-image {
-    display: none;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    transition: 1s opacity;
-}
-    .carousel-image.ready {
-        display: block;
+    figure.float-right img {
+        height: auto;
+        width: 100%;
     }
-    .carousel-image.selected {
-        opacity: 1;
+    figure.float-right figcaption {
+        font-size: var(--small-font-size);
+        font-style: italic;
     }
-
-/*
-
-Photo credits behavior:
-
-1. Should be styled as a black translucent overlay over the bottom/left corner of the photos
-2. As the carousel moves through different photos, the 'selected' class should be assigned to the corresponding photo
-3. When a photo credit has the 'selected' class, it should be shown with a caret pointing to the item
-
-*/
-
-.carousel-photo-credits {
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    bottom: 0;
-    left: 0;
-    margin: 0;
-    padding: 1rem;
-    position: absolute;
-    right: 0;
-}
-    .carousel-photo-credits p {
-        display: inline-block;
-        margin: 0;
-        padding: 0 0.5rem 0;
-    }
-    .carousel-photo-credits a {
-        color: white;
-    }
-        .carousel-photo-credits a:hover {
-            border-color: white;
-        }
-    .carousel-photo-credits span {
-        display: none;
-    }
-        .carousel-photo-credits span.selected {
-            display: inline-block;
-        }
 
 /* small screens */
 /* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */
@@ -180,17 +162,13 @@ Photo credits behavior:
     body {
         margin: auto 20px;
     }
+    header h1 {
+        padding-top: 0.5rem;
+    }
     footer p:first-child {
         float: none;
     }
     footer p:last-child {
         text-align: left;
-    }
-    .carousel {
-        width: 100%;
-    }
-    .carousel-photo-credits {
-        bottom: 6px;
-        padding: 0.5rem;
     }
 }
