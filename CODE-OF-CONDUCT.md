@@ -39,7 +39,7 @@ We will respect confidentiality requests for the purpose of protecting victims o
 
 You can report violations in the following ways:
 
-- Email [Stacie Taylor-Cima](mailto:stacietaylorcima@gmail.com)
+- Email [Stacie Taylor-Cima](mailto:code-of-conduct@the-collab-lab.codes)
 - Direct message @stacie in the Collab Lab Slack workspace
 - Private message [@the_real_stacie](https://twitter.com/the_real_stacie) on Twitter
 
