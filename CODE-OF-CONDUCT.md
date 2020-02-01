@@ -39,9 +39,8 @@ We will respect confidentiality requests for the purpose of protecting victims o
 
 You can report violations in the following ways:
 
-- Email Stacie Taylor-Cima at [code-of-conduct@the-collab-lab.codes](mailto:code-of-conduct@the-collab-lab.codes)
-- Direct message @stacie in the Collab Lab Slack workspace
-- Private message [@the_real_stacie](https://twitter.com/the_real_stacie) on Twitter
+- Email Stacie Taylor-Cima and Lisa Smith at [code-of-conduct@the-collab-lab.codes](mailto:code-of-conduct@the-collab-lab.codes)
+- Direct message `@stacie` and/or `@Lisa Smith` in the Collab Lab Slack workspace
 
 ## Consequences
 
