@@ -2,6 +2,8 @@
 @import 'carousel.css';
 @import 'members.css';
 
+/* issue */
+
 :root {
     --page-width: 800px;
     --base-font-size: 16px;
