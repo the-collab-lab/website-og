@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx @11ty/eleventy --input=pages",
+    "dev": "npx @11ty/eleventy --serve"
   },
   "repository": {
     "type": "git",
