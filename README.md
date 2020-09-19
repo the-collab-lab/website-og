@@ -11,6 +11,6 @@ Source repo for the website at https://the-collab-lab.codes
 ## Scripts to run the project
 
 ```
-npm run dev # starts the dev server in por 8080
+npm run dev # starts the dev server on port 8080
 npm run build # builds the site and outputs it in the /_site/ folder
 ```
