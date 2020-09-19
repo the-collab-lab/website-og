@@ -1,1 +1,3 @@
 node_modules
+# Ignoring the output directory from Git
+_site
