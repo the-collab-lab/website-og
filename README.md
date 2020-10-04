@@ -3,3 +3,15 @@
 # website
 
 Source repo for the website at https://the-collab-lab.codes
+
+# Website V2
+
+- This project uses [11ty](https://www.11ty.dev/), a static site generator like Gatsby or Next.js, but it's a lot simpler and doesn't have a dependency on React.
+
+## Scripts to run the project
+
+```
+npm run dev # starts the dev server on port 8080
+npm run build # builds the site and outputs it in the /_site/ folder
+npm run build:serve # builds and serves the site in localhost:5000
+```
