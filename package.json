@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
+    "build:serve": "npm run build && serve build",
     "dev": "eleventy --serve"
   },
   "repository": {
@@ -20,5 +21,8 @@
   "description": "",
   "devDependencies": {
     "@11ty/eleventy": "^0.11.0"
+  },
+  "dependencies": {
+    "serve": "^11.3.2"
   }
 }
