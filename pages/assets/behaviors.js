@@ -16,11 +16,6 @@ class Gallery {
         this.timeout = undefined
         this.idx = 0 // array index of the selected photo
 
-        // bail if the page doesn't contain a carousel
-        if (null === this.imgs) {
-            return
-        }
-
         // bail out if we don’t have at least 2 images
         if (this.imgs.length < 2) {
             console.log('Fewer than 2 images — was that intentional?')
