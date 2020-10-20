@@ -3,173 +3,177 @@
 @import 'members.css';
 
 :root {
-    --page-width: 800px;
-    --base-font-size: 16px;
-    --small-font-size: 85%;
+  --page-width: 800px;
+  --base-font-size: 16px;
+  --small-font-size: 85%;
 }
 
 body {
-    background: white;
-    color: black;
-    font: var(--base-font-size)/1.5 'Source Sans Pro', Sans-Serif;
+  background: white;
+  color: black;
+  font: var(--base-font-size) / 1.5 'Source Sans Pro', Sans-Serif;
 }
 
-header, main, footer {
-    margin: 1rem auto;
-    max-width: var(--page-width);
+header,
+main,
+footer {
+  margin: 1rem auto;
+  max-width: var(--page-width);
 }
 
 header {
-    position: relative;
+  position: relative;
 }
-    header h1 {
-        font-size: 2.5rem;
-        line-height: 1;
-        margin-bottom: 0.5rem;
-        margin-top: 2.5rem;
-    }
-    header h2 {
-        margin-top: 0.5rem;
-    }
-    header nav {
-        position: absolute;
-        right: 0;
-        top: -2rem;
-    }
-        header nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-            header nav ul li {
-                display: inline-block;
-                padding: 0 0.2rem;
-            }
-                header nav ul li:after {
-                    content: '|';
-                    position: relative;
-                    left: 0.3rem;
-                }
-                header nav ul li:last-child {
-                    padding-right: 0;
-                }
-                header nav ul li:last-child:after {
-                    content: '';
-                }
+header h1 {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  margin-top: 2.5rem;
+}
+header h2 {
+  margin-top: 0.5rem;
+}
+header nav {
+  position: absolute;
+  right: 0;
+  top: -2rem;
+}
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  display: inline-block;
+  padding: 0 0.2rem;
+}
+header nav ul li:after {
+  content: '|';
+  position: relative;
+  left: 0.3rem;
+}
+header nav ul li:last-child {
+  padding-right: 0;
+}
+header nav ul li:last-child:after {
+  content: '';
+}
 
 footer {
-    border-top: solid 3px #ccc;
-    font-size: var(--small-font-size);
+  border-top: solid 3px #ccc;
+  font-size: var(--small-font-size);
 }
-    footer p {
-        margin: 1rem 0;
-    }
-        footer p:first-child {
-            float: left;
-        }
-        footer p:last-child {
-            text-align: right;
-        }
+footer p {
+  margin: 1rem 0;
+}
+footer p:first-child {
+  float: left;
+}
+footer p:last-child {
+  text-align: right;
+}
 
 h3 {
-    margin-bottom: 0.5rem;
-    margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 blockquote {
-    background: #333;
-    color: white;
-    margin: 1.5rem -1rem;
-    padding: 1rem 2rem;
+  background: #333;
+  color: white;
+  margin: 1.5rem -1rem;
+  padding: 1rem 2rem;
 }
-    blockquote p, blockquote dl {
-        margin: 0;
-    }
-    blockquote a {
-        color: #ccc;
-    }
-        blockquote a:hover {
-            color: white;
-            border-bottom: solid 1px white;
-        }
+blockquote p,
+blockquote dl {
+  margin: 0;
+}
+blockquote a {
+  color: #ccc;
+}
+blockquote a:hover {
+  color: white;
+  border-bottom: solid 1px white;
+}
 
 .hang-it {
-    display: inline-block;
-    margin-left: -0.5rem;
+  display: inline-block;
+  margin-left: -0.5rem;
 }
 
 q {
-    display: block;
-    position: relative;
+  display: block;
+  position: relative;
 }
-    q::before {
-        color: silver;
-        content: '“';
-        font-size: xx-large;
-        font-weight: bold;
-        left: -1.1rem;
-        position: absolute;
-        top: -0.36rem;
-    }
-    q::after {
-        content: '';
-    }
+q::before {
+  color: silver;
+  content: '“';
+  font-size: xx-large;
+  font-weight: bold;
+  left: -1.1rem;
+  position: absolute;
+  top: -0.36rem;
+}
+q::after {
+  content: '';
+}
 
-dl {}
-    dl dt {
-        float: left;
-        font-weight: bold;
-        margin-right: 0.5rem;
-    }
-    dl dd {
-        margin-left: 1rem;
-    }
+dl {
+}
+dl dt {
+  float: left;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+dl dd {
+  margin-left: 1rem;
+}
 
 h2 {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 a {
-    color: blue;
-    text-decoration: none;
+  color: blue;
+  text-decoration: none;
 }
-    a:hover {
-        border-bottom: solid 1px blue;
-    }
+a:hover {
+  border-bottom: solid 1px blue;
+}
 
 hr {
-    border-style: solid;
-    border-width: 1px;
-    color: silver;
+  border-style: solid;
+  border-width: 1px;
+  color: silver;
 }
 
 figure.float-right {
-    float: right;
-    margin: 0 0 1rem 1rem;
-    width: 50%;
+  float: right;
+  margin: 0 0 1rem 1rem;
+  width: 50%;
 }
-    figure.float-right img {
-        height: auto;
-        width: 100%;
-    }
-    figure.float-right figcaption {
-        font-size: var(--small-font-size);
-        font-style: italic;
-    }
+figure.float-right img {
+  height: auto;
+  width: 100%;
+}
+figure.float-right figcaption {
+  font-size: var(--small-font-size);
+  font-style: italic;
+}
 
 /* small screens */
 /* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */
 @media screen and (max-width: 819px) {
-    body {
-        margin: auto 20px;
-    }
-    header h1 {
-        padding-top: 0.5rem;
-    }
-    footer p:first-child {
-        float: none;
-    }
-    footer p:last-child {
-        text-align: left;
-    }
+  body {
+    margin: auto 20px;
+  }
+  header h1 {
+    padding-top: 0.5rem;
+  }
+  footer p:first-child {
+    float: none;
+  }
+  footer p:last-child {
+    text-align: left;
+  }
 }
