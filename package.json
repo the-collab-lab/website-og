@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/the-collab-lab/website#readme",
   "description": "",
+  "dependencies": {
+    "@11ty/eleventy": "^0.11.0"
+  },
   "devDependencies": {
-    "@11ty/eleventy": "^0.11.0",
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
     "eslint-plugin-prettier": "^3.1.4",
