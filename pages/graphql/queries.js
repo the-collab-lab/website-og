@@ -6,7 +6,7 @@ const CohortsQuery = gql`
       displayName
       startDate
       endDate
-      participants {
+      participants: participants(orderBy: firstName_ASC) {
         firstName
         fullName
         pathToPhoto
