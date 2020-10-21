@@ -5,7 +5,52 @@ pageTitle: <a href="/">The Collab Lab</a> / Who We Are
 navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a href="/apply/">Apply</a></li><li><a href="/mentor/">Mentor</a></li><li><a href="/code-of-conduct/">Code of Conduct</a></li></ul>
 ---
 
-{{ teams }}
+<!--
+
+[
+  {
+    "displayName": "TCL 1",
+    "startDate": "2019-08-22",
+    "endDate": "2019-10-19",
+    "participants": [
+      {
+        "firstName": "Caitlyn",
+        "fullName": "Caitlyn Greffly",
+        "pathToPhoto": "/assets/img/members/caitlyngreffly.jpg",
+        "gitHubUrl": "https://github.com/greffly",
+        "linkedInUrl": "https://www.linkedin.com/in/caitlyngreffly/",
+        "twitterUrl": "https://twitter.com/thecaitcode"
+      },
+      {
+        "firstName": "Kate",
+        "fullName": "Kate Sowles",
+        "pathToPhoto": "/assets/img/members/katesowles.jpg",
+        "gitHubUrl": "https://github.com/katesowles",
+        "linkedInUrl": "https://www.linkedin.com/in/katesowles/",
+        "twitterUrl": "https://twitter.com/katesowles"
+      },
+      {
+        "firstName": "Scott",
+        "fullName": "Scott Stine",
+        "pathToPhoto": "/assets/img/members/scottstine.jpg",
+        "gitHubUrl": "https://github.com/scottwstine",
+        "linkedInUrl": "https://www.linkedin.com/in/scottwstinedeveloperandwriter/",
+        "twitterUrl": null
+      },
+      {
+        "firstName": "Stacie",
+        "fullName": "Stacie Taylor",
+        "pathToPhoto": "/assets/img/members/stacietaylorcima.jpg",
+        "gitHubUrl": "https://github.com/stacietaylorcima",
+        "linkedInUrl": "https://www.linkedin.com/in/therealstacie/",
+        "twitterUrl": "https://twitter.com/the_real_stacie"
+      }
+    ]
+  },
+
+-->
+
+<pre>{{ teams }}</pre>
 
 <h2 id="participants">Participants</h2>
 <p>
@@ -32,6 +77,15 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
   them perform better in job interviews for technical roles.
   <strong>Hire them!</strong>
 </p>
+
+<h1>below is dynamic above is static</h1>
+
+{{each teams}}
+<h3>{{this.displayName}}</h3>
+{{/each}}
+
+<h1>below is static above is dynamic</h1>
+
 <h3 id="cohort-15">TCL 15 | October 2020 – November 2020</h3>
 <ul class="member-gallery">
   <li class="member-container">
