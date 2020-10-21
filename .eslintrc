@@ -3,5 +3,13 @@
   "rules": {
     "prettier/prettier": "error"
   },
-  "extends": ["plugin:prettier/recommended"]
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:node/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "env": { "es6": true }
 }
