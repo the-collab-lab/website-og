@@ -12,6 +12,7 @@ const cohortDate = ({ startDate, endDate }) =>
 
 const graphQLEndpoint =
   'https://api-us-east-1.graphcms.com/v2/ckfwosu634r7l01xpco7z3hvq/master';
+
 /**
  * Data transformation layer. Prepare the data to be consumed by the templates
  */
