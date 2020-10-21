@@ -20,8 +20,8 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
   pair program, review each others’ code, and submit & merge pull requests. They
   are also coached on how to be effective on a fully distributed (remote) team
   by
-  <a href="https://zapier.com/learn/remote-work/"
-    >people who do it every day for a living</a
+  <a href="https://zapier.com/learn/remote-work/">
+    people who do it every day for a living </a
   >.
 </p>
 <p>
@@ -31,28 +31,28 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
   <strong>Hire them!</strong>
 </p>
 
-{%- for cohort in cohorts -%}
-<h3 id="cohort-15">{{cohort.displayName}} | {{cohort.cohortDate}}</h3>
+{%- for team in teams -%}
+<h3 id="cohort-15">{{team.displayName}} | {{team.calculatedDate}}</h3>
 <ul class="member-gallery">
-  {%- for participant in cohort.participants -%}
+  {%- for developer in team.developers -%}
   <li class="member-container">
     <img
-      alt="{{participant.fullName}}"
+      alt="{{developer.fullName}}"
       class="team-member-photo"
-      src="{{participant.pathToPhoto}}"
+      src="{{developer.pathToPhoto}}"
     />
     <div class="member-caption">
-      <p>{{participant.firstName}}</p>
-      {% if participant.gitHubUrl.length %}
-      <a class="social-media-logo" href="{{participant.gitHubUrl}}">
+      <p>{{developer.firstName}}</p>
+      {% if developer.gitHubUrl.length %}
+      <a class="social-media-logo" href="{{developer.gitHubUrl}}">
         <img src="/assets/img/icons/github.png" alt="GitHub" />
       </a>
-      {% endif %} {% if participant.linkedInUrl.length %}
-      <a class="social-media-logo" href="{{participant.linkedInUrl}}"
+      {% endif %} {% if developer.linkedInUrl.length %}
+      <a class="social-media-logo" href="{{developer.linkedInUrl}}"
         ><img src="/assets/img/icons/linkedin.png" alt="LinkedIn"
       /></a>
-      {% endif %} {% if participant.twitterUrl.length %}
-      <a class="social-media-logo" href="{{participant.twitterUrl}}"
+      {% endif %} {% if developer.twitterUrl.length %}
+      <a class="social-media-logo" href="{{developer.twitterUrl}}"
         ><img src="/assets/img/icons/twitter.png" alt="Twitter"
       /></a>
       {% endif %}

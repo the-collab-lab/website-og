@@ -1,10 +1,15 @@
 const { request } = require('graphql-request');
 const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
-const keyBy = require('lodash.keyby');
-const { CohortsQuery } = require('./queries');
+const { TeamsQuery } = require('./queries');
 
-const cohortDate = ({ startDate, endDate }) =>
+/**
+ * Transforms two dates of type 2020-10-10 and 2020-11-11 to
+ * October 2020 - November 2020
+ *
+ * Used in the Teams section.
+ */
+const calculatedDate = ({ startDate, endDate }) =>
   `${format(parseISO(startDate), 'MMMM-y')} - ${format(
     parseISO(endDate),
     'MMMM-y',
@@ -16,21 +21,21 @@ const graphQLEndpoint =
 /**
  * Data transformation layer. Prepare the data to be consumed by the templates
  */
-const cohorts = async () => {
+const teams = async () => {
   try {
-    const { cohorts } = await request(graphQLEndpoint, CohortsQuery);
-    const result = cohorts.map((cohort) => ({
-      ...cohort,
-      cohortDate: cohortDate({
-        startDate: cohort.startDate,
-        endDate: cohort.endDate,
+    const { teams } = await request(graphQLEndpoint, TeamsQuery);
+    const result = teams.map((team) => ({
+      ...team,
+      calculatedDate: calculatedDate({
+        startDate: team.startDate,
+        endDate: team.endDate,
       }),
     }));
 
     return result;
   } catch (e) {
-    throw new Error('There was a problem getting Collabies', e);
+    throw new Error('There was a problem getting Teams', e);
   }
 };
 
-exports.cohorts = cohorts;
+exports.teams = teams;
