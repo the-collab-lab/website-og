@@ -21,7 +21,7 @@ const graphQLEndpoint =
 /**
  * Data transformation layer. Prepare the data to be consumed by the templates
  */
-const teams = async () => {
+const getTeams = async () => {
   try {
     const { teams } = await request(graphQLEndpoint, TeamsQuery);
     const result = teams.map((team) => ({
@@ -38,4 +38,4 @@ const teams = async () => {
   }
 };
 
-exports.teams = teams;
+exports.getTeams = getTeams;
