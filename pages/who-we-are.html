@@ -32,7 +32,7 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
 </p>
 
 {%- for team in teams -%}
-<h3 id="cohort-15">{{team.displayName}} | {{team.calculatedDate}}</h3>
+<h3 id="{{team.anchor}}">{{team.displayName}} | {{team.calculatedDate}}</h3>
 <ul class="member-gallery">
   {%- for developer in team.developers -%}
   <li class="member-container">

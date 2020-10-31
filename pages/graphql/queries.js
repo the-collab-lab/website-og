@@ -3,6 +3,7 @@ const { gql } = require('graphql-request');
 const TeamsQuery = gql`
   query Teams {
     teams(orderBy: startDate_DESC) {
+      anchor
       displayName
       startDate
       endDate
