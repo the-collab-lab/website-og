@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/the-collab-lab/website.git"
   },
+  "engines": {
+    "node": ">=12.0.0"
+  },
   "keywords": [],
   "author": "The Collab Lab",
   "license": "ISC",
@@ -20,11 +23,17 @@
   "homepage": "https://github.com/the-collab-lab/website#readme",
   "description": "",
   "dependencies": {
-    "@11ty/eleventy": "^0.11.0"
+    "@11ty/eleventy": "^0.11.0",
+    "date-fns": "^2.16.1",
+    "graphql": "^15.3.0",
+    "graphql-request": "^3.2.0",
+    "lodash.keyby": "^4.6.0",
+    "lodash.map": "^4.6.0"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.13.0",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
