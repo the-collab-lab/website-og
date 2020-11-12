@@ -70,7 +70,32 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
   because they believe in leaving tech better than they found it.
 </p>
 <ul class="member-gallery">
+  {%- for mentor in mentors -%}
   <li class="member-container">
+    <img
+      alt="{{mentor.fullName}}"
+      class="team-member-photo"
+      src="{{mentor.pathToPhoto}}"
+    />
+    <div class="member-caption">
+      <p>{{mentor.firstName}}</p>
+      <a class="social-media-logo" href="{{mentor.gitHubUrl}}"
+        ><img src="/assets/img/icons/github.png" alt="GitHub"
+      /></a>
+      <a class="social-media-logo" href="{{mentor.linkedInUrl}}"
+        ><img src="/assets/img/icons/linkedin.png" alt="LinkedIn"
+      /></a>
+      <a class="social-media-logo" href="{{mentor.twitterUrl}}"
+        ><img src="/assets/img/icons/twitter.png" alt="Twitter"
+      /></a>
+    </div>
+  </li>
+  <li class="member-container span-3">
+    <p>{{mentor.bio.html}}</p>
+  </li>
+  {%- endfor -%}
+
+  <!-- <li class="member-container">
     <img
       alt="Adrienne Lowe"
       class="team-member-photo"
@@ -932,7 +957,7 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
       Born in France, Yves moved to the Pacific Northwest in 2014. He lives in
       Portland, Oregon.
     </p>
-  </li>
+  </li> -->
 </ul>
 {% comment %} START ADVISORS {% endcomment %}
 <h2 id="board">Board & Advisors</h2>

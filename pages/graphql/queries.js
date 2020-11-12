@@ -22,4 +22,24 @@ const TeamsQuery = gql`
   }
 `;
 
+const MentorsQuery = gql`
+  query GetMentors {
+    collabies(
+      where: { roles_some: { name: "Mentor" } }
+      orderBy: firstName_ASC
+    ) {
+      firstName
+      fullName
+      bio {
+        html
+      }
+      pathToPhoto
+      gitHubUrl
+      linkedInUrl
+      twitterUrl
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
+exports.MentorsQuery = MentorsQuery;
