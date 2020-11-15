@@ -44,5 +44,20 @@ const MentorsQuery = gql`
   }
 `;
 
+const AdvisorsQuery = gql`
+  query GetAdvisors {
+    collabies(
+      where: { roles_some: {name: "Advisor"} }
+      orderBy: firstName_ASC
+    ) {
+      firstName
+      bio {
+        html
+      }
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
 exports.MentorsQuery = MentorsQuery;
+exports.AdvisorsQuery = AdvisorsQuery;

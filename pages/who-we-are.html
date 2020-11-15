@@ -102,7 +102,11 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
 {% comment %} START ADVISORS {% endcomment %}
 <h2 id="board">Board & Advisors</h2>
 <ul>
+  {%- for advisor in advisors -%}
   <li class="member-container span-3">
+    {{advisor.bio}}
+  </li>
+<!--   <li class="member-container span-3">
     <p>
       <strong>Craig John Alimo</strong> is a
       <a href="https://www.linkedin.com/in/calimo/">Trainer/Educator</a> for the
@@ -143,8 +147,10 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
       of contact for <a href="/code-of-conduct/">Code of Conduct</a> concerns.
     </p>
   </li>
+ -->  {%- endfor -%}
 </ul>
-<h2 id="founder">Founder</h2>
+{% comment %} START FOUNDERS {% endcomment %}
+<h2 id="founder">Founders</h2>
 <ul class="member-gallery">
   <li class="member-container">
     <img

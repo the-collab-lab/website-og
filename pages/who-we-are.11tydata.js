@@ -1,12 +1,13 @@
-const { getTeams, getMentors } = require('./graphql/data');
+const { getTeams, getMentors, getAdvisors } = require('./graphql/data');
 
 module.exports = async () => {
   const teams = await getTeams();
   const mentors = await getMentors();
-  console.log('this is mentors', mentors);
+  const advisors = await getAdvisors();
 
   return {
     teams,
     mentors,
+    advisors,
   };
 };
