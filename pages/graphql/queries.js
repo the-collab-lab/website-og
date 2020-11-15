@@ -47,7 +47,10 @@ const MentorsQuery = gql`
 const AdvisorsQuery = gql`
   query GetAdvisors {
     collabies(
-      where: { roles_some: {name: "Advisor"} }
+      where: {
+        roles_some: {name: "Advisor"},
+        roles_none: {name: "Founder"}
+      }
       orderBy: firstName_ASC
     ) {
       firstName
