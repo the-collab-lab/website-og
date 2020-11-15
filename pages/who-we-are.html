@@ -79,15 +79,19 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
     />
     <div class="member-caption">
       <p>{{mentor.firstName}}</p>
-      <a class="social-media-logo" href="{{mentor.gitHubUrl}}"
-        ><img src="/assets/img/icons/github.png" alt="GitHub"
-      /></a>
+      {% if mentor.gitHubUrl.length %}
+      <a class="social-media-logo" href="{{mentor.gitHubUrl}}">
+        <img src="/assets/img/icons/github.png" alt="GitHub" />
+      </a>
+      {% endif %} {% if mentor.linkedInUrl.length %}
       <a class="social-media-logo" href="{{mentor.linkedInUrl}}"
         ><img src="/assets/img/icons/linkedin.png" alt="LinkedIn"
       /></a>
+      {% endif %} {% if mentor.twitterUrl.length %}
       <a class="social-media-logo" href="{{mentor.twitterUrl}}"
         ><img src="/assets/img/icons/twitter.png" alt="Twitter"
       /></a>
+      {% endif %}
     </div>
   </li>
   <li class="member-container span-3">
