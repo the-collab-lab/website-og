@@ -61,6 +61,26 @@ const AdvisorsQuery = gql`
   }
 `;
 
+const FoundersQuery = gql`
+  query GetFounders {
+    collabies(
+      where: { roles_some: {name: "Founder"} }
+      orderBy: firstName_ASC
+    ) {
+      firstName
+      fullName
+      bio {
+        html
+      }
+      pathToPhoto
+      gitHubUrl
+      linkedInUrl
+      twitterUrl
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
 exports.MentorsQuery = MentorsQuery;
 exports.AdvisorsQuery = AdvisorsQuery;
+exports.FoundersQuery = FoundersQuery;

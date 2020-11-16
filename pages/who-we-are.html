@@ -111,46 +111,34 @@ navigation: <ul><li><a href="/about-us/">About</a></li><li>Who We Are</li><li><a
 {% comment %} START FOUNDERS {% endcomment %}
 <h2 id="founder">Founders</h2>
 <ul class="member-gallery">
+  {%- for founder in founders -%}
   <li class="member-container">
     <img
-      alt="Andrew Hedges"
+      alt="{{founder.fullName}}"
       class="team-member-photo"
-      src="/assets/img/members/andrewhedges.jpg"
+      src="{{founder.pathToPhoto}}"
     />
     <div class="member-caption">
-      <p>Andrew</p>
-      <a class="social-media-logo" href="https://github.com/segdeha"
-        ><img src="/assets/img/icons/github.png" alt="GitHub"
-      /></a>
-      <a
-        class="social-media-logo"
-        href="https://www.linkedin.com/in/andrewhedges/"
+      <p>{{founder.firstName}}</p>
+      {% if founder.gitHubUrl.length %}
+      <a class="social-media-logo" href="{{founder.gitHubUrl}}">
+        <img src="/assets/img/icons/github.png" alt="GitHub" />
+      </a>
+      {% endif %} {% if founder.linkedInUrl.length %}
+      <a class="social-media-logo" href="{{founder.linkedInUrl}}"
         ><img src="/assets/img/icons/linkedin.png" alt="LinkedIn"
       /></a>
-      <a class="social-media-logo" href="https://twitter.com/segdeha"
+      {% endif %} {% if founder.twitterUrl.length %}
+      <a class="social-media-logo" href="{{founder.twitterUrl}}"
         ><img src="/assets/img/icons/twitter.png" alt="Twitter"
       /></a>
+      {% endif %}
     </div>
   </li>
   <li class="member-container span-3">
-    <p>
-      <strong>Andrew Hedges,</strong> Founder of The Collab Lab, is a longtime
-      web developer, engineering manager, and educator. In his day job, he leads
-      fully distributed teams at <a href="https://zapier.com">Zapier</a>, a
-      workflow automation startup. He is an advisor to and former instructor for
-      <a href="https://www.pdxcodeguild.com">PDX Code Guild</a>, a coding
-      bootcamp located in his hometown of Portland, Oregon, and serves on the
-      technology committee for
-      <a href="https://www.pueblounidopdx.org">Pueblo Unido PDX</a>.
-    </p>
-    <p>
-      <a href="https://andrew.hedges.name">Andrew</a> holds a Masters of
-      Education in counseling and human development from the University of
-      Maryland College Park. He spent 7 years designing and conducting training
-      programs for university staff before making the leap to web development in
-      1998.
-    </p>
+    {{founder.bio.html}}
   </li>
+  {%- endfor -%}
 </ul>
 <h2>Get in touch!</h2>
 <p>
