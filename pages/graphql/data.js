@@ -1,7 +1,7 @@
 const { request } = require('graphql-request');
 const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
-const { TeamsQuery, MentorsQuery } = require('./queries');
+const { TeamsQuery, MentorsQuery, AdvisorsQuery } = require('./queries');
 
 /**
  * Transforms two dates of type 2020-10-10 and 2020-11-11 to
@@ -58,5 +58,15 @@ const getMentors = async () => {
   }
 };
 
+const getAdvisors = async () => {
+  try {
+    const { collabies } = await request(graphQLEndpoint, AdvisorsQuery);
+    return collabies;
+  } catch (e) {
+    throw new Error('There was a problem getting Advisors', e);
+  }
+};
+
 exports.getTeams = getTeams;
 exports.getMentors = getMentors;
+exports.getAdvisors = getAdvisors;
