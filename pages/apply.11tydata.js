@@ -19,6 +19,8 @@ module.exports = async () => {
     // render any text blocks
     if (page.textBlocks.length > 0) {
       page.textBlocks.forEach(block => {
+        // this `visible` boolean is what will make it easy for us to swap out content
+        // when applications for cohorts open and close
         if (block.visible) {
           html += block.textContent.html;
         }
