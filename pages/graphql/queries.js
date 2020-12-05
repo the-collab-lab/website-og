@@ -80,7 +80,28 @@ const FoundersQuery = gql`
   }
 `;
 
+const PagesQuery = gql`
+  query GetPages {
+    pages {
+      slug,
+      navigationTitle,
+      breadcrumbValue,
+      textBlocks {
+        textContent {
+          html
+        },
+        visible
+      },
+      imageFloatedRights {
+        path,
+        caption
+      }
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
 exports.MentorsQuery = MentorsQuery;
 exports.AdvisorsQuery = AdvisorsQuery;
 exports.FoundersQuery = FoundersQuery;
+exports.PagesQuery = PagesQuery;

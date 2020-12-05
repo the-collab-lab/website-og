@@ -156,6 +156,13 @@ figure.float-right img {
   height: auto;
   width: 100%;
 }
+  /* these images come from the cms so for now they have to be the first element
+     on the page, so we use css to push them down the page a little to match the
+     images on other pages
+   */
+  figure.float-right.image-floated-right img {
+    margin-top: 56px;
+  }
 figure.float-right figcaption {
   font-size: var(--small-font-size);
   font-style: italic;
