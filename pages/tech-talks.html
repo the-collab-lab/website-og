@@ -1,8 +1,8 @@
 ---
 layout: mlayout.hbs
-htmlTitle: Who We Are | The Collab Lab
-pageTitle: <a href="/">The Collab Lab</a> / Who We Are
-navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li><a href="/apply/">Apply</a></li> <li><a href="/mentor/">Mentor</a></li> <li><a href="/code-of-conduct/">Code of Conduct</a></li> </ul>
+htmlTitle: Tech Talks | The Collab Lab
+pageTitle: <a href="/">The Collab Lab</a> / Tech Talks
+navigation: <ul> <li><a href="/about-us/">About</a></li> <li><a href="/who-we-are/">Who We Are</a></li> <li><a href="/apply/">Apply</a></li> <li><a href="/mentor/">Mentor</a></li> <li>Tech Talks</li> <li><a href="/code-of-conduct/">Code of Conduct</a></li> </ul>
 ---
 
 <h2>Tech Talks by The Collab Lab</h2>
@@ -10,11 +10,18 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
   Join us for a new Tech Talk every 2 weeks. RSVP on <a href="https://www.meetup.com/tech-talks-by-the-collab-lab">Meetup</a>.
 </p>
 
-<!-- <iframe width="560" height="315" src="https://www.youtube.com/embed/3mci0a8AWnI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
-
-<ul>
+<ul class="tech-talks">
 {%- for techTalk in techTalks -%}
-  <li>{{techTalk}}</li>
+  {% if techTalk.visible %}
+  <li>
+    <h3>{{techTalk.title}} – <em>{{(techTalk.formattedDate}}</em></h3>
+    {% if techTalk.youTubeEmbedUrl %}
+      <iframe width="560" height="315" src="{{techTalk.youTubeEmbedUrl}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% endif %}
+    {{techTalk.description.html}}
+    <p><a href="{{techTalk.meetupUrl}}">Meetup page for {{techTalk.title}}</a></p>
+  </li>
+  {% endif %}
 {%- endfor -%}
 </ul>
 

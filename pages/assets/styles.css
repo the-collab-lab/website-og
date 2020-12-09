@@ -168,6 +168,26 @@ figure.float-right figcaption {
   font-style: italic;
 }
 
+.tech-talks {
+  list-style: none;
+  margin: 1em 0;
+  padding: 0;
+}
+  .tech-talks > li {
+    border-bottom: solid 1px #ccc;
+    margin: 1rem 0;
+    padding-bottom: 1rem;
+  }
+    .tech-talks > li:first-child {
+      border-top: solid 1px #ccc;
+    }
+  .tech-talks h3 {
+    margin: 1.5rem 0;
+  }
+    .tech-talks h3 em {
+      font-weight: normal;
+    }
+
 /* small screens */
 /* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */
 @media screen and (max-width: 819px) {

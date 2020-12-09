@@ -89,7 +89,21 @@ const getPages = async () => {
 const getTechTalks = async () => {
   try {
     const { techTalks } = await request(graphQLEndpoint, TechTalksQuery);
-    return techTalks;
+    const result = techTalks.map(talk => {
+      talk.formattedDate = format(parseISO(talk.dateAndTime), 'd MMM y');
+      talk.youTubeEmbedUrl = null;
+      if (talk.youTubeUrl) {
+        // source = https://www.youtube.com/watch?v=3mci0a8AWnI
+        // target = https://www.youtube.com/embed/3mci0a8AWnI
+        const matches = talk.youTubeUrl.match(/v=(\w+)/);
+        if (matches.length > 1) {
+          const id = matches[1];
+          talk.youTubeEmbedUrl = `https://www.youtube.com/embed/${id}`;
+        }
+      }
+      return talk;
+    });
+    return result;
   }
   catch (e) {
     throw new Error('There was a problem getting Tech Talks', e);
