@@ -1,7 +1,7 @@
 const { request } = require('graphql-request');
 const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
-const { TeamsQuery, MentorsQuery, AdvisorsQuery, FoundersQuery, PagesQuery } = require('./queries');
+const { TeamsQuery, MentorsQuery, AdvisorsQuery, FoundersQuery, PagesQuery, TechTalksQuery } = require('./queries');
 
 /**
  * Transforms two dates of type 2020-10-10 and 2020-11-11 to
@@ -86,8 +86,33 @@ const getPages = async () => {
   }
 };
 
+const getTechTalks = async () => {
+  try {
+    const { techTalks } = await request(graphQLEndpoint, TechTalksQuery);
+    const result = techTalks.map(talk => {
+      talk.formattedDate = format(parseISO(talk.dateAndTime), 'd MMM y');
+      talk.youTubeEmbedUrl = null;
+      if (talk.youTubeUrl) {
+        // source = https://www.youtube.com/watch?v=3mci0a8AWnI
+        // target = https://www.youtube.com/embed/3mci0a8AWnI
+        const matches = talk.youTubeUrl.match(/v=(\w+)/);
+        if (matches.length > 1) {
+          const id = matches[1];
+          talk.youTubeEmbedUrl = `https://www.youtube.com/embed/${id}`;
+        }
+      }
+      return talk;
+    });
+    return result;
+  }
+  catch (e) {
+    throw new Error('There was a problem getting Tech Talks', e);
+  }
+};
+
 exports.getTeams = getTeams;
 exports.getMentors = getMentors;
 exports.getAdvisors = getAdvisors;
 exports.getFounders = getFounders;
 exports.getPages = getPages;
+exports.getTechTalks = getTechTalks;

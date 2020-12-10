@@ -100,8 +100,32 @@ const PagesQuery = gql`
   }
 `;
 
+const TechTalksQuery = gql`
+  query GetTechTalks {
+    techTalks(orderBy: dateAndTime_DESC) {
+      title
+      presenters {
+        fullName
+      }
+      dateAndTime
+      description {
+        html
+      }
+      meetupUrl
+      youTubeUrl
+      image {
+        url
+        width
+        height
+      }
+      visible
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
 exports.MentorsQuery = MentorsQuery;
 exports.AdvisorsQuery = AdvisorsQuery;
 exports.FoundersQuery = FoundersQuery;
 exports.PagesQuery = PagesQuery;
+exports.TechTalksQuery = TechTalksQuery;
