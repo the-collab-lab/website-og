@@ -37,6 +37,7 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
   {%- for developer in team.developers -%}
   <li class="member-container">
     <img
+      loading="lazy"
       alt="{{developer.fullName}}"
       class="team-member-photo"
       src="{{developer.pathToPhoto}}"
@@ -73,6 +74,7 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
   {%- for mentor in mentors -%}
   <li class="member-container">
     <img
+      loading="lazy"
       alt="{{mentor.fullName}}"
       class="team-member-photo"
       src="{{mentor.pathToPhoto}}"
@@ -114,6 +116,7 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
   {%- for founder in founders -%}
   <li class="member-container">
     <img
+      loading="lazy"
       alt="{{founder.fullName}}"
       class="team-member-photo"
       src="{{founder.pathToPhoto}}"
