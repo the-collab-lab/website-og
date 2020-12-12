@@ -30,8 +30,8 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
   them perform better in job interviews for technical roles.
   <strong>Hire them!</strong>
 </p>
-
-{%- for team in teams -%}
+{% assign socials = "gitHub,linkedIn,twitter" | split: ',' %} {%- for team in
+teams -%}
 <h3 id="{{team.anchor}}">{{team.displayName}} | {{team.calculatedDate}}</h3>
 <ul class="member-gallery">
   {%- for developer in team.developers -%}
@@ -43,19 +43,18 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
     />
     <div class="member-caption">
       <p>{{developer.firstName}}</p>
-      {% if developer.gitHubUrl.length %}
-      <a class="social-media-logo" href="{{developer.gitHubUrl}}">
-        <img src="/assets/img/icons/github.png" alt="GitHub" />
+      {% for social in socials %} {% assign urlProp = social | append: 'Url' %}
+      {% if developer[urlProp].length %} {% assign platformName = social |
+      capitalize %}
+      <a
+        class="social-media-logo"
+        href="{{developer[urlProp]}}"
+        aria-label="{% generateSocialMediaLinkLabel developer.firstName, platformName %}"
+        rel="noopener noreferrer"
+      >
+        <img src="/assets/img/icons/{{ social }}.png" alt="" />
       </a>
-      {% endif %} {% if developer.linkedInUrl.length %}
-      <a class="social-media-logo" href="{{developer.linkedInUrl}}"
-        ><img src="/assets/img/icons/linkedin.png" alt="LinkedIn"
-      /></a>
-      {% endif %} {% if developer.twitterUrl.length %}
-      <a class="social-media-logo" href="{{developer.twitterUrl}}"
-        ><img src="/assets/img/icons/twitter.png" alt="Twitter"
-      /></a>
-      {% endif %}
+      {% endif %} {% endfor %}
     </div>
   </li>
   {%- endfor -%}
@@ -79,33 +78,28 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
     />
     <div class="member-caption">
       <p>{{mentor.firstName}}</p>
-      {% if mentor.gitHubUrl.length %}
-      <a class="social-media-logo" href="{{mentor.gitHubUrl}}">
-        <img src="/assets/img/icons/github.png" alt="GitHub" />
+      {% for social in socials %} {% assign urlProp = social | append: 'Url' %}
+      {% if mentor[urlProp].length %} {% assign platformName = social |
+      capitalize %}
+      <a
+        class="social-media-logo"
+        href="{{mentor[urlProp]}}"
+        aria-label="{% generateSocialMediaLinkLabel mentor.firstName, platformName %}"
+        rel="noopener noreferrer"
+      >
+        <img src="/assets/img/icons/{{ social }}.png" alt="" />
       </a>
-      {% endif %} {% if mentor.linkedInUrl.length %}
-      <a class="social-media-logo" href="{{mentor.linkedInUrl}}"
-        ><img src="/assets/img/icons/linkedin.png" alt="LinkedIn"
-      /></a>
-      {% endif %} {% if mentor.twitterUrl.length %}
-      <a class="social-media-logo" href="{{mentor.twitterUrl}}"
-        ><img src="/assets/img/icons/twitter.png" alt="Twitter"
-      /></a>
-      {% endif %}
+      {% endif %} {% endfor %}
     </div>
   </li>
-  <li class="member-container span-3">
-    {{mentor.bio.html}}
-  </li>
+  <li class="member-container span-3">{{mentor.bio.html}}</li>
   {%- endfor -%}
 </ul>
 {% comment %} START ADVISORS {% endcomment %}
 <h2 id="board">Board & Advisors</h2>
 <ul>
   {%- for advisor in advisors -%}
-  <li class="member-container span-3">
-    {{advisor.bio.html}}
-  </li>
+  <li class="member-container span-3">{{advisor.bio.html}}</li>
   {%- endfor -%}
 </ul>
 {% comment %} START FOUNDERS {% endcomment %}
@@ -120,24 +114,21 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li>Who We Are</li> <li
     />
     <div class="member-caption">
       <p>{{founder.firstName}}</p>
-      {% if founder.gitHubUrl.length %}
-      <a class="social-media-logo" href="{{founder.gitHubUrl}}">
-        <img src="/assets/img/icons/github.png" alt="GitHub" />
+      {% for social in socials %} {% assign urlProp = social | append: 'Url' %}
+      {% if founder[urlProp].length %} {% assign platformName = social |
+      capitalize %}
+      <a
+        class="social-media-logo"
+        href="{{founder[urlProp]}}"
+        aria-label="{% generateSocialMediaLinkLabel founder.firstName, platformName %}"
+        rel="noopener noreferrer"
+      >
+        <img src="/assets/img/icons/{{ social }}.png" alt="" />
       </a>
-      {% endif %} {% if founder.linkedInUrl.length %}
-      <a class="social-media-logo" href="{{founder.linkedInUrl}}"
-        ><img src="/assets/img/icons/linkedin.png" alt="LinkedIn"
-      /></a>
-      {% endif %} {% if founder.twitterUrl.length %}
-      <a class="social-media-logo" href="{{founder.twitterUrl}}"
-        ><img src="/assets/img/icons/twitter.png" alt="Twitter"
-      /></a>
-      {% endif %}
+      {% endif %} {% endfor %}
     </div>
   </li>
-  <li class="member-container span-3">
-    {{founder.bio.html}}
-  </li>
+  <li class="member-container span-3">{{founder.bio.html}}</li>
   {%- endfor -%}
 </ul>
 <h2>Get in touch!</h2>
