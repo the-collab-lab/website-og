@@ -26,6 +26,32 @@ const calculatedDate = ({ startDate, endDate }) => {
   return `${formattedStartDate} – ${formattedEndDate}`;
 };
 
+/**
+ * Blocks allow us to build up arbitrary pages composed of other entities.
+ * This function takes a `blocks` array from a `Pages` query and assembles
+ * the HTML to be rendered.
+ *
+ * The default type is `TextBlock`. Adding new types would entail creatiing
+ * a content model in GraphCMS then adding a `case` statement to this
+ * function to handle rendering of that type.
+ */
+const assembleBlocks = blocks => {
+  let html = '';
+  if (Array.isArray(blocks)) {
+    blocks.forEach(block => {
+      switch (block.__typename) {
+        case 'ImageFloatedRight':
+          html += `<figure class="float-right image-floated-right"><img src="${block.path}" alt="${block.caption}" /><figcaption>${block.caption}</figcaption></figure>`;
+        break;
+        default: // 'TextBlock' (only add if visible: true)
+          html += block.visible ? block.textContent.html : '';
+        break;
+      }
+    });
+  }
+  return html;
+};
+
 const graphQLEndpoint =
   'https://api-us-east-1.graphcms.com/v2/ckfwosu634r7l01xpco7z3hvq/master';
 
@@ -79,7 +105,21 @@ const getFounders = async () => {
 const getPages = async () => {
   try {
     const { pages } = await request(graphQLEndpoint, PagesQuery);
-    return pages;
+    // assemble html for the pages
+    const assembledPages = pages.map(page => {
+      const assembledPage = {
+        slug: page.slug,
+        html: null,
+      };
+      assembledPage.html = assembleBlocks(page.blocks);
+      return assembledPage;
+    });
+    // an assembled page will have the following shape:
+    // {
+    //   slug: '/apply/',
+    //   html: '<h2>Title</h2><p>Some text.</p>',
+    // }
+    return assembledPages;
   }
   catch (e) {
     throw new Error('There was a problem getting Pages', e);
