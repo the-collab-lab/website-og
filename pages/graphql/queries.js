@@ -83,18 +83,19 @@ const FoundersQuery = gql`
 const PagesQuery = gql`
   query GetPages {
     pages {
-      slug,
-      navigationTitle,
-      breadcrumbValue,
-      textBlocks {
-        textContent {
-          html
-        },
-        visible
-      },
-      imageFloatedRights {
-        path,
-        caption
+      slug
+      blocks {
+        __typename
+        ... on TextBlock {
+          textContent {
+            html
+          }
+          visible
+        }
+        ... on ImageFloatedRight {
+          path
+          caption
+        }
       }
     }
   }
