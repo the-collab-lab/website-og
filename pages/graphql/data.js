@@ -127,6 +127,7 @@ const getPages = async () => {
 };
 
 const getTechTalks = async () => {
+  const rgx = /(v=([\w-]+))|(be\/([\w-]+))/; // there's probably room for improvement here
   try {
     const { techTalks } = await request(graphQLEndpoint, TechTalksQuery);
     const result = techTalks.map(talk => {
@@ -134,10 +135,13 @@ const getTechTalks = async () => {
       talk.youTubeEmbedUrl = null;
       if (talk.youTubeUrl) {
         // source = https://www.youtube.com/watch?v=3mci0a8AWnI
+        // source = https://youtu.be/FU7v7JI5-pg
         // target = https://www.youtube.com/embed/3mci0a8AWnI
-        const matches = talk.youTubeUrl.match(/v=(\w+)/);
-        if (matches.length > 1) {
-          const id = matches[1];
+        const matches = talk.youTubeUrl.match(rgx);
+        // depending on the format of the input URL, the slug will be at either
+        // position 2 or position 4 of the `matches` array
+        if (matches && (matches[2] || matches[4])) {
+          const id = matches[2] || matches[4];
           talk.youTubeEmbedUrl = `https://www.youtube.com/embed/${id}`;
         }
       }
