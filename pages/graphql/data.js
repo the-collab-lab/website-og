@@ -127,7 +127,7 @@ const getPages = async () => {
 };
 
 const getTechTalks = async () => {
-  const rgx = /(v=(\w+))|(be\/(\w+))/; // there's probably room for improvement here
+  const rgx = /(v=([\w-]+))|(be\/([\w-]+))/; // there's probably room for improvement here
   try {
     const { techTalks } = await request(graphQLEndpoint, TechTalksQuery);
     const result = techTalks.map(talk => {
