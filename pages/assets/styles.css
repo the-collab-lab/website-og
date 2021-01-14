@@ -195,7 +195,7 @@ figure.float-right figcaption {
     margin: auto 20px;
   }
   header h1 {
-    padding-top: 0.5rem;
+    padding-top: 1rem;
   }
   footer p:first-child {
     float: none;
