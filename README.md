@@ -12,6 +12,6 @@ Source repo for the website at https://the-collab-lab.codes
 
 ```
 npm run dev # starts the dev server on port 8080
-npm run build # builds the site and outputs it in the /_site/ folder
+npm run build # builds the site and outputs it in the /build/ folder
 npm run build:serve # builds and serves the site in localhost:5000
 ```
