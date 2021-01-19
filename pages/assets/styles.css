@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600&display=swap&subset=latin-ext');
 @import 'carousel.css';
+@import 'toast.css';
+@import 'donations.css';
 @import 'members.css';
 
 :root {
@@ -156,13 +158,13 @@ figure.float-right img {
   height: auto;
   width: 100%;
 }
-  /* these images come from the cms so for now they have to be the first element
+/* these images come from the cms so for now they have to be the first element
      on the page, so we use css to push them down the page a little to match the
      images on other pages
    */
-  figure.float-right.image-floated-right img {
-    margin-top: 56px;
-  }
+figure.float-right.image-floated-right img {
+  margin-top: 56px;
+}
 figure.float-right figcaption {
   font-size: var(--small-font-size);
   font-style: italic;
@@ -173,21 +175,25 @@ figure.float-right figcaption {
   margin: 1em 0;
   padding: 0;
 }
-  .tech-talks > li {
-    border-bottom: solid 1px #ccc;
-    margin: 1rem 0;
-    padding-bottom: 1rem;
-  }
-    .tech-talks > li:first-child {
-      border-top: solid 1px #ccc;
-    }
-  .tech-talks h3 {
-    margin: 1.5rem 0;
-  }
-    .tech-talks h3 em {
-      font-weight: normal;
-    }
+.tech-talks > li {
+  border-bottom: solid 1px #ccc;
+  margin: 1rem 0;
+  padding-bottom: 1rem;
+}
+.tech-talks > li:first-child {
+  border-top: solid 1px #ccc;
+}
+.tech-talks h3 {
+  margin: 1.5rem 0;
+}
+.tech-talks h3 em {
+  font-weight: normal;
+}
 
+.hidden {
+  display: none;
+  transition: all 200ms ease-in-out;
+}
 /* small screens */
 /* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */
 @media screen and (max-width: 819px) {

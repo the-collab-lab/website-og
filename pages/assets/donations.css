@@ -1,0 +1,55 @@
+.donation-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.checkout-button {
+  --background-color: #f3f4f6;
+  --border-color: #bebebe;
+  box-sizing: border-box;
+  appearance: none;
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 15px;
+  text-decoration: none;
+  transition: all 200ms ease-in-out;
+}
+
+.checkout-button:hover,
+.checkout-button:focus,
+.checkout-button:active,
+.checkout-button:disabled,
+.checkout-button[disabled] {
+  box-shadow: 0 0 40px 40px var(--background-color) inset;
+}
+
+.checkout-button:disabled,
+.checkout-button[disabled] {
+  --background-color: #c6c6c6;
+  opacity: 0.7;
+  cursor: wait;
+}
+
+.checkout-button .donation-option-text::before {
+  display: inline-block;
+  content: '😊';
+  font-size: var(--smal-font-size);
+  font-size: 10px;
+  margin-right: 5px;
+}
+
+.checkout-button:hover .donation-option-text::before,
+.checkout-button:active .donation-option-text::before,
+.checkout-button:focus .donation-option-text::before {
+  content: '❤️';
+}
+
+.checkout-button:disabled .donation-option-text::before,
+.checkout-button[disabled] .donation-option-text::before {
+  content: '⌛️';
+}
