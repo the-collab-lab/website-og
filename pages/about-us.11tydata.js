@@ -1,8 +1,9 @@
 const Stripe = require('stripe');
+const config = require('./_data/config');
 
 module.exports = async () => {
   try {
-    const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+    const stripe = Stripe(config.STRIPE_SECRET_KEY);
     const { data: products = [] } = await stripe.products.list();
 
     const options = await Promise.all(
@@ -23,7 +24,7 @@ module.exports = async () => {
       (option) => -parseInt(option.price.unit_amount),
     );
 
-    const stripePublishableKey = process.env.STRIPE_PUBLISHABLE_KEY;
+    const stripePublishableKey = config.STRIPE_PUBLISHABLE_KEY;
 
     return {
       isDonationEnabled:
