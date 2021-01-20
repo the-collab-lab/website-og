@@ -124,9 +124,23 @@ const TechTalksQuery = gql`
   }
 `;
 
+const FrontPageApplicationBlock = gql`
+  query GetApplicationBlock {
+    textBlocks(where: {
+      internalName_contains: "Front Page – Applications",
+      visible: true
+    }) {
+      textContent {
+        html
+      }
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
 exports.MentorsQuery = MentorsQuery;
 exports.AdvisorsQuery = AdvisorsQuery;
 exports.FoundersQuery = FoundersQuery;
 exports.PagesQuery = PagesQuery;
 exports.TechTalksQuery = TechTalksQuery;
+exports.FrontPageApplicationBlock = FrontPageApplicationBlock;

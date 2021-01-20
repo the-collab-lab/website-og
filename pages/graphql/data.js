@@ -1,7 +1,7 @@
 const { request } = require('graphql-request');
 const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
-const { TeamsQuery, MentorsQuery, AdvisorsQuery, FoundersQuery, PagesQuery, TechTalksQuery } = require('./queries');
+const { TeamsQuery, MentorsQuery, AdvisorsQuery, FoundersQuery, PagesQuery, TechTalksQuery, FrontPageApplicationBlock } = require('./queries');
 
 /**
  * Transforms two dates of type 2020-10-10 and 2020-11-11 to
@@ -154,9 +154,20 @@ const getTechTalks = async () => {
   }
 };
 
+const getFrontPageApplicationBlock = async () => {
+  try {
+    const block = await request(graphQLEndpoint, FrontPageApplicationBlock);
+    return block;
+  }
+  catch (e) {
+    throw new Error('There was a problem getting Front Page Application Block', e);
+  }
+};
+
 exports.getTeams = getTeams;
 exports.getMentors = getMentors;
 exports.getAdvisors = getAdvisors;
 exports.getFounders = getFounders;
 exports.getPages = getPages;
 exports.getTechTalks = getTechTalks;
+exports.getFrontPageApplicationBlock = getFrontPageApplicationBlock;
