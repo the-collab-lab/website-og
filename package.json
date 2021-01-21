@@ -28,7 +28,8 @@
     "graphql": "^15.3.0",
     "graphql-request": "^3.2.0",
     "lodash.keyby": "^4.6.0",
-    "lodash.map": "^4.6.0"
+    "lodash.map": "^4.6.0",
+    "stripe": "^8.131.1"
   },
   "devDependencies": {
     "eslint": "^7.11.0",
