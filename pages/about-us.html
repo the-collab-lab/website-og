@@ -65,7 +65,7 @@ navigation: <ul> <li>About</li> <li><a href="/who-we-are/">Who We Are</a></li> <
 <p>
   The Collab Lab is
   <strong>volunteer-driven and free for participants.</strong> We intentionally
-  and actively work to overcome barriers to opportunities for women and other
+  and actively work to overcome barriers to opportunities for women and
   under-represented minorities in tech.
 </p>
 <p>
@@ -90,7 +90,8 @@ navigation: <ul> <li>About</li> <li><a href="/who-we-are/">Who We Are</a></li> <
 
 {%- if isDonationEnabled %}
 <div id="donation">
-  We also accept donations. Please consider becoming a:
+  We also accept direct donations. Please consider supporting The Collab Lab
+  with a one-time donation.
   <form class="donation-options">
     {%- for donationOption in donationOptions -%}
     <button
@@ -101,7 +102,7 @@ navigation: <ul> <li>About</li> <li><a href="/who-we-are/">Who We Are</a></li> <
       type="button"
     >
       <span class="donation-option-text">
-        {{donationOption.name}} for ${{ donationOption.price.formatted_amount }}
+        {{ donationOption.name }} for ${{ donationOption.price.formatted_amount }}
       </span>
     </button>
     {%- endfor -%}
@@ -111,17 +112,15 @@ navigation: <ul> <li>About</li> <li><a href="/who-we-are/">Who We Are</a></li> <
 <script src="https://js.stripe.com/v3"></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
-    (function () {
-      // initialize Stripe using your publishable key
-      const stripe = Stripe('{{ stripePublishableKey }}');
+    // initialize Stripe using your publishable key
+    const stripe = Stripe('{{ stripePublishableKey }}');
 
-      // find the buttons and error message elements
-      const checkoutButtons = document.getElementsByClassName(
-        'checkout-button',
-      );
+    // find the buttons and error message elements
+    const checkoutButtons = document.getElementsByClassName(
+      'checkout-button',
+    );
 
-      new DonationForm({ stripe, checkoutButtons });
-    })();
+    new DonationForm({ stripe, checkoutButtons });
   });
 </script>
 {%- endif %}
