@@ -21,7 +21,7 @@ module.exports = async () => {
     );
 
     const donationOptions = (options || []).sort(
-      (option) => -parseInt(option.price.unit_amount),
+      (a, b) => parseInt(a.price.unit_amount) - parseInt(b.price.unit_amount),
     );
 
     const stripePublishableKey = config.STRIPE_PUBLISHABLE_KEY;

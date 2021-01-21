@@ -4,9 +4,10 @@
 
   position: fixed;
   top: 10px;
-  right: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   max-width: 350px;
-  padding: 10px;
+  padding: 10px 20px;
   background: var(--background-color);
   border: 1px solid var(--border-color);
   text-align: center;
