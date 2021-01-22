@@ -6,7 +6,7 @@ function initDonationForm() {
   // test for presence of donation form before trying to init
   if (null !== document.querySelector('#donation .donation-options')) {
     // bail if the key is not defined
-    if (undefined === typeof window.__STRIPE_PUBLIC_KEY) {
+    if ('undefined' === typeof window.__STRIPE_PUBLIC_KEY) {
       return;
     }
 
