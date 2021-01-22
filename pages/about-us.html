@@ -110,6 +110,20 @@ navigation: <ul> <li>About</li> <li><a href="/who-we-are/">Who We Are</a></li> <
 </div>
 
 <script src="https://js.stripe.com/v3"></script>
+<script src="/assets/donation-form.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // initialize Stripe using your publishable key
+    const stripe = Stripe('{{ stripePublishableKey }}');
+
+    // find the buttons and error message elements
+    const checkoutButtons = document.getElementsByClassName(
+      'checkout-button',
+    );
+
+    new DonationForm({ stripe, checkoutButtons });
+  });
+</script>
 {%- endif %}
 
 <h2>Get in touch!</h2>
