@@ -16,7 +16,7 @@ class DonationForm {
   }
 
   loaded() {
-    Array.from(this.checkoutButtons).forEach((checkoutButton) => {
+    this.checkoutButtons.forEach((checkoutButton) => {
       // on click, send the user to Stripe Checkout to process the donation
       checkoutButton.addEventListener('click', () => {
         const price = checkoutButton.dataset['stripePriceId'];
