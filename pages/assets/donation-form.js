@@ -6,7 +6,7 @@ class DonationForm {
    * Create our Stripe donation form
    * @param {Object} opts
    * @param {stripe.Stripe} opts.stripe
-   * @param {Array<HTMLElement>} opts.checkoutButtons
+   * @param {( NodeList | HTMLCollection )} opts.checkoutButtons
    */
   constructor({ stripe, checkoutButtons }) {
     this.stripe = stripe;
@@ -16,7 +16,7 @@ class DonationForm {
   }
 
   loaded() {
-    this.checkoutButtons.forEach((checkoutButton) => {
+    Array.from(this.checkoutButtons).forEach((checkoutButton) => {
       // on click, send the user to Stripe Checkout to process the donation
       checkoutButton.addEventListener('click', () => {
         const price = checkoutButton.dataset['stripePriceId'];
