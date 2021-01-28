@@ -8,7 +8,10 @@ function initDonationForm() {
   if (null !== document.querySelector('#donation .donation-options')) {
     const { __STRIPE_PUBLIC_KEY } = window;
     // bail if the key is not defined
-    if ('' === __STRIPE_PUBLIC_KEY) {
+    if (
+      'undefined' === typeof __STRIPE_PUBLIC_KEY ||
+      '' === __STRIPE_PUBLIC_KEY
+    ) {
       return;
     }
 
