@@ -1,4 +1,13 @@
+import { Toast } from './toast.js';
+
+/** Class representing a donation form */
 class DonationForm {
+  /**
+   * Create our Stripe donation form
+   * @param {Object} opts
+   * @param {stripe.Stripe} opts.stripe
+   * @param {Array<HTMLElement>} opts.checkoutButtons
+   */
   constructor({ stripe, checkoutButtons }) {
     this.stripe = stripe;
     this.checkoutButtons = checkoutButtons;
