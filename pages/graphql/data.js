@@ -52,8 +52,14 @@ const assembleBlocks = blocks => {
   return html;
 };
 
+// Creates a new field on a team for sorting teams numerically
+const parseAnchor = (anchor) => {
+  return anchor.includes('pilot') ? 8.5 : parseInt(anchor.split("-").pop());
+}
+
 const graphQLEndpoint =
   'https://api-us-east-1.graphcms.com/v2/ckfwosu634r7l01xpco7z3hvq/master';
+
 
 /**
  * Data transformation layer. Prepare the data to be consumed by the templates
@@ -63,13 +69,14 @@ const getTeams = async () => {
     const { teams } = await request(graphQLEndpoint, TeamsQuery);
     const result = teams.map((team) => ({
       ...team,
+      sortAnchor: parseAnchor(team.anchor),
       calculatedDate: calculatedDate({
         startDate: team.startDate,
         endDate: team.endDate,
       }),
     }));
 
-    return result.filter(team => team.visible);
+    return result.filter(team => team.visible).sort((a, b) => b.sortAnchor - a.sortAnchor);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
