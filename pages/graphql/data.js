@@ -69,7 +69,7 @@ const getTeams = async () => {
       }),
     }));
 
-    return result;
+    return result.filter(team => team.visible);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
