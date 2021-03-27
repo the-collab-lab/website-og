@@ -7,6 +7,7 @@ const TeamsQuery = gql`
       displayName
       startDate
       endDate
+      visible
       developers: participants(orderBy: firstName_ASC) {
         firstName
         fullName
