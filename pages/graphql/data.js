@@ -52,6 +52,10 @@ const assembleBlocks = blocks => {
   return html;
 };
 
+// Generate Team Number for sorting
+const calculateTeamNumber = (anchor) =>
+  anchor.includes('pilot') ? 8.5 : parseInt(anchor.split('-').pop());
+
 const graphQLEndpoint =
   'https://api-us-east-1.graphcms.com/v2/ckfwosu634r7l01xpco7z3hvq/master';
 
@@ -67,9 +71,10 @@ const getTeams = async () => {
         startDate: team.startDate,
         endDate: team.endDate,
       }),
+      teamNumber: calculateTeamNumber(team.anchor),
     }));
 
-    return result.filter(team => team.visible);
+    return result.filter(team => team.visible).sort((a, b) => b.teamNumber - a.teamNumber);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
