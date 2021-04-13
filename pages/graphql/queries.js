@@ -41,6 +41,7 @@ const MentorsQuery = gql`
       gitHubUrl
       linkedInUrl
       twitterUrl
+      visible
     }
   }
 `;
