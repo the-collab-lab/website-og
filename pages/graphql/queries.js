@@ -29,7 +29,7 @@ const MentorsQuery = gql`
       where: {
         roles_some: {name: "Mentor"},
         roles_none: {name: "Founder"},
-        visible
+        visible: true
       }
       orderBy: firstName_ASC
     ) {
