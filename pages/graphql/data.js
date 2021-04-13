@@ -83,7 +83,7 @@ const getTeams = async () => {
 const getMentors = async () => {
   try {
     const { collabies } = await request(graphQLEndpoint, MentorsQuery);
-    return collabies.filter(mentor => mentor.visible);
+    return collabies;
   } catch (e) {
     throw new Error('There was a problem getting Mentors', e);
   }

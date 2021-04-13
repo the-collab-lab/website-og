@@ -28,7 +28,8 @@ const MentorsQuery = gql`
     collabies(
       where: {
         roles_some: {name: "Mentor"},
-        roles_none: {name: "Founder"}
+        roles_none: {name: "Founder"},
+        visible
       }
       orderBy: firstName_ASC
     ) {
@@ -41,7 +42,6 @@ const MentorsQuery = gql`
       gitHubUrl
       linkedInUrl
       twitterUrl
-      visible
     }
   }
 `;
