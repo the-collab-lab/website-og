@@ -28,7 +28,8 @@ const MentorsQuery = gql`
     collabies(
       where: {
         roles_some: {name: "Mentor"},
-        roles_none: {name: "Founder"}
+        roles_none: {name: "Founder"},
+        visible: true
       }
       orderBy: firstName_ASC
     ) {
