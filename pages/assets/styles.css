@@ -190,6 +190,31 @@ figure.float-right figcaption {
   font-weight: normal;
 }
 
+.stats {
+  max-width: 50%;
+  object-fit: cover;
+}
+
+.stats-enlarge {
+  max-width: 60%;
+  object-fit: cover;
+}
+
+.donut-graph {
+  width: 100%;
+}
+
+.donut-graph-center {
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.display-stats {
+  display: flex;
+}
+
 .hidden {
   display: none;
   transition: all 200ms ease-in-out;
