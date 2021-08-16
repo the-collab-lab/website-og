@@ -98,6 +98,7 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
     </p>
   </figcaption>
 </figure>
+
 <h3>The Collab Lab is…</h3>
 <ul>
   <li><strong>Collaborative</strong> group project practice</li>
@@ -108,6 +109,18 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
   <li>An opportunity to <strong>learn</strong> from experienced developers</li>
   <li>Volunteer run and <strong>free</strong> for participants</li>
 </ul>
+
+<h1>Two Years of The Collab Lab!</h1>
+<p>
+  We're celebrating our <strong>2 year anniversary</strong> at The Collab Lab.
+  Help us celebrate by firing the
+  <strong>confetti cannon!</strong>
+</p>
+<figure>
+  <img src="assets/img/cannon.jpg" alt="colorful circus cannon" />
+  <canvas></canvas>
+  <button class="checkout-button">Fire when ready! 🎉</button>
+</figure>
 <blockquote>
   <q
     >Collab Lab gave me agile team experience I didn’t get through my coding
@@ -172,6 +185,45 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
     >
   </p>
 </blockquote>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+<script>
+  function init() {
+    const canvas = document.querySelector('figure canvas');
+    document.querySelector('button').addEventListener('click', (evt) => {
+      const cannon = confetti.create(canvas, {
+        disableForReducedMotion: true,
+        resize: true,
+      });
+      cannon({
+        angle: 45,
+        origin: {
+          x: 0,
+        },
+      });
+    });
+  }
+  document.addEventListener('DOMContentLoaded', init);
+</script>
+<style type="text/css">
+  figure {
+    padding-top: 306px;
+    position: relative;
+  }
+  figure img {
+    height: auto;
+    position: relative;
+    top: -100px;
+    width: 306px;
+  }
+  figure canvas {
+    height: 540px;
+    left: 270px;
+    position: absolute;
+    top: 0;
+    width: 800px;
+  }
+</style>
+
 <h3>Get in touch!</h3>
 <p>
   Follow us on <a href="https://twitter.com/_collab_lab">Twitter</a> and
