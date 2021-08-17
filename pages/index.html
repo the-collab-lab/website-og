@@ -6,6 +6,19 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li><a href="/who-we-ar
 pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely on<strong> real world projects</strong> with other<strong> early-career developers.</strong></h2>
 ---
 
+<h1>Two Years of The Collab Lab! 🎉</h1>
+<img src="assets/img/two-year-anniversary.png" class="two-year-graphic" alt="Two Year Anniversary graphic with images of Collabies" />
+<p>
+  We're celebrating our <strong>2 year anniversary</strong> at The Collab Lab.
+  Help us celebrate by firing the
+  <strong>confetti cannon!</strong>
+</p>
+<figure>
+  <img src="assets/img/cannon.jpg" alt="colorful circus cannon" />
+  <canvas></canvas>
+  <button class="checkout-button">Fire when ready! 🎉</button>
+</figure>
+
 <figure class="carousel">
   <img
     class="carousel-base-image"
@@ -110,17 +123,6 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
   <li>Volunteer run and <strong>free</strong> for participants</li>
 </ul>
 
-<h1>Two Years of The Collab Lab!</h1>
-<p>
-  We're celebrating our <strong>2 year anniversary</strong> at The Collab Lab.
-  Help us celebrate by firing the
-  <strong>confetti cannon!</strong>
-</p>
-<figure>
-  <img src="assets/img/cannon.jpg" alt="colorful circus cannon" />
-  <canvas></canvas>
-  <button class="checkout-button">Fire when ready! 🎉</button>
-</figure>
 <blockquote>
   <q
     >Collab Lab gave me agile team experience I didn’t get through my coding
@@ -195,7 +197,9 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
         resize: true,
       });
       cannon({
-        angle: 45,
+        angle: 15,
+        spread: 20,
+        drift: -1,
         origin: {
           x: 0,
         },
@@ -213,14 +217,26 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
     height: auto;
     position: relative;
     top: -100px;
-    width: 306px;
+    max-width: 30%;
   }
   figure canvas {
-    height: 540px;
-    left: 270px;
+    height: 85%;
+    left: 25%;
     position: absolute;
     top: 0;
-    width: 800px;
+    width: 90%;
+  }
+  .two-year-graphic {
+      max-width: 100%;
+  }
+  @media only screen and (max-width: 550px) {
+    figure canvas {
+        height: 85%;
+        left: 25%;
+        position: absolute;
+        top: 0;
+        width: 90%;
+    }
   }
 </style>
 
