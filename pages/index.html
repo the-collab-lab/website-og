@@ -210,7 +210,8 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
 
   .confetti-button {
     width: 100%;
-    font-size: 2em;
+    font-size: 1.5em;
+    padding: 0.3em;
     background-image: linear-gradient(
       to bottom right,
       rgba(136, 30, 196, 1) 0%,
@@ -258,10 +259,8 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
           resize: true,
         });
         cannon({
-          angle: 0,
-          origin: {
-            x: 0,
-          },
+          particleCount: 150,
+          spread: 50,
         });
       });
   }
