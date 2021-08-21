@@ -6,7 +6,7 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li><a href="/who-we-ar
 pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely on<strong> real world projects</strong> with other<strong> early-career developers.</strong></h2>
 ---
 
-<figure class="carousel">
+<!-- <figure class="carousel">
   <img
     class="carousel-base-image"
     src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAQAAAA3fa6RAAAADklEQVR42mNkAANGCAUAACMAA2w/AMgAAAAASUVORK5CYII="
@@ -97,7 +97,52 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
       >
     </p>
   </figcaption>
+</figure> -->
+<h1 style="text-align: center;">🎉 Celebrating Two Years of The Collab Lab! 🎉</a></h1>
+
+<figure class="two-year-graphic">
+  <a id="confetti-trigger"
+  ><img
+    src="assets/img/two-year-anniversary.png"
+    alt="Celebrating Two Years of Collaboration at The Collab Lab"
+  /></a>
+  <figcaption>🎉 Click the image to release confetti! 🎉</figcaption>
 </figure>
+
+<style type="text/css">
+  .two-year-graphic {
+    margin: 1rem 0;
+  }
+  .two-year-graphic a:hover {
+    border: none;
+    cursor: pointer;
+  }
+  .two-year-graphic img {
+    max-width: 100%;
+  }
+  .two-year-graphic figcaption {
+    text-align: center;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+<script>
+  function init() {
+    document
+      .querySelector('#confetti-trigger')
+      .addEventListener('click', (evt) => {
+        confetti();
+      });
+  }
+  document.addEventListener('DOMContentLoaded', init);
+</script>
+
+<p>
+  We're celebrating our <strong>2 year anniversary</strong> at The Collab Lab.
+  Help us celebrate by firing the
+  <strong>confetti cannon!</strong>
+</p>
+
 <h3>The Collab Lab is…</h3>
 <ul>
   <li><strong>Collaborative</strong> group project practice</li>
@@ -108,6 +153,7 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
   <li>An opportunity to <strong>learn</strong> from experienced developers</li>
   <li>Volunteer run and <strong>free</strong> for participants</li>
 </ul>
+
 <blockquote>
   <q
     >Collab Lab gave me agile team experience I didn’t get through my coding

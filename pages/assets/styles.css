@@ -190,6 +190,53 @@ figure.float-right figcaption {
   font-weight: normal;
 }
 
+.stats-enlarge {
+  max-width: 60%;
+  object-fit: cover;
+}
+
+.donut-graph {
+  width: 100%;
+}
+
+.donut-graph-center {
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.display-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.stats {
+  flex: 1 1 auto;
+  max-width: 360px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  flex: 1 1 auto;
+  max-width: 250px;
+}
+
+.flex-text {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
 .hidden {
   display: none;
   transition: all 200ms ease-in-out;
