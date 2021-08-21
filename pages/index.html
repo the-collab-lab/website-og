@@ -98,26 +98,50 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
     </p>
   </figcaption>
 </figure> -->
-<h1>Two Years of The Collab Lab! 🎉</h1>
+<h1 style="text-align: center;">🎉 Celebrating Two Years of The Collab Lab! 🎉</a></h1>
 
-<img
-  src="assets/img/two-year-anniversary.png"
-  class="two-year-graphic"
-  alt="Two Year Anniversary graphic with images of Collabies"
-/>
+<figure class="two-year-graphic">
+  <a id="confetti-trigger"
+  ><img
+    src="assets/img/two-year-anniversary.png"
+    alt="Celebrating Two Years of Collaboration at The Collab Lab"
+  /></a>
+  <figcaption>🎉 Click the image to release confetti! 🎉</figcaption>
+</figure>
+
+<style type="text/css">
+  .two-year-graphic {
+    margin: 1rem 0;
+  }
+  .two-year-graphic a:hover {
+    border: none;
+    cursor: pointer;
+  }
+  .two-year-graphic img {
+    max-width: 100%;
+  }
+  .two-year-graphic figcaption {
+    text-align: center;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+<script>
+  function init() {
+    document
+      .querySelector('#confetti-trigger')
+      .addEventListener('click', (evt) => {
+        confetti();
+      });
+  }
+  document.addEventListener('DOMContentLoaded', init);
+</script>
 
 <p>
   We're celebrating our <strong>2 year anniversary</strong> at The Collab Lab.
   Help us celebrate by firing the
   <strong>confetti cannon!</strong>
 </p>
-
-<canvas></canvas>
-<a id="confetti-trigger"
-  ><button class="confetti-button">
-    Two Years of The Collab Lab! 🎉 ← click the icon to release confetti! 🎉
-  </button>
-</a>
 
 <h3>The Collab Lab is…</h3>
 <ul>
@@ -194,78 +218,6 @@ pageSubTitle: <h2>Gain <strong>practical experience</strong> by working remotely
     >
   </p>
 </blockquote>
-
-<style type="text/css">
-  canvas {
-    height: 540px;
-    left: 270px;
-    position: absolute;
-    top: 0;
-    width: 800px;
-  }
-
-  .two-year-graphic {
-    max-width: 100%;
-  }
-
-  .confetti-button {
-    width: 100%;
-    font-size: 1.5em;
-    padding: 0.3em;
-    background-image: linear-gradient(
-      to bottom right,
-      rgba(136, 30, 196, 1) 0%,
-      rgba(84, 168, 176, 1) 59%,
-      rgba(0, 212, 255, 1) 94%,
-      rgba(0, 212, 255, 1) 94%
-    );
-    box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5),
-      0px 5px 5px -1px rgba(58, 125, 233, 0.2),
-      inset 4px 4px 8px rgba(175, 230, 255, 0.5),
-      inset -4px -4px 8px rgba(19, 95, 216, 0.3);
-    border-radius: 22px;
-    height: 148px;
-    text-align: center;
-    color: #ffffff;
-    border: none;
-    transition: background-image 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .confetti-button:hover {
-    cursor: pointer;
-    background: linear-gradient(
-      to top left,
-      rgba(136, 30, 196, 1) 0%,
-      rgba(84, 168, 176, 1) 59%,
-      rgba(0, 212, 255, 1) 94%,
-      rgba(0, 212, 255, 1) 94%
-    );
-    box-shadow: 0px 5px 50px rgba(71, 184, 255, 0.75),
-      0px 10px 10px -4px rgba(58, 125, 233, 0.3),
-      inset 4px 4px 8px rgba(175, 230, 255, 0.5),
-      inset -4px -4px 8px rgba(19, 95, 216, 0.3);
-  }
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-<script>
-  function init() {
-    const canvas = document.querySelector('figure canvas');
-    document
-      .querySelector('#confetti-trigger')
-      .addEventListener('click', (evt) => {
-        const cannon = confetti.create(canvas, {
-          disableForReducedMotion: true,
-          resize: true,
-        });
-        cannon({
-          particleCount: 150,
-          spread: 50,
-        });
-      });
-  }
-  document.addEventListener('DOMContentLoaded', init);
-</script>
 <h3>Get in touch!</h3>
 <p>
   Follow us on <a href="https://twitter.com/_collab_lab">Twitter</a> and
