@@ -8,27 +8,46 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li><a href="/who-we-ar
 <h2>Tech Talks by The Collab Lab</h2>
 <blockquote>
   <p>
-    Join us for a new Tech Talk every 2 weeks. <a href="https://www.meetup.com/tech-talks-by-the-collab-lab">RSVP on Meetup</a>.
+    Join us for a new Tech Talk on the 2nd Wednesday of every month.
+    <a href="https://www.meetup.com/tech-talks-by-the-collab-lab"
+      >RSVP on Meetup</a
+    >.
+  </p>
+</blockquote>
+
+<blockquote>
+  <p>
+    Interested in giving a Tech Talk?
+    <a href="https://airtable.com/shrmy5hJ8tEiQsxI6">Submit your idea here</a>.
   </p>
 </blockquote>
 
 <ul class="tech-talks">
-{%- for techTalk in techTalks -%}
-  {% if techTalk.visible %}
+  {%- for techTalk in techTalks -%} {% if techTalk.visible %}
   <li>
     <h3>{{techTalk.title}} – <em>{{(techTalk.formattedDate}}</em></h3>
     {% if techTalk.youTubeEmbedUrl %}
-      <iframe width="560" height="315" src="{{techTalk.youTubeEmbedUrl}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    {% endif %}
-    {{techTalk.description.html}}
-    <p><a href="{{techTalk.meetupUrl}}">Meetup page for {{techTalk.title}}</a></p>
+    <iframe
+      width="560"
+      height="315"
+      src="{{techTalk.youTubeEmbedUrl}}"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+    {% endif %} {{techTalk.description.html}}
+    <p>
+      <a href="{{techTalk.meetupUrl}}">Meetup page for {{techTalk.title}}</a>
+    </p>
   </li>
-  {% endif %}
-{%- endfor -%}
+  {% endif %} {%- endfor -%}
 </ul>
 
 <h2>Have a talk idea? Get in touch!</h2>
 <p>
-  Interested in speaking at our Meetup? Email us at 
-  <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#101;&#99;&#104;&#45;&#116;&#97;&#108;&#107;&#115;&#64;&#116;&#104;&#101;&#45;&#99;&#111;&#108;&#108;&#97;&#98;&#45;&#108;&#97;&#98;&#46;&#99;&#111;&#100;&#101;&#115;">&#116;&#101;&#99;&#104;&#45;&#116;&#97;&#108;&#107;&#115;&#64;&#116;&#104;&#101;&#45;&#99;&#111;&#108;&#108;&#97;&#98;&#45;&#108;&#97;&#98;&#46;&#99;&#111;&#100;&#101;&#115;</a>.
+  Interested in speaking at our Meetup? Email us at
+  <a
+    href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#116;&#101;&#99;&#104;&#45;&#116;&#97;&#108;&#107;&#115;&#64;&#116;&#104;&#101;&#45;&#99;&#111;&#108;&#108;&#97;&#98;&#45;&#108;&#97;&#98;&#46;&#99;&#111;&#100;&#101;&#115;"
+    >&#116;&#101;&#99;&#104;&#45;&#116;&#97;&#108;&#107;&#115;&#64;&#116;&#104;&#101;&#45;&#99;&#111;&#108;&#108;&#97;&#98;&#45;&#108;&#97;&#98;&#46;&#99;&#111;&#100;&#101;&#115;</a
+  >.
 </p>
