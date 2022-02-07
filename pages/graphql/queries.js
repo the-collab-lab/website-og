@@ -27,8 +27,8 @@ const MentorsQuery = gql`
   query GetMentors {
     collabies(
       where: {
-        roles_some: {name: "Mentor"},
-        roles_none: {name: "Founder"},
+        roles_some: { name: "Mentor" }
+        roles_none: { name: "Founder" }
         visible: true
       }
       orderBy: firstName_ASC
@@ -50,15 +50,20 @@ const AdvisorsQuery = gql`
   query GetAdvisors {
     collabies(
       where: {
-        roles_some: {name: "Advisor"},
-        roles_none: {name: "Founder"}
+        roles_some: { name: "Advisor" }
+        roles_none: { name: "Founder" }
       }
       orderBy: firstName_ASC
     ) {
       firstName
+      fullName
       bio {
         html
       }
+      pathToPhoto
+      gitHubUrl
+      linkedInUrl
+      twitterUrl
     }
   }
 `;
@@ -66,7 +71,7 @@ const AdvisorsQuery = gql`
 const FoundersQuery = gql`
   query GetFounders {
     collabies(
-      where: { roles_some: {name: "Founder"} }
+      where: { roles_some: { name: "Founder" } }
       orderBy: firstName_ASC
     ) {
       firstName
@@ -128,10 +133,12 @@ const TechTalksQuery = gql`
 
 const FrontPageApplicationBlock = gql`
   query GetApplicationBlock {
-    textBlocks(where: {
-      internalName_contains: "Front Page – Applications",
-      visible: true
-    }) {
+    textBlocks(
+      where: {
+        internalName_contains: "Front Page – Applications"
+        visible: true
+      }
+    ) {
       textContent {
         html
       }
