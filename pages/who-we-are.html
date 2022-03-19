@@ -60,42 +60,8 @@ teams -%}
   {%- endfor -%}
 </ul>
 
-{%- endfor -%} {% comment %} START MENTORS {% endcomment %}
 
-<h2 id="mentors">Mentors</h2>
-<p>
-  Collab Lab’s mentors are the lifeblood of the program. All of our mentors are
-  working software developers and engineering leaders. They volunteer their time
-  because they believe in leaving tech better than they found it.
-</p>
-<ul class="member-gallery">
-  {%- for mentor in mentors -%}
-  <li class="member-container">
-    <img
-      loading="lazy"
-      alt="{{mentor.fullName}}"
-      class="team-member-photo"
-      src="{{mentor.pathToPhoto}}"
-    />
-    <div class="member-caption">
-      <p>{{mentor.firstName}}</p>
-      {% for social in socials %} {% assign urlProp = social | append: 'Url' %}
-      {% if mentor[urlProp].length > 0 %} {% assign platformName = social |
-      capitalize %}
-      <a
-        class="social-media-logo"
-        href="{{mentor[urlProp]}}"
-        aria-label="{% generateSocialMediaLinkLabel mentor.firstName, platformName %}"
-      >
-        <img src="/assets/img/icons/{{ social }}.png" alt="" />
-      </a>
-      {% endif %} {% endfor %}
-    </div>
-  </li>
-  <li class="member-container span-3">{{mentor.bio.html}}</li>
-  {%- endfor -%}
-</ul>
-{% comment %} START ADVISORS {% endcomment %}
+{%- endfor -%} {% comment %} START ADVISORS {% endcomment %}
 <h2 id="board">Board & Advisors</h2>
 <ul>
   {%- for advisor in advisors -%}
