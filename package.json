@@ -4,7 +4,6 @@
   "main": "index.js",
   "scripts": {
     "build": "eleventy",
-    "build:serve": "npm run build && serve build",
     "dev": "eleventy --serve"
   },
   "repository": {
@@ -23,24 +22,21 @@
   "homepage": "https://github.com/the-collab-lab/website#readme",
   "description": "",
   "dependencies": {
-    "@11ty/eleventy": "^0.12.1",
-    "date-fns": "^2.16.1",
-    "graphql": "^15.3.0",
-    "graphql-request": "^3.2.0",
-    "lodash.keyby": "^4.6.0",
-    "lodash.map": "^4.6.0",
-    "stripe": "^8.131.1"
+    "@11ty/eleventy": "^1.0.0",
+    "date-fns": "^2.28.0",
+    "graphql": "^16.3.0",
+    "graphql-request": "^4.1.0",
+    "stripe": "^8.209.0"
   },
   "devDependencies": {
-    "@types/stripe-v3": "^3.1.23",
-    "eslint": "^7.11.0",
-    "eslint-config-prettier": "^6.13.0",
+    "@types/stripe-v3": "^3.1.26",
+    "eslint": "^8.11.0",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^4.0.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.2",
-    "prettier": "^2.1.2",
-    "serve": "^12.0.1"
+    "prettier": "^2.5.1"
   },
   "husky": {
     "hooks": {

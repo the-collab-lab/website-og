@@ -25,7 +25,7 @@ navigation: <ul> <li><a href="/about-us/">About</a></li> <li><a href="/who-we-ar
 <ul class="tech-talks">
   {%- for techTalk in techTalks -%} {% if techTalk.visible %}
   <li>
-    <h3>{{techTalk.title}} – <em>{{(techTalk.formattedDate}}</em></h3>
+    <h3>{{techTalk.title}} – <em>{{techTalk.formattedDate}}</em></h3>
     {% if techTalk.youTubeEmbedUrl %}
     <iframe
       width="560"
