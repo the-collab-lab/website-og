@@ -5,12 +5,14 @@ module.exports = function (eleventyConfig) {
     'pages/google657107b6feadb517.html': 'google657107b6feadb517.html',
   });
 
-  eleventyConfig.addShortcode('generateSocialMediaLinkLabel', function (
-    name,
-    platform,
-  ) {
-    return `Connect with ${name} on ${platform}.`;
-  });
+  eleventyConfig.addPassthroughCopy('_redirects');
+
+  eleventyConfig.addShortcode(
+    'generateSocialMediaLinkLabel',
+    function (name, platform) {
+      return `Connect with ${name} on ${platform}.`;
+    },
+  );
 
   return {
     dir: {
