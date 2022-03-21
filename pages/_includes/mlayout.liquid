@@ -2,7 +2,7 @@
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
-    <title>{% htmlTitle %}</title>
+    <title>{{ htmlTitle }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.gstatic.com/">
@@ -29,14 +29,14 @@
   <body>
     <div id="toast" class="toast hidden" role="alert"></div>
     <header>
-      <h1>{% pageTitle %}</h1>
+      <h1>{{ pageTitle }}</h1>
       <nav>
-        {% navigation %}
+        {{ navigation }}
       </nav>
-      {% pageSubTitle %}
+      {{ pageSubTitle }}
     </header>
     <main>
-      {% content %}
+      {{ content }}
     </main>
     <footer>
       <p>Copyright &copy; 2019 – 2022 The Collab Lab. All rights reserved.</p>
