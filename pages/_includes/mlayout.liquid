@@ -31,7 +31,7 @@
     <header>
       <h1>{{ pageTitle }}</h1>
       <nav>
-        {{ navigation }}
+        {{ collections.all | eleventyNavigation | eleventyNavigationToHtml }}
       </nav>
       {{ pageSubTitle }}
     </header>
