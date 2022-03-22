@@ -1,3 +1,5 @@
+const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('pages/assets');
   eleventyConfig.addPassthroughCopy('pages/favicon.ico');
@@ -6,6 +8,8 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addPassthroughCopy('_redirects');
+
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
 
   eleventyConfig.addShortcode(
     'generateSocialMediaLinkLabel',
