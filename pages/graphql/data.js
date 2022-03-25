@@ -1,7 +1,16 @@
 const { request } = require('graphql-request');
 const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
-const { TeamsQuery, MentorsQuery, AdvisorsQuery, FoundersQuery, PagesQuery, TechTalksQuery, FrontPageApplicationBlock } = require('./queries');
+const {
+  TeamsQuery,
+  MentorsQuery,
+  AdvisorsQuery,
+  FoundersQuery,
+  PagesQuery,
+  TechTalksQuery,
+  FrontPageApplicationBlock,
+  VolunteersQuery,
+} = require('./queries');
 
 /**
  * Transforms two dates of type 2020-10-10 and 2020-11-11 to
@@ -35,17 +44,18 @@ const calculatedDate = ({ startDate, endDate }) => {
  * a content model in GraphCMS then adding a `case` statement to this
  * function to handle rendering of that type.
  */
-const assembleBlocks = blocks => {
+const assembleBlocks = (blocks) => {
   let html = '';
   if (Array.isArray(blocks)) {
-    blocks.forEach(block => {
+    blocks.forEach((block) => {
       switch (block.__typename) {
         case 'ImageFloatedRight':
           html += `<figure class="float-right image-floated-right"><img src="${block.path}" alt="${block.caption}" /><figcaption>${block.caption}</figcaption></figure>`;
-        break;
-        default: // 'TextBlock' (only add if visible: true)
+          break;
+        default:
+          // 'TextBlock' (only add if visible: true)
           html += block.visible ? block.textContent.html : '';
-        break;
+          break;
       }
     });
   }
@@ -74,7 +84,9 @@ const getTeams = async () => {
       teamNumber: calculateTeamNumber(team.anchor),
     }));
 
-    return result.filter(team => team.visible).sort((a, b) => b.teamNumber - a.teamNumber);
+    return result
+      .filter((team) => team.visible)
+      .sort((a, b) => b.teamNumber - a.teamNumber);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
@@ -111,7 +123,7 @@ const getPages = async () => {
   try {
     const { pages } = await request(graphQLEndpoint, PagesQuery);
     // assemble html for the pages
-    const assembledPages = pages.map(page => {
+    const assembledPages = pages.map((page) => {
       const assembledPage = {
         slug: page.slug,
         html: null,
@@ -125,8 +137,7 @@ const getPages = async () => {
     //   html: '<h2>Title</h2><p>Some text.</p>',
     // }
     return assembledPages;
-  }
-  catch (e) {
+  } catch (e) {
     throw new Error('There was a problem getting Pages', e);
   }
 };
@@ -135,7 +146,7 @@ const getTechTalks = async () => {
   const rgx = /(v=([\w-]+))|(be\/([\w-]+))/; // there's probably room for improvement here
   try {
     const { techTalks } = await request(graphQLEndpoint, TechTalksQuery);
-    const result = techTalks.map(talk => {
+    const result = techTalks.map((talk) => {
       talk.formattedDate = format(parseISO(talk.dateAndTime), 'd MMM y');
       talk.youTubeEmbedUrl = null;
       if (talk.youTubeUrl) {
@@ -153,8 +164,7 @@ const getTechTalks = async () => {
       return talk;
     });
     return result;
-  }
-  catch (e) {
+  } catch (e) {
     throw new Error('There was a problem getting Tech Talks', e);
   }
 };
@@ -163,9 +173,20 @@ const getFrontPageApplicationBlock = async () => {
   try {
     const block = await request(graphQLEndpoint, FrontPageApplicationBlock);
     return block;
+  } catch (e) {
+    throw new Error(
+      'There was a problem getting Front Page Application Block',
+      e,
+    );
   }
-  catch (e) {
-    throw new Error('There was a problem getting Front Page Application Block', e);
+};
+
+const getVolunteers = async () => {
+  try {
+    const { collabies } = await request(graphQLEndpoint, VolunteersQuery);
+    return collabies;
+  } catch (e) {
+    throw new Error('There was a problem getting Mentors', e);
   }
 };
 
@@ -176,3 +197,4 @@ exports.getFounders = getFounders;
 exports.getPages = getPages;
 exports.getTechTalks = getTechTalks;
 exports.getFrontPageApplicationBlock = getFrontPageApplicationBlock;
+exports.getVolunteers = getVolunteers;
