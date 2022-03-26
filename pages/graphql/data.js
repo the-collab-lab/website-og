@@ -116,7 +116,6 @@ const getMentors = async () =>
       if (role === 'Founder') return false;
       if (role === 'Mentor') {
         keep = true;
-        break;
       }
     }
     return keep;
@@ -129,7 +128,6 @@ const getAdvisors = async () =>
       if (role === 'Founder') return false;
       if (role === 'Advisor') {
         keep = true;
-        break;
       }
     }
     return keep;
