@@ -2,12 +2,11 @@ const { gql } = require('graphql-request');
 
 const TeamsQuery = gql`
   query Teams {
-    teams(orderBy: startDate_DESC) {
+    teams(where: { visible: true }, orderBy: startDate_DESC) {
       anchor
       displayName
       startDate
       endDate
-      visible
       developers: participants(orderBy: firstName_ASC) {
         firstName
         fullName

@@ -81,9 +81,7 @@ const getTeams = async () => {
       teamNumber: calculateTeamNumber(team.anchor),
     }));
 
-    return result
-      .filter((team) => team.visible)
-      .sort((a, b) => b.teamNumber - a.teamNumber);
+    return result.sort((a, b) => b.teamNumber - a.teamNumber);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
