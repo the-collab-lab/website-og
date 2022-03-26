@@ -3,13 +3,10 @@ const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
 const {
   TeamsQuery,
-  MentorsQuery,
-  AdvisorsQuery,
-  FoundersQuery,
   PagesQuery,
   TechTalksQuery,
   FrontPageApplicationBlock,
-  VolunteersQuery,
+  StaffQuery,
 } = require('./queries');
 
 /**
@@ -92,32 +89,56 @@ const getTeams = async () => {
   }
 };
 
-const getMentors = async () => {
+const staff = (async () => {
   try {
-    const { collabies } = await request(graphQLEndpoint, MentorsQuery);
-    return collabies;
+    const { collabies } = await request(graphQLEndpoint, StaffQuery);
+    return collabies.map((c) => {
+      return {
+        ...c,
+        bio: c.bio?.html,
+        roles: c.roles.map((r) => r.name),
+      };
+    });
   } catch (e) {
-    throw new Error('There was a problem getting Mentors', e);
+    throw new Error('There was a problem getting Staff', e);
   }
-};
+})();
 
-const getAdvisors = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, AdvisorsQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Advisors', e);
-  }
-};
+const getVolunteers = async () =>
+  (await staff).filter((v) => {
+    return !v.roles.includes('Founder');
+  });
 
-const getFounders = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, FoundersQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Founders', e);
-  }
-};
+const getMentors = async () =>
+  (await staff).filter((v) => {
+    let keep = false;
+    for (const role of v.roles) {
+      if (role === 'Founder') return false;
+      if (role === 'Mentor') {
+        keep = true;
+        break;
+      }
+    }
+    return keep;
+  });
+
+const getAdvisors = async () =>
+  (await staff).filter((v) => {
+    let keep = false;
+    for (const role of v.roles) {
+      if (role === 'Founder') return false;
+      if (role === 'Advisor') {
+        keep = true;
+        break;
+      }
+    }
+    return keep;
+  });
+
+const getFounders = async () =>
+  (await staff).filter((v) => {
+    return v.roles.includes('Founder');
+  });
 
 const getPages = async () => {
   try {
@@ -178,15 +199,6 @@ const getFrontPageApplicationBlock = async () => {
       'There was a problem getting Front Page Application Block',
       e,
     );
-  }
-};
-
-const getVolunteers = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, VolunteersQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Volunteers', e);
   }
 };
 
