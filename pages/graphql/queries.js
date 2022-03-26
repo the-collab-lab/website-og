@@ -146,6 +146,29 @@ const FrontPageApplicationBlock = gql`
   }
 `;
 
+const VolunteersQuery = gql`
+  query Volunteers {
+    collabies(
+      where: {
+        NOT: { roles_every: { name: "Participant" } }
+        roles_none: { name: "Founder" }
+        visible: true
+      }
+      orderBy: firstName_ASC
+    ) {
+      firstName
+      fullName
+      roles(where: { name_not: "Participant" }) {
+        name
+      }
+      pathToPhoto
+      gitHubUrl
+      linkedInUrl
+      twitterUrl
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
 exports.MentorsQuery = MentorsQuery;
 exports.AdvisorsQuery = AdvisorsQuery;
@@ -153,3 +176,4 @@ exports.FoundersQuery = FoundersQuery;
 exports.PagesQuery = PagesQuery;
 exports.TechTalksQuery = TechTalksQuery;
 exports.FrontPageApplicationBlock = FrontPageApplicationBlock;
+exports.VolunteersQuery = VolunteersQuery;
