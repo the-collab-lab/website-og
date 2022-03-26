@@ -65,7 +65,7 @@ teams -%}
 <h2 id="board">Board & Advisors</h2>
 <ul>
   {%- for advisor in advisors -%}
-  <li class="member-container span-3">{{advisor.bio.html}}</li>
+  <li class="member-container span-3">{{advisor.bio}}</li>
   {%- endfor -%}
 </ul>
 {% comment %} START FOUNDERS {% endcomment %}
@@ -94,7 +94,7 @@ teams -%}
       {% endif %} {% endfor %}
     </div>
   </li>
-  <li class="member-container span-3">{{founder.bio.html}}</li>
+  <li class="member-container span-3">{{founder.bio}}</li>
   {%- endfor -%}
 </ul>
 <h2>Get in touch!</h2>
