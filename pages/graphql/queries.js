@@ -146,21 +146,20 @@ const FrontPageApplicationBlock = gql`
   }
 `;
 
-const VolunteersQuery = gql`
+const StaffQuery = gql`
   query Volunteers {
     collabies(
-      where: {
-        NOT: { roles_every: { name: "Participant" } }
-        roles_none: { name: "Founder" }
-        visible: true
-      }
+      where: { NOT: { roles_every: { name: "Participant" } }, visible: true }
       orderBy: firstName_ASC
     ) {
-      firstName
-      fullName
+      bio {
+        html
+      }
       roles(where: { name_not: "Participant" }) {
         name
       }
+      firstName
+      fullName
       pathToPhoto
       gitHubUrl
       linkedInUrl
@@ -176,4 +175,4 @@ exports.FoundersQuery = FoundersQuery;
 exports.PagesQuery = PagesQuery;
 exports.TechTalksQuery = TechTalksQuery;
 exports.FrontPageApplicationBlock = FrontPageApplicationBlock;
-exports.VolunteersQuery = VolunteersQuery;
+exports.StaffQuery = StaffQuery;
