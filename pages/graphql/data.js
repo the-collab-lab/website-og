@@ -105,14 +105,14 @@ const staff = (async () => {
 })();
 
 const getVolunteers = async () =>
-  (await staff).filter((v) => {
-    return !v.roles.includes('Founder');
+  (await staff).filter((s) => {
+    return !s.roles.includes('Founder');
   });
 
 const getMentors = async () =>
-  (await staff).filter((v) => {
+  (await staff).filter((s) => {
     let keep = false;
-    for (const role of v.roles) {
+    for (const role of s.roles) {
       if (role === 'Founder') return false;
       if (role === 'Mentor') {
         keep = true;
@@ -123,9 +123,9 @@ const getMentors = async () =>
   });
 
 const getAdvisors = async () =>
-  (await staff).filter((v) => {
+  (await staff).filter((s) => {
     let keep = false;
-    for (const role of v.roles) {
+    for (const role of s.roles) {
       if (role === 'Founder') return false;
       if (role === 'Advisor') {
         keep = true;
@@ -136,8 +136,8 @@ const getAdvisors = async () =>
   });
 
 const getFounders = async () =>
-  (await staff).filter((v) => {
-    return v.roles.includes('Founder');
+  (await staff).filter((s) => {
+    return s.roles.includes('Founder');
   });
 
 const getPages = async () => {
