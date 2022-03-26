@@ -1,0 +1,107 @@
+---
+htmlTitle: Volunteers | The Collab Lab
+pageTitle: <a href="/">The Collab Lab</a> / Volunteers
+eleventyNavigation:
+  key: Volunteers
+  order: 3
+---
+
+{%- comment -%}
+  The `{%- capture gridItems -%}` block captures everything inside of it
+  for rendering later. It won't appear in the HTML until we invoke it.
+  We do that after the `{%- endcapture -%}` statement.
+{%- endcomment -%}
+
+{%- capture gridItems -%}
+{%- for volunteer in volunteers -%}
+{%- assign firstName = volunteer.firstName -%}
+{%- assign fullName = volunteer.fullName -%}
+{%- assign volunteerPhotoUrl = volunteer.pathToPhoto -%}
+
+{%- capture rolesListHtml -%}
+  <ul
+    aria-label="{{volunteer.firstName}}'s roles"
+    class="volunteer__roles"
+  >
+  {%- for role in volunteer.roles -%}
+    <li class="volunteer__roles-item">{{role.name}}</li>
+  {%- endfor -%}
+  </ul>
+  {%- endcapture -%}
+
+  {%- assign socials = "gitHub,linkedIn,twitter" | split: ',' -%}
+  {%- capture socialsListHtml -%}
+    <ul
+      class="volunteer__socials"
+      aria-label="{{volunteer.firstName}}'s social media"
+    >
+    {%- for site in socials -%}
+    {%- assign urlProp = site | append: 'Url' -%}
+    {%- assign siteUrl = volunteer[urlProp] -%}
+
+      {%- if siteUrl.length > 0 -%}
+        <li class="volunteer__social-item">
+          <a
+            href="{{siteUrl}}"
+            aria-label="Connect with {{firstName}} on {{site | capitalize}}"
+          >
+              <img
+                alt=""
+                classList="icon"
+                height="50"
+                width="50"
+                src="/assets/img/icons/{{site}}.png"
+              /></a>
+        </li>
+      {%- endif -%}
+    {%- endfor -%}
+    </ul>
+  {%- endcapture -%}
+  <div class="grid-item">
+    <figure class="volunteer">
+      {%- if volunteerPhotoUrl -%}
+      <img
+        alt=""
+        class="volunteer__photo"
+        height="400"
+        width="400"
+        src="{{volunteerPhotoUrl}}"
+      >
+        {%- else -%}
+        {%- assign placeholderStyles = 'width:400px;height:400px;background-color:royalblue;'-%}
+        <div
+          class="volunteer__photo"
+          style="{{placeholderStyles}}"
+        ></div>
+      {%- endif -%}
+      <figCaption>
+        <b style="display:block;">{{fullName}}</b>
+        {{rolesListHtml}}
+        {{socialsListHtml}}
+      </figCaption>
+    </figure>
+  </div>
+
+{%- endfor -%}
+{%- endcapture -%}
+
+<h2 id="volunteers">Volunteers</h2>
+<p>
+  The Collab Lab is run by an amazing bunch of volunteers.
+</p>
+
+{% comment %} Render the grid items we built above. {% endcomment %}
+<div class="grid">{{gridItems}}</div>
+<script>
+  // If a volunteer photo fails to load, swap it in-place
+  // for one of our placeholders
+  document.addEventListener('error', function(evt) {
+    const el = evt.target;
+    if (el.matches('.volunteer__photo')) {
+      const placeholder = document.createElement('div');
+      placeholder.style.cssText = '{{placeholderStyles}}';
+
+      el.parentElement.replaceChild(placeholder, el);
+    }
+  }, true);
+  </script>
