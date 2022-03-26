@@ -186,7 +186,7 @@ const getVolunteers = async () => {
     const { collabies } = await request(graphQLEndpoint, VolunteersQuery);
     return collabies;
   } catch (e) {
-    throw new Error('There was a problem getting Mentors', e);
+    throw new Error('There was a problem getting Volunteers', e);
   }
 };
 
