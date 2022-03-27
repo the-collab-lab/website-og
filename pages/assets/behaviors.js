@@ -1,5 +1,4 @@
 /* global Stripe */
-import { Gallery } from './gallery.js';
 import { DonationForm } from './donation-form.js';
 import { DonationNotification } from './donation-notification.js';
 
@@ -26,7 +25,6 @@ function initDonationForm() {
 }
 
 function init() {
-  new Gallery();
   new DonationNotification();
   initDonationForm();
 }
