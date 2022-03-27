@@ -87,13 +87,20 @@ const getTeams = async () => {
   }
 };
 
+/**
+ * staff are *all* Collabies whose *only* role is not "Paricipant".
+ * This includes Mentors, Founders, Advisors, CoC responders
+ * and former Participants, as long as they have done other things.
+ */
 const staff = (async () => {
   try {
     const { collabies } = await request(graphQLEndpoint, StaffQuery);
     return collabies.map((c) => {
       return {
         ...c,
+        // Flatten the bio prop to just the `html` string
         bio: c.bio?.html,
+        // Flatten the role objects to just their `name` string
         roles: c.roles.map((r) => r.name),
       };
     });
@@ -102,11 +109,14 @@ const staff = (async () => {
   }
 })();
 
+// Get all staff who are not Founders
 const getVolunteers = async () =>
   (await staff).filter((s) => {
     return !s.roles.includes('Founder');
   });
 
+// Get all staff who are not Founders
+// and who have mentored
 const getMentors = async () =>
   (await staff).filter((s) => {
     let keep = false;
@@ -119,6 +129,8 @@ const getMentors = async () =>
     return keep;
   });
 
+// Get all staff who are not Founders
+// and who have served as Advisor
 const getAdvisors = async () =>
   (await staff).filter((s) => {
     let keep = false;
@@ -131,6 +143,7 @@ const getAdvisors = async () =>
     return keep;
   });
 
+// Get all staff who are Founders
 const getFounders = async () =>
   (await staff).filter((s) => {
     return s.roles.includes('Founder');
