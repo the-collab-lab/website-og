@@ -72,7 +72,7 @@ const graphQLEndpoint =
 const getTeams = async () => {
   try {
     const { teams } = await request(graphQLEndpoint, TeamsQuery);
-    const result = teams.map((team) => ({
+    return teams.map((team) => ({
       ...team,
       calculatedDate: calculatedDate({
         startDate: team.startDate,
@@ -80,8 +80,6 @@ const getTeams = async () => {
       }),
       teamNumber: calculateTeamNumber(team.anchor),
     }));
-
-    return result.sort((a, b) => b.teamNumber - a.teamNumber);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
