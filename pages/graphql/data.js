@@ -96,13 +96,11 @@ const staff = (async () => {
   try {
     const { collabies } = await request(graphQLEndpoint, StaffQuery);
     return collabies.map((c) => {
-      return {
-        ...c,
-        // Flatten the bio prop to just the `html` string
-        bio: c.bio?.html,
-        // Flatten the role objects to just their `name` string
-        roles: c.roles.map((r) => r.name),
-      };
+      // Flatten the bio prop to just the `html` string
+      c.bio = c.bio?.html;
+      // Flatten the role objects to just their `name` string
+      c.roles = c.roles.map((r) => r.name);
+      return c;
     });
   } catch (e) {
     throw new Error('There was a problem getting Staff', e);
