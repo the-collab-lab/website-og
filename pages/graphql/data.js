@@ -3,13 +3,10 @@ const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
 const {
   TeamsQuery,
-  MentorsQuery,
-  AdvisorsQuery,
-  FoundersQuery,
   PagesQuery,
   TechTalksQuery,
   FrontPageApplicationBlock,
-  VolunteersQuery,
+  StaffQuery,
 } = require('./queries');
 
 /**
@@ -75,7 +72,7 @@ const graphQLEndpoint =
 const getTeams = async () => {
   try {
     const { teams } = await request(graphQLEndpoint, TeamsQuery);
-    const result = teams.map((team) => ({
+    return teams.map((team) => ({
       ...team,
       calculatedDate: calculatedDate({
         startDate: team.startDate,
@@ -83,41 +80,70 @@ const getTeams = async () => {
       }),
       teamNumber: calculateTeamNumber(team.anchor),
     }));
-
-    return result
-      .filter((team) => team.visible)
-      .sort((a, b) => b.teamNumber - a.teamNumber);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
 };
 
-const getMentors = async () => {
+/**
+ * staff are *all* Collabies whose *only* role is not "Paricipant".
+ * This includes Mentors, Founders, Advisors, CoC responders
+ * and former Participants, as long as they have done other things.
+ */
+const staff = (async () => {
   try {
-    const { collabies } = await request(graphQLEndpoint, MentorsQuery);
-    return collabies;
+    const { collabies } = await request(graphQLEndpoint, StaffQuery);
+    return collabies.map((c) => {
+      // Flatten the bio prop to just the `html` string
+      c.bio = c.bio?.html;
+      // Flatten the role objects to just their `name` string
+      c.roles = c.roles.map((r) => r.name);
+      return c;
+    });
   } catch (e) {
-    throw new Error('There was a problem getting Mentors', e);
+    throw new Error('There was a problem getting Staff', e);
   }
-};
+})();
 
-const getAdvisors = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, AdvisorsQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Advisors', e);
-  }
-};
+// Get all staff who are not Founders
+const getVolunteers = async () =>
+  (await staff).filter((s) => {
+    return !s.roles.includes('Founder');
+  });
 
-const getFounders = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, FoundersQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Founders', e);
-  }
-};
+// Get all staff who are not Founders
+// and who have mentored
+const getMentors = async () =>
+  (await staff).filter((s) => {
+    let keep = false;
+    for (const role of s.roles) {
+      if (role === 'Founder') return false;
+      if (role === 'Mentor') {
+        keep = true;
+      }
+    }
+    return keep;
+  });
+
+// Get all staff who are not Founders
+// and who have served as Advisor
+const getAdvisors = async () =>
+  (await staff).filter((s) => {
+    let keep = false;
+    for (const role of s.roles) {
+      if (role === 'Founder') return false;
+      if (role === 'Advisor') {
+        keep = true;
+      }
+    }
+    return keep;
+  });
+
+// Get all staff who are Founders
+const getFounders = async () =>
+  (await staff).filter((s) => {
+    return s.roles.includes('Founder');
+  });
 
 const getPages = async () => {
   try {
@@ -178,15 +204,6 @@ const getFrontPageApplicationBlock = async () => {
       'There was a problem getting Front Page Application Block',
       e,
     );
-  }
-};
-
-const getVolunteers = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, VolunteersQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Volunteers', e);
   }
 };
 
