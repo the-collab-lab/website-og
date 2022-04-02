@@ -1,0 +1,82 @@
+.volunteer-gallery {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-items: center;
+  margin: auto;
+}
+
+.volunteer {
+  border: 1px solid #e5e5e5;
+  width: 300px;
+}
+.volunteer > figcaption {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  justify-items: center;  
+  height: 150px;
+}
+.volunteer__photo {
+  height: 300px;
+  width: 300px;
+}
+.volunteer__name {
+  display: block;
+  text-align: center;
+  padding-top: 0.25rem;
+}
+
+.volunteer__roles, .volunteer__socials {
+  display: flex;
+  padding-inline-start: 0;
+}
+.volunteer__roles {
+  align-self: flex-start;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.volunteer__roles-item {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.65rem;
+  list-style-type: none;
+  background-color: #393746;
+  color: #ffffff;
+  border-radius: 30px;
+}
+
+.volunteer__socials {
+  margin: 0;
+}
+.volunteer__social-item {
+  display: inline-block;
+  padding-left: 0;
+  list-style-type: none;
+}
+.volunteer__social-item a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.volunteer__social-item img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+@media screen and (min-width: 768px) {
+  .volunteer-gallery {
+    width: 750px;
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media screen and (min-width: 1230px) {
+  .volunteer-gallery {
+    width: 1146px;
+    grid-template-columns: repeat(3, 33%);
+  }
+}

@@ -3,9 +3,10 @@
 @import 'toast.css';
 @import 'donations.css';
 @import 'members.css';
+@import 'volunteers.css';
 
 :root {
-  --page-width: 800px;
+  --page-width: 1146px;
   --base-font-size: 16px;
   --small-font-size: 85%;
 }

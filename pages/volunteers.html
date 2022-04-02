@@ -48,8 +48,6 @@ eleventyNavigation:
             <img
               alt=""
               classList="icon"
-              height="40px"
-              width="40px"
               src="/assets/img/icons/{{site}}.png"
             />
           </a>
@@ -64,19 +62,17 @@ eleventyNavigation:
       <img
         alt=""
         class="volunteer__photo"
-        height="200"
-        width="200"
         src="{{volunteerPhotoUrl}}"
       >
       {%- else -%}
-      {%- assign placeholderStyles = 'width:200px;height:200px;background-color:royalblue;'-%}
+      {%- assign placeholderStyles = 'width:300px;height:300px;background-color:royalblue;'-%}
       <div
         class="volunteer__photo"
         style="{{placeholderStyles}}"
       ></div>
       {%- endif -%}
       <figCaption>
-        <b style="display:block;">{{fullName}}</b>
+        <b class="volunteer__name">{{fullName}}</b>
         {{rolesListHtml}}
         {{socialsListHtml}}
       </figCaption>
