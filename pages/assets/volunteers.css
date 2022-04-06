@@ -55,15 +55,10 @@
   padding-left: 0;
   list-style-type: none;
 }
-.volunteer__social-item a {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
 .volunteer__social-item img {
   height: 40px;
   width: 40px;
+  margin: 0.25rem;
   border-radius: 50%;
 }
 
