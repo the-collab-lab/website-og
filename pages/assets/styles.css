@@ -247,6 +247,7 @@ figure.float-right figcaption {
 @media screen and (max-width: 819px) {
   body {
     margin: auto 20px;
+    width: 100%;
   }
   header h1 {
     padding-top: 1rem;

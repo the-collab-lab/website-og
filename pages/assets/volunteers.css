@@ -56,10 +56,9 @@
   list-style-type: none;
 }
 .volunteer__social-item img {
-  height: 40px;
-  width: 40px;
+  height: 2rem;
+  width: 2rem;
   margin: 0.25rem;
-  border-radius: 50%;
 }
 
 @media screen and (min-width: 768px) {
