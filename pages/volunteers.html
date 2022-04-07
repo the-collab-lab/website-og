@@ -45,37 +45,34 @@ eleventyNavigation:
             href="{{siteUrl}}"
             aria-label="Connect with {{firstName}} on {{site | capitalize}}"
           >
-              <img
-                alt=""
-                classList="icon"
-                height="50"
-                width="50"
-                src="/assets/img/icons/{{site}}.png"
-              /></a>
+            <img
+              alt=""
+              classList="icon"
+              src="/assets/img/icons/{{site}}.png"
+            />
+          </a>
         </li>
       {%- endif -%}
     {%- endfor -%}
     </ul>
   {%- endcapture -%}
-  <div class="grid-item">
+  <div class="volunteer-grid-item">
     <figure class="volunteer">
       {%- if volunteerPhotoUrl -%}
       <img
         alt=""
         class="volunteer__photo"
-        height="400"
-        width="400"
         src="{{volunteerPhotoUrl}}"
       >
-        {%- else -%}
-        {%- assign placeholderStyles = 'width:400px;height:400px;background-color:royalblue;'-%}
-        <div
-          class="volunteer__photo"
-          style="{{placeholderStyles}}"
-        ></div>
+      {%- else -%}
+      {%- assign placeholderStyles = 'width:300px;height:300px;background-color:royalblue;'-%}
+      <div
+        class="volunteer__photo"
+        style="{{placeholderStyles}}"
+      ></div>
       {%- endif -%}
       <figCaption>
-        <b style="display:block;">{{fullName}}</b>
+        <b class="volunteer__name">{{fullName}}</b>
         {{rolesListHtml}}
         {{socialsListHtml}}
       </figCaption>
@@ -91,7 +88,7 @@ eleventyNavigation:
 </p>
 
 {% comment %} Render the grid items we built above. {% endcomment %}
-<div class="grid">{{gridItems}}</div>
+<div class="volunteer-gallery">{{gridItems}}</div>
 <script>
   // If a volunteer photo fails to load, swap it in-place
   // for one of our placeholders

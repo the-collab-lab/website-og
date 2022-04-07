@@ -60,43 +60,7 @@ teams -%}
   </li>
   {%- endfor -%}
 </ul>
-
-{%- endfor -%} {% comment %} START ADVISORS {% endcomment %}
-<h2 id="board">Board & Advisors</h2>
-<ul>
-  {%- for advisor in advisors -%}
-  <li class="member-container span-3">{{advisor.bio}}</li>
-  {%- endfor -%}
-</ul>
-{% comment %} START FOUNDERS {% endcomment %}
-<h2 id="founder">Founders</h2>
-<ul class="member-gallery">
-  {%- for founder in founders -%}
-  <li class="member-container">
-    <img
-      loading="lazy"
-      alt="{{founder.fullName}}"
-      class="team-member-photo"
-      src="{{founder.pathToPhoto}}"
-    />
-    <div class="member-caption">
-      <p>{{founder.firstName}}</p>
-      {% for social in socials %} {% assign urlProp = social | append: 'Url' %}
-      {% if founder[urlProp].length > 0 %} {% assign platformName = social |
-      capitalize %}
-      <a
-        class="social-media-logo"
-        href="{{founder[urlProp]}}"
-        aria-label="{% generateSocialMediaLinkLabel founder.firstName, platformName %}"
-      >
-        <img src="/assets/img/icons/{{ social }}.png" alt="" />
-      </a>
-      {% endif %} {% endfor %}
-    </div>
-  </li>
-  <li class="member-container span-3">{{founder.bio}}</li>
-  {%- endfor -%}
-</ul>
+{%- endfor -%}
 <h2>Get in touch!</h2>
 <p>
   The Collab Lab is on Twitter
