@@ -1,3 +1,5 @@
+const eleventyNavigationPlugin = require('@11ty/eleventy-navigation');
+
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('pages/assets');
   eleventyConfig.addPassthroughCopy('pages/favicon.ico');
@@ -5,12 +7,16 @@ module.exports = function (eleventyConfig) {
     'pages/google657107b6feadb517.html': 'google657107b6feadb517.html',
   });
 
-  eleventyConfig.addShortcode('generateSocialMediaLinkLabel', function (
-    name,
-    platform,
-  ) {
-    return `Connect with ${name} on ${platform}.`;
-  });
+  eleventyConfig.addPassthroughCopy('_redirects');
+
+  eleventyConfig.addPlugin(eleventyNavigationPlugin);
+
+  eleventyConfig.addShortcode(
+    'generateSocialMediaLinkLabel',
+    function (name, platform) {
+      return `Connect with ${name} on ${platform}.`;
+    },
+  );
 
   return {
     dir: {

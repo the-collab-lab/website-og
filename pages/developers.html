@@ -1,0 +1,75 @@
+---
+htmlTitle: Developers | The Collab Lab
+pageTitle: <a href="/">The Collab Lab</a> / Developers
+eleventyNavigation:
+  key: Developers
+  order: 2
+---
+
+<h2 id="developers">Developers</h2>
+<p>
+  Our developers enter The Collab Lab with a strong baseline of coding skills
+  including HTML, CSS, JavaScript, and React. They leave with experience in how
+  software teams work.
+</p>
+<p>
+  To participate in a Collab Lab cohort means buying into a
+  <a href="https://hbr.org/2016/01/what-having-a-growth-mindset-actually-means"
+    >growth mindset</a
+  >, opening yourself to learning, and taking risks in a relatively low-stakes
+  setting. Seasoned technologists guide these early-career developers as they
+  pair program, review each others’ code, and submit & merge pull requests. They
+  are also coached on how to be effective on a fully-distributed (i.e. remote)
+  team by
+  <a href="https://zapier.com/learn/remote-work/">
+    people who do it every day for a living </a
+  >.
+</p>
+<p>
+  Alums of The Collab Lab report being better equipped to talk about how they
+  work on a team as well as the thought processes behind their work, helping
+  them perform better in job interviews for technical roles.
+  <strong>Hire them!</strong>
+</p>
+{% assign socials = "gitHub,linkedIn,twitter" | split: ',' %} {%- for team in
+teams -%}
+<h3 id="{{team.anchor}}">{{team.displayName}} | {{team.calculatedDate}}</h3>
+<ul class="member-gallery">
+  {%- for developer in team.developers -%}
+  <li class="member-container">
+    <img
+      loading="lazy"
+      alt="{{developer.fullName}}"
+      class="team-member-photo"
+      src="{{developer.pathToPhoto}}"
+    />
+    <div class="member-caption">
+      <p>{{developer.firstName}}</p>
+      {% for social in socials %} {% assign urlProp = social | append: 'Url' %}
+      {% if developer[urlProp].length > 0 %} {% assign platformName = social |
+      capitalize %}
+      <a
+        class="social-media-logo"
+        href="{{developer[urlProp]}}"
+        aria-label="{% generateSocialMediaLinkLabel developer.firstName, platformName %}"
+      >
+        <img src="/assets/img/icons/{{ social }}.png" alt="" />
+      </a>
+      {% endif %} {% endfor %}
+    </div>
+  </li>
+  {%- endfor -%}
+</ul>
+{%- endfor -%}
+<h2>Get in touch!</h2>
+<p>
+  The Collab Lab is on Twitter
+  <a href="https://twitter.com/_collab_lab">@_collab_lab</a>. We post periodic
+  updates about the program on
+  <a href="https://dev.to/the-collab-lab">our dev.to channel</a>. Press
+  inquiries may be directed via email to Andrew at
+  <a
+    href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#97;&#110;&#100;&#114;&#101;&#119;&#64;&#116;&#104;&#101;&#45;&#99;&#111;&#108;&#108;&#97;&#98;&#45;&#108;&#97;&#98;&#46;&#99;&#111;&#100;&#101;&#115;"
+    >&#97;&#110;&#100;&#114;&#101;&#119;&#64;&#116;&#104;&#101;&#45;&#99;&#111;&#108;&#108;&#97;&#98;&#45;&#108;&#97;&#98;&#46;&#99;&#111;&#100;&#101;&#115;</a
+  >.
+</p>

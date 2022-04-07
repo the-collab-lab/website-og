@@ -29,6 +29,7 @@
     "stripe": "^8.209.0"
   },
   "devDependencies": {
+    "@11ty/eleventy-navigation": "^0.3.2",
     "@types/stripe-v3": "^3.1.26",
     "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
@@ -44,6 +45,6 @@
     }
   },
   "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
+    "**/*!pages/*.html": "prettier --write --ignore-unknown"
   }
 }

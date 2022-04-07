@@ -1,7 +1,13 @@
 const { request } = require('graphql-request');
 const format = require('date-fns/format');
 const parseISO = require('date-fns/parseISO');
-const { TeamsQuery, MentorsQuery, AdvisorsQuery, FoundersQuery, PagesQuery, TechTalksQuery, FrontPageApplicationBlock } = require('./queries');
+const {
+  TeamsQuery,
+  PagesQuery,
+  TechTalksQuery,
+  FrontPageApplicationBlock,
+  StaffQuery,
+} = require('./queries');
 
 /**
  * Transforms two dates of type 2020-10-10 and 2020-11-11 to
@@ -35,17 +41,18 @@ const calculatedDate = ({ startDate, endDate }) => {
  * a content model in GraphCMS then adding a `case` statement to this
  * function to handle rendering of that type.
  */
-const assembleBlocks = blocks => {
+const assembleBlocks = (blocks) => {
   let html = '';
   if (Array.isArray(blocks)) {
-    blocks.forEach(block => {
+    blocks.forEach((block) => {
       switch (block.__typename) {
         case 'ImageFloatedRight':
           html += `<figure class="float-right image-floated-right"><img src="${block.path}" alt="${block.caption}" /><figcaption>${block.caption}</figcaption></figure>`;
-        break;
-        default: // 'TextBlock' (only add if visible: true)
+          break;
+        default:
+          // 'TextBlock' (only add if visible: true)
           html += block.visible ? block.textContent.html : '';
-        break;
+          break;
       }
     });
   }
@@ -65,7 +72,7 @@ const graphQLEndpoint =
 const getTeams = async () => {
   try {
     const { teams } = await request(graphQLEndpoint, TeamsQuery);
-    const result = teams.map((team) => ({
+    return teams.map((team) => ({
       ...team,
       calculatedDate: calculatedDate({
         startDate: team.startDate,
@@ -73,45 +80,76 @@ const getTeams = async () => {
       }),
       teamNumber: calculateTeamNumber(team.anchor),
     }));
-
-    return result.filter(team => team.visible).sort((a, b) => b.teamNumber - a.teamNumber);
   } catch (e) {
     throw new Error('There was a problem getting Teams', e);
   }
 };
 
-const getMentors = async () => {
+/**
+ * staff are *all* Collabies whose *only* role is not "Paricipant".
+ * This includes Mentors, Founders, Advisors, CoC responders
+ * and former Participants, as long as they have done other things.
+ */
+const staff = (async () => {
   try {
-    const { collabies } = await request(graphQLEndpoint, MentorsQuery);
-    return collabies;
+    const { collabies } = await request(graphQLEndpoint, StaffQuery);
+    return collabies.map((c) => {
+      // Flatten the bio prop to just the `html` string
+      c.bio = c.bio?.html;
+      // Flatten the role objects to just their `name` string
+      c.roles = c.roles.map((r) => r.name);
+      return c;
+    });
   } catch (e) {
-    throw new Error('There was a problem getting Mentors', e);
+    throw new Error('There was a problem getting Staff', e);
   }
-};
+})();
 
-const getAdvisors = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, AdvisorsQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Advisors', e);
-  }
-};
+// Get all staff who are not Founders
+const getVolunteers = async () =>
+  (await staff).filter((s) => {
+    return !s.roles.includes('Founder');
+  });
 
-const getFounders = async () => {
-  try {
-    const { collabies } = await request(graphQLEndpoint, FoundersQuery);
-    return collabies;
-  } catch (e) {
-    throw new Error('There was a problem getting Founders', e);
-  }
-};
+// Get all staff who are not Founders
+// and who have mentored
+const getMentors = async () =>
+  (await staff).filter((s) => {
+    let keep = false;
+    for (const role of s.roles) {
+      if (role === 'Founder') return false;
+      if (role === 'Mentor') {
+        keep = true;
+      }
+    }
+    return keep;
+  });
+
+// Get all staff who are not Founders
+// and who have served as Advisor
+const getAdvisors = async () =>
+  (await staff).filter((s) => {
+    let keep = false;
+    for (const role of s.roles) {
+      if (role === 'Founder') return false;
+      if (role === 'Advisor') {
+        keep = true;
+      }
+    }
+    return keep;
+  });
+
+// Get all staff who are Founders
+const getFounders = async () =>
+  (await staff).filter((s) => {
+    return s.roles.includes('Founder');
+  });
 
 const getPages = async () => {
   try {
     const { pages } = await request(graphQLEndpoint, PagesQuery);
     // assemble html for the pages
-    const assembledPages = pages.map(page => {
+    const assembledPages = pages.map((page) => {
       const assembledPage = {
         slug: page.slug,
         html: null,
@@ -125,8 +163,7 @@ const getPages = async () => {
     //   html: '<h2>Title</h2><p>Some text.</p>',
     // }
     return assembledPages;
-  }
-  catch (e) {
+  } catch (e) {
     throw new Error('There was a problem getting Pages', e);
   }
 };
@@ -135,7 +172,7 @@ const getTechTalks = async () => {
   const rgx = /(v=([\w-]+))|(be\/([\w-]+))/; // there's probably room for improvement here
   try {
     const { techTalks } = await request(graphQLEndpoint, TechTalksQuery);
-    const result = techTalks.map(talk => {
+    const result = techTalks.map((talk) => {
       talk.formattedDate = format(parseISO(talk.dateAndTime), 'd MMM y');
       talk.youTubeEmbedUrl = null;
       if (talk.youTubeUrl) {
@@ -153,8 +190,7 @@ const getTechTalks = async () => {
       return talk;
     });
     return result;
-  }
-  catch (e) {
+  } catch (e) {
     throw new Error('There was a problem getting Tech Talks', e);
   }
 };
@@ -163,9 +199,11 @@ const getFrontPageApplicationBlock = async () => {
   try {
     const block = await request(graphQLEndpoint, FrontPageApplicationBlock);
     return block;
-  }
-  catch (e) {
-    throw new Error('There was a problem getting Front Page Application Block', e);
+  } catch (e) {
+    throw new Error(
+      'There was a problem getting Front Page Application Block',
+      e,
+    );
   }
 };
 
@@ -176,3 +214,4 @@ exports.getFounders = getFounders;
 exports.getPages = getPages;
 exports.getTechTalks = getTechTalks;
 exports.getFrontPageApplicationBlock = getFrontPageApplicationBlock;
+exports.getVolunteers = getVolunteers;

@@ -3,9 +3,10 @@
 @import 'toast.css';
 @import 'donations.css';
 @import 'members.css';
+@import 'volunteers.css';
 
 :root {
-  --page-width: 800px;
+  --page-width: 1146px;
   --base-font-size: 16px;
   --small-font-size: 85%;
 }
@@ -246,6 +247,7 @@ figure.float-right figcaption {
 @media screen and (max-width: 819px) {
   body {
     margin: auto 20px;
+    width: 100%;
   }
   header h1 {
     padding-top: 1rem;
