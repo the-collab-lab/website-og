@@ -2,12 +2,11 @@ const { gql } = require('graphql-request');
 
 const TeamsQuery = gql`
   query Teams {
-    teams(orderBy: startDate_DESC) {
+    teams(where: { visible: true }, orderBy: startDate_DESC) {
       anchor
       displayName
       startDate
       endDate
-      visible
       developers: participants(orderBy: firstName_ASC) {
         firstName
         fullName
@@ -19,70 +18,6 @@ const TeamsQuery = gql`
           html
         }
       }
-    }
-  }
-`;
-
-const MentorsQuery = gql`
-  query GetMentors {
-    collabies(
-      where: {
-        roles_some: { name: "Mentor" }
-        roles_none: { name: "Founder" }
-        visible: true
-      }
-      orderBy: firstName_ASC
-    ) {
-      firstName
-      fullName
-      bio {
-        html
-      }
-      pathToPhoto
-      gitHubUrl
-      linkedInUrl
-      twitterUrl
-    }
-  }
-`;
-
-const AdvisorsQuery = gql`
-  query GetAdvisors {
-    collabies(
-      where: {
-        roles_some: { name: "Advisor" }
-        roles_none: { name: "Founder" }
-      }
-      orderBy: firstName_ASC
-    ) {
-      firstName
-      fullName
-      bio {
-        html
-      }
-      pathToPhoto
-      gitHubUrl
-      linkedInUrl
-      twitterUrl
-    }
-  }
-`;
-
-const FoundersQuery = gql`
-  query GetFounders {
-    collabies(
-      where: { roles_some: { name: "Founder" } }
-      orderBy: firstName_ASC
-    ) {
-      firstName
-      fullName
-      bio {
-        html
-      }
-      pathToPhoto
-      gitHubUrl
-      linkedInUrl
-      twitterUrl
     }
   }
 `;
@@ -146,21 +81,20 @@ const FrontPageApplicationBlock = gql`
   }
 `;
 
-const VolunteersQuery = gql`
+const StaffQuery = gql`
   query Volunteers {
     collabies(
-      where: {
-        NOT: { roles_every: { name: "Participant" } }
-        roles_none: { name: "Founder" }
-        visible: true
-      }
+      where: { NOT: { roles_every: { name: "Participant" } }, visible: true }
       orderBy: firstName_ASC
     ) {
-      firstName
-      fullName
+      bio {
+        html
+      }
       roles(where: { name_not: "Participant" }) {
         name
       }
+      firstName
+      fullName
       pathToPhoto
       gitHubUrl
       linkedInUrl
@@ -170,10 +104,7 @@ const VolunteersQuery = gql`
 `;
 
 exports.TeamsQuery = TeamsQuery;
-exports.MentorsQuery = MentorsQuery;
-exports.AdvisorsQuery = AdvisorsQuery;
-exports.FoundersQuery = FoundersQuery;
 exports.PagesQuery = PagesQuery;
 exports.TechTalksQuery = TechTalksQuery;
 exports.FrontPageApplicationBlock = FrontPageApplicationBlock;
-exports.VolunteersQuery = VolunteersQuery;
+exports.StaffQuery = StaffQuery;
