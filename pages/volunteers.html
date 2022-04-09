@@ -16,7 +16,8 @@ eleventyNavigation:
 {%- for volunteer in volunteers -%}
 {%- assign firstName = volunteer.firstName -%}
 {%- assign fullName = volunteer.fullName -%}
-{%- assign volunteerPhotoUrl = volunteer.pathToPhoto -%}
+{%- assign volunteerPhotoPath = volunteer.pathToPhoto |
+  '/assets/img/members/generic-avatar.png' %}
 
 {%- capture rolesListHtml -%}
   <ul
@@ -40,6 +41,7 @@ eleventyNavigation:
     {%- assign siteUrl = volunteer[urlProp] -%}
 
       {%- if siteUrl.length > 0 -%}
+      {%- capture siteIconPath -%} /assets/img/icons/{{site}}.png {%- endcapture -%}
         <li class="volunteer__social-item">
           <a
             href="{{siteUrl}}"
@@ -48,7 +50,7 @@ eleventyNavigation:
             <img
               alt=""
               classList="icon"
-              src="/assets/img/icons/{{site}}.png"
+              src="{{ siteIconPath | url }}"
             />
           </a>
         </li>
@@ -58,19 +60,14 @@ eleventyNavigation:
   {%- endcapture -%}
   <div class="volunteer-grid-item">
     <figure class="volunteer">
-      {%- if volunteerPhotoUrl -%}
       <img
         alt=""
         class="volunteer__photo"
-        src="{{volunteerPhotoUrl}}"
+        loading="lazy"
+        height="300"
+        src="{{ volunteerPhotoPath | url }}"
+        width="300"
       >
-      {%- else -%}
-      {%- assign placeholderStyles = 'width:300px;height:300px;background-color:royalblue;'-%}
-      <div
-        class="volunteer__photo"
-        style="{{placeholderStyles}}"
-      ></div>
-      {%- endif -%}
       <figCaption>
         <b class="volunteer__name">{{fullName}}</b>
         {{rolesListHtml}}
