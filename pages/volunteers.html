@@ -86,16 +86,3 @@ eleventyNavigation:
 
 {% comment %} Render the grid items we built above. {% endcomment %}
 <div class="volunteer-gallery">{{gridItems}}</div>
-<script>
-  // If a volunteer photo fails to load, swap it in-place
-  // for one of our placeholders
-  document.addEventListener('error', function(evt) {
-    const el = evt.target;
-    if (el.matches('.volunteer__photo')) {
-      const placeholder = document.createElement('div');
-      placeholder.style.cssText = '{{placeholderStyles}}';
-
-      el.parentElement.replaceChild(placeholder, el);
-    }
-  }, true);
-  </script>
