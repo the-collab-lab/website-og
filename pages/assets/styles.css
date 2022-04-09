@@ -7,7 +7,7 @@
 
 :root {
   --page-width: 1146px;
-  --base-font-size: 16px;
+  --base-font-size: 1rem;
   --small-font-size: 85%;
 }
 
@@ -15,13 +15,15 @@ body {
   background: white;
   color: black;
   font: var(--base-font-size) / 1.5 'Source Sans Pro', Sans-Serif;
+  margin: 0;
 }
 
 header,
 main,
 footer {
+  max-width: 95%;
+  width: var(--page-width);
   margin: 1rem auto;
-  max-width: var(--page-width);
 }
 
 header {
@@ -245,10 +247,6 @@ figure.float-right figcaption {
 /* small screens */
 /* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */
 @media screen and (max-width: 819px) {
-  body {
-    margin: auto 20px;
-    width: 100%;
-  }
   header h1 {
     padding-top: 1rem;
   }
