@@ -1,9 +1,26 @@
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,600&display=swap&subset=latin-ext');
 @import 'carousel.css';
 @import 'toast.css';
 @import 'donations.css';
 @import 'members.css';
 @import 'volunteers.css';
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 300;
+  src: url('./fonts/source-sans-pro-latin-300.woff2') format('woff2'),
+    url('./fonts/source-sans-pro-latin-300.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-display: swap;
+  font-style: normal;
+  font-weight: 600;
+  src: url('./fonts/source-sans-pro-latin-600.woff2') format('woff2'),
+    url('./fonts/source-sans-pro-latin-600.woff') format('woff');
+}
 
 :root {
   --page-width: 1146px;
@@ -16,6 +33,7 @@ body {
   color: black;
   font: var(--base-font-size) / 1.5 'Source Sans Pro', Sans-Serif;
   margin: 0;
+  font-weight: 300;
 }
 
 header,
