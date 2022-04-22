@@ -1,0 +1,121 @@
+---
+htmlTitle: Developer | Participate | The Collab Lab
+pageTitle: <a href="/">The Collab Lab</a> / <a href="/participate">Participate</a> / Developer
+---
+
+<h2>Collab Lab Developers are...</h2>
+
+<div class="flex">
+  <figure>
+    <img src="/assets/img/stats/Women.svg" alt="Women 78%" class="flex-item" />
+    <figcaption class="flex-text">Women</figcaption>
+  </figure>
+  <figure>
+    <img src="/assets/img/stats/LGBTQ.svg" alt="LGBTQ+ 38%" class="flex-item" />
+    <figcaption class="flex-text">LGBTQ+</figcaption>
+  </figure>
+  <figure>
+    <img
+      src="/assets/img/stats/IdentifyasDisabled.svg"
+      class="flex-item"
+      alt="People with Disabilities 18% "
+    />
+    <figcaption class="flex-text">People with disabilities</figcaption>
+  </figure>
+  <figure>
+    <img
+      src="/assets/img/stats/Advanceddegreeholders.svg"
+      class="flex-item"
+      alt="87% Postsecondary degree holders"
+    />
+    <figcaption class="flex-text">Postsecondary degree holders</figcaption>
+  </figure>
+  <figure>
+    <img
+      src="/assets/img/stats/BootcampGrad.svg"
+      alt="75% Bootcamp grads"
+      class="flex-item"
+    />
+    <figcaption class="flex-text">Bootcamp grads</figcaption>
+  </figure>
+</div>
+
+<p>
+  Nearly all of the developers in The Collab Lab come from
+  <strong>underrepresented groups</strong> in tech. Start here to
+  <strong>diversify your pipeline!</strong>The Collab Lab is a community of
+  <strong>164 developers</strong> and <strong>over 40 mentors</strong> from
+  <strong>18 countries</strong> on <strong>4 continents.</strong>
+</p>
+
+<figure class="display-stats">
+  <img
+    src="/assets/img/stats/Region.svg"
+    alt="Collab Lab Developers Region: Europe/Africa 17%, Latin America 10%, North America 73%"
+    class="stats"
+  />
+
+  <img
+    src="/assets/img/stats/RacialIdentity.svg"
+    alt="Collab Lab Developers Racial Identity: Asian 12.2%, Latinx 12.2%, Black 26.7%, White 48.9%"
+    class="stats"
+  />
+</figure>
+
+<h2 id="developers">Developers</h2>
+<p>
+  Our developers enter The Collab Lab with a strong baseline of coding skills
+  including HTML, CSS, JavaScript, and React. They leave with experience in how
+  software teams work.
+</p>
+<p>
+  To participate in a Collab Lab cohort means buying into a
+  <a href="https://hbr.org/2016/01/what-having-a-growth-mindset-actually-means"
+  >growth mindset</a
+  >, opening yourself to learning, and taking risks in a relatively low-stakes
+  setting. Seasoned technologists guide these early-career developers as they
+  pair program, review each others’ code, and submit & merge pull requests. They
+  are also coached on how to be effective on a fully-distributed (i.e. remote)
+  team by
+  <a href="https://zapier.com/learn/remote-work/">
+    people who do it every day for a living </a
+  >.
+</p>
+<p>
+  Alums of The Collab Lab report being better equipped to talk about how they
+  work on a team as well as the thought processes behind their work, helping
+  them perform better in job interviews for technical roles.
+  <strong>Hire them!</strong>
+</p>
+{% assign socials = "gitHub,linkedIn,twitter" | split: ',' %} {%- for team in
+teams -%}
+<h3 id="{{team.anchor}}">{{team.displayName}} | {{team.calculatedDate}}</h3>
+<ul class="member-gallery">
+  {%- for developer in team.developers -%}
+  <li class="member-container">
+    <img
+      loading="lazy"
+      alt="{{developer.fullName}}"
+      class="team-member-photo"
+      src="{{developer.pathToPhoto}}"
+    />
+    <div class="member-caption">
+      <p>{{developer.firstName}}</p>
+      {% for social in socials %} {% assign urlProp = social | append: 'Url' %}
+      {% if developer[urlProp].length > 0 %} {% assign platformName = social |
+      capitalize %}
+      <a
+        class="social-media-logo"
+        href="{{developer[urlProp]}}"
+        aria-label="{% generateSocialMediaLinkLabel developer.firstName, platformName %}"
+      >
+        <img src="/assets/img/icons/{{ social }}.png" alt="" />
+      </a>
+      {% endif %} {% endfor %}
+    </div>
+  </li>
+  {%- endfor -%}
+</ul>
+{%- endfor -%}
+
+

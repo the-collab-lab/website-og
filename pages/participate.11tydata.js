@@ -1,9 +1,6 @@
-const { getPages, getTeams, getAdvisors, getFounders } = require('./graphql/data');
+const { getPages } = require('./graphql/data');
 
 module.exports = async () => {
-  const teams = await getTeams();
-  const advisors = await getAdvisors();
-  const founders = await getFounders();
 
   const pages = await getPages();
   const filtered = pages.filter(page => '/apply/' === page.slug);
@@ -11,8 +8,5 @@ module.exports = async () => {
 
   return {
     html,
-    teams,
-    advisors,
-    founders,
   };
 };
