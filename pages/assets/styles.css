@@ -239,6 +239,11 @@ figure.float-right figcaption {
   max-width: 360px;
 }
 
+.banner > blockquote {
+  margin: 0;
+  text-align: center;
+}
+
 .flex {
   display: flex;
   align-items: center;
