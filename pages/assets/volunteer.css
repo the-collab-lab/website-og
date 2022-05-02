@@ -1,3 +1,41 @@
+.roles {
+  border-top: 1px solid var(--main-color);
+}
+
+.roles__details {
+  border-bottom: 1px solid var(--main-color);
+  padding: 10px;
+}
+
+.roles__details > p {
+  padding-left: 27px;
+}
+
+.roles__details summary {
+  color: var(--main-color);
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+}
+
+summary:before {
+  content: url('./img/icons/plus.svg');
+  display: block;
+  margin-top: 8px;
+  margin-right: 8px;
+}
+
+details[open] summary:before {
+  content: url('./img/icons/minus.svg');
+}
+
+summary::-webkit-details-marker {
+  display: none
+}
+
 figure {
   margin: 0;
 }
