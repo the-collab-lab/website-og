@@ -232,11 +232,12 @@ figure.float-right figcaption {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  padding: 2em 0;
+  padding: 1.8em 0;
 }
 
 .stats-graphs > figure {
   align-self: stretch;
+  padding: 25px 0;
 }
 
 .stats-graphs figcaption {
