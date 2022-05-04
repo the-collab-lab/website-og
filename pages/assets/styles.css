@@ -228,11 +228,107 @@ figure.float-right figcaption {
   width: 80%;
 }
 
-.display-stats {
+.stats-graphs {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-wrap: wrap;
+  padding: 1.8em 0;
+}
+
+.stats-graphs > figure {
+  align-self: stretch;
+  padding: 25px 0;
+}
+
+.stats-graphs figcaption {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 130px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding-top: 20px; 
+}
+
+.stats-graphs img {
+  display: block;
+  margin: auto;
+  width: 65%;
+}
+
+.stats-p {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.display-stats {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  padding: 1.5em 0;
+}
+
+.stats-list {
+  width: 50%;
+}
+
+.stats-list h3 {
+  text-align: center;
+  width: 70%;
+}
+
+.block {
+  background-color: #393746;
+  display: block;
+  height: 35px;
+  margin: 0 10px;
+}
+
+.block-270px { 
+  width: 270px;
+}
+
+.block-65px {
+  width: 65px;
+}
+
+.block-40px {
+  width: 40px;
+}
+
+.block-170px {
+  width: 170px;
+}
+
+.block-100px {
+  width: 100px;
+}
+
+.block-45px {
+  width: 45px;
+}
+
+.display-stats ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.display-stats ul li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.display-stats .ethnicity-list {
+  margin-left: 15%;
+}
+
+.display-stats ul li span:first-child{
+  font-weight: bold;
+  white-space: nowrap;
 }
 
 .stats {
@@ -274,6 +370,28 @@ figure.float-right figcaption {
   header h1 {
     padding-top: 1rem;
   }
+  .stats-p{
+    width: 90%;
+  }
+
+  .display-stats {
+    display: block;
+  }
+
+  .display-stats .ethnicity-list {
+    margin-left: 0;
+  }
+
+  .stats-list {
+    width: 100%;
+    margin: auto;
+    text-align: left;
+  }
+
+  .stats-list h3 {
+    text-align: left;
+  }
+
   footer p:first-child {
     float: none;
   }
