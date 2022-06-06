@@ -103,8 +103,23 @@ const StaffQuery = gql`
   }
 `;
 
+const TestimonialsQuery = gql`
+  query Testimonials {
+    testimonials {
+      collabie {
+        fullName,
+        pathToPhoto
+      },
+      body {
+        html
+      }
+    }
+  }
+`;
+
 exports.TeamsQuery = TeamsQuery;
 exports.PagesQuery = PagesQuery;
 exports.TechTalksQuery = TechTalksQuery;
 exports.FrontPageApplicationBlock = FrontPageApplicationBlock;
 exports.StaffQuery = StaffQuery;
+exports.TestimonialsQuery = TestimonialsQuery;
