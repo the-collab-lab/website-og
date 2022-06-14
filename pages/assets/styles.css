@@ -106,7 +106,16 @@ header nav ul li:last-child:after {
 }
 
 .testimonials-container svg {
-  transform: scale(0.2);
+  position: relative;
+  left: 175px;
+  top: 25px;
+  color: #ccc;
+  width: 32px;
+  height: auto;
+}
+
+.testimonials-container svg:hover {
+  color: white;
 }
 
 .testimonial {

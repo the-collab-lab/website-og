@@ -48,6 +48,12 @@
             {%- for testimonial in testimonials -%}
             <div class="testimonial" data-index="{{forloop.index}}">
               <div>
+                <button onclick="stopCarousel()" aria-label="Stop carousel">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+
                 <img src="{{testimonial.collabie.pathToPhoto}}" alt=""/>
                 <p>{{testimonial.collabie.fullName}}</p>
               </div> 
@@ -58,6 +64,7 @@
           <button onclick="prevTestimonial()" aria-label="Previous">
             &#8250;
           </button>
+ 
         </div>
       </div>
       <div class="support-container">
@@ -133,6 +140,7 @@
       </div>
     </footer>
     <script>
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
       let slideNumber = 1;
       function updateTestimonial() {
         document.querySelectorAll('.testimonial').forEach(item => {
@@ -168,6 +176,12 @@
         clearInterval(interval);
         interval = startInterval();
       }
+
+      function stopCarousel() {
+        clearInterval(interval);
+      }
+
+      if (!mediaQuery.matches) stopCarousel();
     </script>
   </body>
 </html>
