@@ -174,7 +174,9 @@
 
       function resetInterval() {
         clearInterval(interval);
-        interval = startInterval();
+        if (mediaQuery.matches) {
+          interval = startInterval();
+        }
       }
 
       function stopCarousel() {
