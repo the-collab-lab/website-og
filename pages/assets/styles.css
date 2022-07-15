@@ -26,12 +26,16 @@
   --page-width: 1146px;
   --base-font-size: 1rem;
   --small-font-size: 85%;
-  --main-color: #393746;
+  --main-color: #2b373b;
+  --neutral-color: whitesmoke;
+  --neutral-dark-color: #ccc;
+  --accent-color: #cf5c36;
+  --link-color: #0075f2;
 }
 
 body {
-  background: white;
-  color: var(--main-color);
+  background: var(--neutral-color);
+  color: black;
   font: var(--base-font-size) / 1.5 'Source Sans Pro', Sans-Serif;
   margin: 0;
   font-weight: 300;
@@ -46,6 +50,7 @@ main {
 
 header {
   position: relative;
+  color: var(--main-color);
 }
 header h1 {
   font-size: 2.5rem;
@@ -89,7 +94,7 @@ header nav ul li:last-child:after {
 
 .testimonials-container {
   min-height: 400px;
-  border-right: 1px solid white;
+  border-right: 1px solid var(--neutral-color);
 }
 
 .testimonials-container > div{
@@ -102,20 +107,20 @@ header nav ul li:last-child:after {
   font-size: 2.5rem;
   border: none;
   background: transparent;
-  color: white;
+  color: var(--neutral-color);
 }
 
 .testimonials-container svg {
   position: relative;
   left: 175px;
   top: 25px;
-  color: #ccc;
+  color: var(--neutral-dark-color);
   width: 32px;
   height: auto;
 }
 
 .testimonials-container svg:hover {
-  color: white;
+  color: var(--neutral-color);
 }
 
 .testimonial {
@@ -139,7 +144,7 @@ header nav ul li:last-child:after {
 
 footer {
   background: var(--main-color);
-  color: white;
+  color: var(--neutral-color);
   display: flex;
   padding: 4rem 1rem;
 }
@@ -189,7 +194,7 @@ h3 {
 
 blockquote {
   background: var(--main-color);
-  color: white;
+  color: var(--neutral-color);
   margin: 1.5rem -1rem;
   padding: 1rem 2rem;
 }
@@ -198,11 +203,11 @@ blockquote dl {
   margin: 0;
 }
 footer a, blockquote a {
-  color: #ccc;
+  color: var(--neutral-dark-color);
 }
 footer a:hover, blockquote a:hover {
-  color: white;
-  border-bottom: solid 1px white;
+  color: var(--neutral-color);
+  border-bottom: solid 1px var(--neutral-color);
 }
 
 .hang-it {
@@ -215,7 +220,7 @@ q {
   position: relative;
 }
 q::before {
-  color: silver;
+  color: var(--neutral-dark-color);
   content: '“';
   font-size: xx-large;
   font-weight: bold;
@@ -243,17 +248,17 @@ h2 {
 }
 
 a {
-  color: blue;
+  color: var(--link-color);
   text-decoration: none;
 }
 a:hover {
-  border-bottom: solid 1px blue;
+  border-bottom: solid 1px var(--link-color);
 }
 
 hr {
   border-style: solid;
   border-width: 1px;
-  color: silver;
+  color: var(--neutral-dark-color);
 }
 
 figure.float-right {
@@ -287,12 +292,12 @@ figure img {
   padding: 0;
 }
 .tech-talks > li {
-  border-bottom: solid 1px #ccc;
+  border-bottom: solid 1px var(--neutral-dark-color);
   margin: 1rem 0;
   padding-bottom: 1rem;
 }
 .tech-talks > li:first-child {
-  border-top: solid 1px #ccc;
+  border-top: solid 1px var(--neutral-dark-color);
 }
 .tech-talks h3 {
   margin: 1.5rem 0;
@@ -337,7 +342,7 @@ figure img {
   width: 130px;
   font-size: 1.2rem;
   font-weight: bold;
-  padding-top: 20px; 
+  padding-top: 20px;
 }
 
 .stats-graphs img {
@@ -369,13 +374,13 @@ figure img {
 }
 
 .block {
-  background-color: #393746;
+  background-color: var(--main-color);
   display: block;
   height: 35px;
   margin: 0 10px;
 }
 
-.block-270px { 
+.block-270px {
   width: 270px;
 }
 
@@ -450,7 +455,7 @@ figure img {
 }
 
 .icons {
-  fill: white;
+  fill: var(--neutral-color);
   width: 22px;
   height: auto;
   padding-right: 1.2rem;
