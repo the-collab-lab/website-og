@@ -29,7 +29,7 @@
   --main-color: #2b373b;
   --neutral-color: whitesmoke;
   --neutral-dark-color: #ccc;
-  --accent-color: #cf5c36;
+  --accent-color: #e88d67;
   --link-color: #0075f2;
 }
 
@@ -39,6 +39,7 @@ body {
   font: var(--base-font-size) / 1.5 'Source Sans Pro', Sans-Serif;
   margin: 0;
   font-weight: 300;
+  overflow-x: hidden;
 }
 
 header,
@@ -46,6 +47,13 @@ main {
   max-width: 95%;
   width: var(--page-width);
   margin: 1rem auto;
+}
+
+.roles__details > p,
+.tech-talks > li,
+main li,
+main > p {
+  max-width: 92ch;
 }
 
 header {
@@ -65,6 +73,7 @@ header nav {
   position: absolute;
   right: 0;
   top: -2rem;
+  font-size: 1.1rem;
 }
 header nav ul {
   list-style: none;
@@ -178,14 +187,6 @@ footer .copyright {
   margin: 0;
   padding: 0;
 }
-/*
-.copyright p:first-child {
-  float: left;
-}
-.copyright p:last-child {
-  text-align: right;
-}
-*/
 
 h3 {
   margin-bottom: 0.5rem;
@@ -195,7 +196,7 @@ h3 {
 blockquote {
   background: var(--main-color);
   color: var(--neutral-color);
-  margin: 1.5rem -1rem;
+  margin: 2.5rem -1rem;
   padding: 1rem 2rem;
 }
 blockquote p,
@@ -210,21 +211,27 @@ footer a:hover, blockquote a:hover {
   border-bottom: solid 1px var(--neutral-color);
 }
 
-.hang-it {
+.q__attribute {
   display: inline-block;
-  margin-left: -0.5rem;
+  float: right;
+  background: var(--main-color);
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 q {
   display: block;
   position: relative;
+  padding: 1.2rem;
+  border-right: 2px solid var(--accent-color);
 }
 q::before {
   color: var(--neutral-dark-color);
   content: '“';
   font-size: xx-large;
   font-weight: bold;
-  left: -1.1rem;
+  left: -0.9rem;
   position: absolute;
   top: -0.36rem;
 }
