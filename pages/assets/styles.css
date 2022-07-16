@@ -163,6 +163,7 @@ footer > * {
 }
 
 footer h2 {
+  color: var(--accent-color);
   font-size: 2rem;
 }
 
