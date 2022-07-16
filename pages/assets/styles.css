@@ -135,6 +135,7 @@ header nav ul li:last-child:after {
   text-align: center;
   width: 90%;
   margin: auto;
+  overflow-wrap: anywhere;
 }
 
 .testimonial img {
@@ -488,7 +489,7 @@ figure img {
   }
 
   .testimonials-container svg {
-    left: 100px;
+    left: 75px;
   }
 
   .stats-p{
