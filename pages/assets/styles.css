@@ -39,7 +39,6 @@ body {
   font: var(--base-font-size) / 1.5 'Source Sans Pro', Sans-Serif;
   margin: 0;
   font-weight: 300;
-  overflow-x: hidden;
 }
 
 header,
@@ -214,11 +213,6 @@ footer a:hover, blockquote a:hover {
 
 .q__attribute {
   display: inline-block;
-  float: right;
-  background: var(--main-color);
-  padding: 0.3rem 0.7rem;
-  border-radius: 2px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 q {
@@ -477,7 +471,11 @@ figure img {
 /* under 820px wide, adjust margins, fix the footer and tweak how we display the carousel */
 @media screen and (max-width: 819px) {
   header h1 {
-    padding-top: 1rem;
+    padding-top: 2rem;
+  }
+
+  header nav {
+    font-size: 1rem;
   }
 
   footer {
@@ -487,6 +485,10 @@ figure img {
 
   .testimonials-container {
     border: 0;
+  }
+
+  .testimonials-container svg {
+    left: 100px;
   }
 
   .stats-p{
