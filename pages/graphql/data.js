@@ -7,6 +7,7 @@ const {
   TechTalksQuery,
   FrontPageApplicationBlock,
   StaffQuery,
+  TestimonialsQuery,
 } = require('./queries');
 
 /**
@@ -207,6 +208,18 @@ const getFrontPageApplicationBlock = async () => {
   }
 };
 
+const getTestimonials = async () => {
+  try {
+    const  { testimonials }  = await request(graphQLEndpoint, TestimonialsQuery);
+    return testimonials;
+    } catch (e) {
+    throw new Error(
+      'There was a problem getting the Testimonials',
+      e,
+    );
+  }
+}
+
 exports.getTeams = getTeams;
 exports.getMentors = getMentors;
 exports.getAdvisors = getAdvisors;
@@ -215,3 +228,4 @@ exports.getPages = getPages;
 exports.getTechTalks = getTechTalks;
 exports.getFrontPageApplicationBlock = getFrontPageApplicationBlock;
 exports.getVolunteers = getVolunteers;
+exports.getTestimonials = getTestimonials;

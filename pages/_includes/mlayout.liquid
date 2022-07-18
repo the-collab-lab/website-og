@@ -26,6 +26,7 @@
   </head>
   <body>
     <div id="toast" class="toast hidden" role="alert"></div>
+    {{ applicationBanner }}
     <header>
       <h1>{{ pageTitle }}</h1>
       <nav>
@@ -37,12 +38,152 @@
       {{ content }}
     </main>
     <footer>
-      <p>
-        Made with <a href="https://www.11ty.dev/">Eleventy</a> and <a href="https://graphcms.com/">GraphCMS</a>. Deployed on <a href="https://www.netlify.com/">Netlify</a>.
-        <br />
-        Copyright &copy; 2019 – 2022 The Collab Lab. All rights reserved.
-      </p>
-      <p>All participants agree to adhere to our <a href="/code-of-conduct/">Code of Conduct</a>.</p>
+      <div class="testimonials-container">
+        <h2>Testimonials.</h2>
+        <div>
+          <button onclick="nextTestimonial()" aria-label="Next">
+            &#8249;
+          </button>
+          <div class="testimonials">
+            {%- for testimonial in testimonials -%}
+            <div class="testimonial" data-index="{{forloop.index}}">
+              <div>
+                <button onclick="stopCarousel()" aria-label="Stop carousel">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                  </svg>
+                </button>
+
+                <img src="{{testimonial.collabie.pathToPhoto}}" alt=""/>
+                <p>{{testimonial.collabie.fullName}}</p>
+              </div> 
+              <p>{{testimonial.body.html}}</p>
+            </div> 
+            {%- endfor -%}  
+          </div>
+          <button onclick="prevTestimonial()" aria-label="Previous">
+            &#8250;
+          </button>
+ 
+        </div>
+      </div>
+      <div class="support-container">
+        <h2 id="support">Support Collab Lab!</h2>
+        <p>
+          The Collab Lab is
+          <strong>volunteer-driven and free for developers.</strong> 
+          We intentionally and actively work to overcome barriers to 
+          opportunities for women and under-represented minorities in tech.
+        </p>
+        <p>
+          We make use of free/
+          <a href="https://www.dictionary.com/browse/freemium">freemium</a>
+          tools (i.e. Airtable, Firebase, GitHub, Google Docs, Netlify, Slack, Notion,
+          and Zoom) as much as possible. We would love to have the ability to use
+          upgraded versions of some of these tools to provide a better experience for
+          our volunteers and developers. To this end, we accept
+          <a href="https://github.com/sponsors/the-collab-lab">
+            sponsorships through GitHub
+          </a>. ❤️
+        </p>
+        <iframe
+          src="https://github.com/sponsors/the-collab-lab/button"
+          title="Sponsor the-collab-lab"
+          height="35"
+          width="116"
+          style="border: 0"
+        ></iframe>
+        {%- if getDonationOptions.isDonationEnabled %}
+        <div id="donation">
+          We also accept direct donations. Please consider supporting The Collab Lab
+          with a one-time donation.
+          <form class="donation-options">
+            {%- for donationOption in getDonationOptions.donationOptions -%}
+            <button
+              id="checkout-button-#{{donationOption.price.id}}"
+              class="checkout-button"
+              data-stripe-price-id="{{donationOption.price.id}}"
+              role="link"
+              type="button"
+            >
+              <span class="donation-option-text">
+                {{ donationOption.name }} for ${{donationOption.price.formatted_amount}}
+              </span>
+            </button>
+            {%- endfor -%}
+          </form>
+        </div>
+
+        <script src="https://js.stripe.com/v3"></script>
+        <script>
+          window.__STRIPE_PUBLIC_KEY = '{{ stripePublishableKey }}';
+        </script>
+        {%- endif %}
+
+        {% include 'get-in-touch' %}
+
+        <div class="copyright">
+          <p>
+            Made with 
+            <a href="https://www.11ty.dev/">Eleventy</a> and 
+            <a href="https://graphcms.com/">GraphCMS</a>. 
+            Deployed on <a href="https://www.netlify.com/">Netlify</a>.
+          </p>
+          <p>
+            Copyright &copy; 2019 – 2022 The Collab Lab. All rights reserved.
+          </p>
+          <p>
+            All participants agree to adhere to our 
+            <a href="/code-of-conduct/">Code of Conduct</a>.
+          </p>
+        </div>  
+      </div>
     </footer>
+    <script>
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: no-preference)');
+      let slideNumber = 1;
+      function updateTestimonial() {
+        document.querySelectorAll('.testimonial').forEach(item => {
+          const index = item.getAttribute('data-index');
+          item.style.display = index == slideNumber? 'block' : 'none';
+        });
+      }
+      updateTestimonial(); 
+
+      let interval = startInterval();
+      function startInterval() {
+        const interval = setInterval(() => {
+          slideNumber++;
+          if(slideNumber >= 6) slideNumber = 1;
+          updateTestimonial();
+        }, 5000);
+        return interval;
+      }
+
+      function nextTestimonial() {
+        slideNumber = slideNumber >= 6 ? 1 : slideNumber + 1;
+        updateTestimonial();
+        resetInterval();
+      }
+
+      function prevTestimonial() {
+        slideNumber = slideNumber <= 1 ? 6 : slideNumber - 1;
+        updateTestimonial();
+        resetInterval();
+      }
+
+      function resetInterval() {
+        clearInterval(interval);
+        if (mediaQuery.matches) {
+          interval = startInterval();
+        }
+      }
+
+      function stopCarousel() {
+        clearInterval(interval);
+      }
+
+      if (!mediaQuery.matches) stopCarousel();
+    </script>
   </body>
 </html>
