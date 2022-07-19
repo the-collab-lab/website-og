@@ -44,8 +44,7 @@
           <button onclick="nextTestimonial()" aria-label="Next">
             &#8249;
           </button>
-          <div class="testimonials">
-            {%- for testimonial in testimonials -%}
+          {%- for testimonial in testimonials -%}
             <div class="testimonial" data-index="{{forloop.index}}">
               <div>
                 <button onclick="stopCarousel()" aria-label="Stop carousel">
@@ -56,23 +55,21 @@
 
                 <img src="{{testimonial.collabie.pathToPhoto}}" alt=""/>
                 <p>{{testimonial.collabie.fullName}}</p>
-              </div> 
+              </div>
               <p>{{testimonial.body.html}}</p>
-            </div> 
-            {%- endfor -%}  
-          </div>
+            </div>
+          {%- endfor -%}
           <button onclick="prevTestimonial()" aria-label="Previous">
             &#8250;
           </button>
- 
         </div>
       </div>
       <div class="support-container">
         <h2 id="support">Support Collab Lab!</h2>
         <p>
           The Collab Lab is
-          <strong>volunteer-driven and free for developers.</strong> 
-          We intentionally and actively work to overcome barriers to 
+          <strong>volunteer-driven and free for developers.</strong>
+          We intentionally and actively work to overcome barriers to
           opportunities for women and under-represented minorities in tech.
         </p>
         <p>
@@ -124,19 +121,19 @@
 
         <div class="copyright">
           <p>
-            Made with 
-            <a href="https://www.11ty.dev/">Eleventy</a> and 
-            <a href="https://graphcms.com/">GraphCMS</a>. 
+            Made with
+            <a href="https://www.11ty.dev/">Eleventy</a> and
+            <a href="https://graphcms.com/">GraphCMS</a>.
             Deployed on <a href="https://www.netlify.com/">Netlify</a>.
           </p>
           <p>
             Copyright &copy; 2019 – 2022 The Collab Lab. All rights reserved.
           </p>
           <p>
-            All participants agree to adhere to our 
+            All participants agree to adhere to our
             <a href="/code-of-conduct/">Code of Conduct</a>.
           </p>
-        </div>  
+        </div>
       </div>
     </footer>
     <script>
@@ -145,10 +142,10 @@
       function updateTestimonial() {
         document.querySelectorAll('.testimonial').forEach(item => {
           const index = item.getAttribute('data-index');
-          item.style.display = index == slideNumber? 'block' : 'none';
+          item.style.visibility = index === slideNumber? 'visible' : 'hidden';
         });
       }
-      updateTestimonial(); 
+      updateTestimonial();
 
       let interval = startInterval();
       function startInterval() {
