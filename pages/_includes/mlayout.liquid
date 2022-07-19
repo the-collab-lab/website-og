@@ -141,7 +141,7 @@
       let slideNumber = 1;
       function updateTestimonial() {
         document.querySelectorAll('.testimonial').forEach(item => {
-          const index = item.getAttribute('data-index');
+          const index = Number(item.getAttribute('data-index'));
           item.style.visibility = index === slideNumber? 'visible' : 'hidden';
         });
       }
