@@ -44,8 +44,7 @@
           <button onclick="nextTestimonial()" aria-label="Next">
             &#8249;
           </button>
-          <div class="testimonials">
-            {%- for testimonial in testimonials -%}
+          {%- for testimonial in testimonials -%}
             <div class="testimonial" data-index="{{forloop.index}}">
               <div>
                 <button onclick="stopCarousel()" aria-label="Stop carousel">
@@ -56,15 +55,13 @@
 
                 <img src="{{testimonial.collabie.pathToPhoto}}" alt=""/>
                 <p>{{testimonial.collabie.fullName}}</p>
-              </div> 
+              </div>
               <p>{{testimonial.body.html}}</p>
-            </div> 
-            {%- endfor -%}  
-          </div>
+            </div>
+          {%- endfor -%}
           <button onclick="prevTestimonial()" aria-label="Previous">
             &#8250;
           </button>
- 
         </div>
       </div>
       <div class="support-container">
@@ -136,7 +133,7 @@
             All participants agree to adhere to our 
             <a href="/code-of-conduct/">Code of Conduct</a>.
           </p>
-        </div>  
+        </div>
       </div>
     </footer>
     <script>
@@ -144,11 +141,11 @@
       let slideNumber = 1;
       function updateTestimonial() {
         document.querySelectorAll('.testimonial').forEach(item => {
-          const index = item.getAttribute('data-index');
-          item.style.display = index == slideNumber? 'block' : 'none';
+          const index = Number(item.getAttribute('data-index'));
+          item.style.visibility = index === slideNumber? 'visible' : 'hidden';
         });
       }
-      updateTestimonial(); 
+      updateTestimonial();
 
       let interval = startInterval();
       function startInterval() {
