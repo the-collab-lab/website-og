@@ -1,8 +1,6 @@
 /* global Stripe */
-import { Gallery } from './gallery.js';
-import { DonationForm } from './donation-form.js';
-import { DonationNotification } from './donation-notification.js';
-
+import { DonationForm } from './form.js';
+import { DonationNotification } from './notification.js';
 function initDonationForm() {
   // test for presence of donation form before trying to init
   if (null !== document.querySelector('#donation .donation-options')) {
@@ -26,9 +24,8 @@ function initDonationForm() {
 }
 
 function init() {
-  new Gallery();
-  new DonationNotification();
   initDonationForm();
+  new DonationNotification();
 }
 
 document.addEventListener('DOMContentLoaded', init);
