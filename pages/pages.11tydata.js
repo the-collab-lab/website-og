@@ -1,22 +1,19 @@
-const { getFrontPageApplicationBlock, getTestimonials } = require('./graphql/data');
+const {
+  getFrontPageApplicationBlock,
+  getTestimonials,
+} = require('./graphql/data');
 const Stripe = require('stripe');
 const config = require('./_data/config');
 
-module.exports = {
-  layout: 'mlayout.liquid',
-  applicationBanner: async () => {
-    const block = await getFrontPageApplicationBlock();
-    return `<div class="banner">${block.textBlocks[0].textContent.html}</div>`
-  }, 
-  testimonials: async () => {
-    const testimonials = await getTestimonials();
-    return testimonials;
-  },
-  getDonationOptions: async () => {
+module.exports = async () => {
+  const block = await getFrontPageApplicationBlock();
+  const applicationBanner = `<div class="banner">${block.textBlocks[0].textContent.html}</div>`;
+
+  const getDonationOptions = async () => {
     try {
       const stripe = Stripe(config.STRIPE_SECRET_KEY);
       const { data: products = [] } = await stripe.products.list();
-  
+
       const options = await Promise.all(
         products.map(async (option) => {
           const { data: prices } = await stripe.prices.list({
@@ -26,15 +23,15 @@ module.exports = {
             ...prices[0],
             formatted_amount: prices[0].unit_amount / 100,
           };
-  
+
           return { ...option, price };
         }),
       );
-  
+
       const donationOptions = (options || []).sort(
         (a, b) => parseInt(a.price.unit_amount) - parseInt(b.price.unit_amount),
       );
-  
+
       const stripePublishableKey = config.STRIPE_PUBLISHABLE_KEY;
       return {
         isDonationEnabled:
@@ -49,5 +46,12 @@ module.exports = {
         donationOptions: [],
       };
     }
-  }
+  };
+
+  return {
+    layout: 'mlayout.liquid',
+    applicationBanner,
+    testimonials: await getTestimonials(),
+    donationOptions: await getDonationOptions(),
+  };
 };
