@@ -94,12 +94,12 @@
           width="116"
           style="border: 0"
         ></iframe>
-        {%- if getDonationOptions.isDonationEnabled %}
+        {%- if donationOptions.isDonationEnabled %}
         <div id="donation">
           We also accept direct donations. Please consider supporting The Collab Lab
           with a one-time donation.
           <form class="donation-options">
-            {%- for donationOption in getDonationOptions.donationOptions -%}
+            {%- for donationOption in donationOptions.donationOptions -%}
             <button
               id="checkout-button-#{{donationOption.price.id}}"
               class="checkout-button"
@@ -117,7 +117,7 @@
 
         <script src="https://js.stripe.com/v3"></script>
         <script>
-          window.__STRIPE_PUBLIC_KEY = '{{ stripePublishableKey }}';
+          window.__STRIPE_PUBLIC_KEY = '{{ config.STRIPE_PUBLISHABLE_KEY }}';
         </script>
         {%- endif %}
 
