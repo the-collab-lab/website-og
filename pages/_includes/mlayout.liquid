@@ -10,7 +10,7 @@
     <meta name="description" content="Gain practical experience by working remotely on real world projects with other early-career developers.">
     <link href="{{ '/assets/styles/styles.css' | url }}" rel="stylesheet">
 
-    {%- if donationOptions.isDonationEnabled %}
+    {%- if donationConfig.isEnabled %}
     <script type="module" src="{{ '/assets/scripts/donations/index.js' | url }}"></script>
     {%- endif %}
     <script type="application/ld+json">
@@ -94,21 +94,21 @@
           width="116"
           style="border: 0"
         ></iframe>
-        {%- if donationOptions.isDonationEnabled %}
+        {%- if donationConfig.isEnabled %}
         <div id="donation">
           We also accept direct donations. Please consider supporting The Collab Lab
           with a one-time donation.
           <form class="donation-options">
-            {%- for donationOption in donationOptions.donationOptions -%}
+            {%- for option in donationConfig.options -%}
             <button
-              id="checkout-button-#{{donationOption.price.id}}"
+              id="checkout-button-#{{option.price.id}}"
               class="checkout-button"
-              data-stripe-price-id="{{donationOption.price.id}}"
+              data-stripe-price-id="{{option.price.id}}"
               role="link"
               type="button"
             >
               <span class="donation-option-text">
-                {{ donationOption.name }} for ${{donationOption.price.formatted_amount}}
+                {{ option.name }} for ${{option.price.formatted_amount}}
               </span>
             </button>
             {%- endfor -%}
