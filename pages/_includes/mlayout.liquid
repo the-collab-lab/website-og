@@ -11,6 +11,7 @@
     <link href="{{ '/assets/styles/styles.css' | url }}" rel="stylesheet">
 
     {%- if donationConfig.isEnabled %}
+    <link rel="dns-prefetch" href="https://js.stripe.com/v3">
     <script type="module" src="{{ '/assets/scripts/donations/index.js' | url }}"></script>
     {%- endif %}
     <script type="application/ld+json">
