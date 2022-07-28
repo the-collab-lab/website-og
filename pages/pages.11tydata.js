@@ -34,13 +34,13 @@ module.exports = async () => {
       );
 
       return {
-        isEnabled: options?.length > 0 && STRIPE_PUBLISHABLE_KEY !== undefined,
+        enabled: options?.length > 0 && STRIPE_PUBLISHABLE_KEY !== undefined,
         options,
       };
     } catch (err) {
       /** The view is prepared to handle empty donation options, so we can just return an empty list here */
       return {
-        isEnabled: false,
+        enabled: false,
         options: [],
       };
     }
@@ -50,6 +50,6 @@ module.exports = async () => {
     layout: 'mlayout.liquid',
     applicationBanner,
     testimonials: await getTestimonials(),
-    donationConfig: await getDonationConfig(),
+    donations: await getDonationConfig(),
   };
 };

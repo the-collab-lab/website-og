@@ -10,7 +10,7 @@
     <meta name="description" content="Gain practical experience by working remotely on real world projects with other early-career developers.">
     <link href="{{ '/assets/styles/styles.css' | url }}" rel="stylesheet">
 
-    {%- if donationConfig.isEnabled %}
+    {%- if donations.enabled %}
     <link rel="dns-prefetch" href="https://js.stripe.com/v3">
     <script type="module" src="{{ '/assets/scripts/donations/index.js' | url }}"></script>
     {%- endif %}
@@ -95,12 +95,12 @@
           width="116"
           style="border: 0"
         ></iframe>
-        {%- if donationConfig.isEnabled %}
+        {%- if donations.enabled %}
         <div id="donation">
           We also accept direct donations. Please consider supporting The Collab Lab
           with a one-time donation.
           <form class="donation-options">
-            {%- for option in donationConfig.options -%}
+            {%- for option in donations.options -%}
             <button
               id="checkout-button-#{{option.price.id}}"
               class="checkout-button"
