@@ -1,5 +1,5 @@
 const Stripe = require('stripe');
-const { STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY } = require('./env');
+const { STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY } = require('./config');
 
 module.exports = async () => {
   try {
