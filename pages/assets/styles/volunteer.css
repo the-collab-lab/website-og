@@ -22,14 +22,14 @@
 }
 
 summary:before {
-  content: url('./img/icons/plus.svg');
+  content: url('../img/icons/plus.svg');
   display: block;
   margin-top: 8px;
   margin-right: 8px;
 }
 
 details[open] summary:before {
-  content: url('./img/icons/minus.svg');
+  content: url('../img/icons/minus.svg');
 }
 
 summary::-webkit-details-marker {
