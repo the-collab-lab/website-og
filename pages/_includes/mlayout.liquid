@@ -10,8 +10,9 @@
     <meta name="description" content="Gain practical experience by working remotely on real world projects with other early-career developers.">
     <link href="{{ '/assets/styles/styles.css' | url }}" rel="stylesheet">
 
-    {%- if getDonationOptions.isDonationEnabled %}
-    <script async type="module" src="{{ '/assets/scripts/donation/index.js' | url }}"></script>
+    {%- if donations.enabled %}
+    <link rel="dns-prefetch" href="https://js.stripe.com/v3">
+    <script type="module" src="{{ '/assets/scripts/donations/index.js' | url }}"></script>
     {%- endif %}
     <script type="application/ld+json">
     {
@@ -94,21 +95,21 @@
           width="116"
           style="border: 0"
         ></iframe>
-        {%- if getDonationOptions.isDonationEnabled %}
+        {%- if donations.enabled %}
         <div id="donation">
           We also accept direct donations. Please consider supporting The Collab Lab
           with a one-time donation.
           <form class="donation-options">
-            {%- for donationOption in getDonationOptions.donationOptions -%}
+            {%- for option in donations.options -%}
             <button
-              id="checkout-button-#{{donationOption.price.id}}"
+              id="checkout-button-#{{option.price.id}}"
               class="checkout-button"
-              data-stripe-price-id="{{donationOption.price.id}}"
+              data-stripe-price-id="{{option.price.id}}"
               role="link"
               type="button"
             >
               <span class="donation-option-text">
-                {{ donationOption.name }} for ${{donationOption.price.formatted_amount}}
+                {{ option.name }} for ${{option.price.formatted_amount}}
               </span>
             </button>
             {%- endfor -%}
@@ -117,7 +118,7 @@
 
         <script src="https://js.stripe.com/v3"></script>
         <script>
-          window.__STRIPE_PUBLIC_KEY = '{{ stripePublishableKey }}';
+          window.__STRIPE_PUBLIC_KEY = '{{ config.STRIPE_PUBLISHABLE_KEY }}';
         </script>
         {%- endif %}
 
