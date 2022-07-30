@@ -4,17 +4,15 @@ const { STRIPE_PUBLISHABLE_KEY, STRIPE_SECRET_KEY } = require('./config');
 module.exports = async () => {
   try {
     const stripe = Stripe(STRIPE_SECRET_KEY);
-    const { data: products = [] } = await stripe.products.list();
+    const { data: products = [] } = await stripe.products.list({
+      expand: ['data.default_price'],
+    });
 
     const _options = await Promise.all(
       products.map(async (option) => {
-        const { data: prices } = await stripe.prices.list({
-          product: option.id,
-        });
-
         option.price = {
-          ...prices[0],
-          formatted_amount: prices[0].unit_amount / 100,
+          ...option.default_price,
+          formatted_amount: option.default_price.unit_amount / 100,
         };
 
         return option;
