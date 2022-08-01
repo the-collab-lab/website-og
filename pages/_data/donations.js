@@ -8,18 +8,16 @@ module.exports = async () => {
       expand: ['data.default_price'],
     });
 
-    const _options = await Promise.all(
-      products.map(async (option) => {
-        option.price = {
-          ...option.default_price,
-          formatted_amount: option.default_price.unit_amount / 100,
-        };
+    const _options = products.map((option) => {
+      option.price = {
+        id: option.default_price.id,
+        formatted_amount: option.default_price.unit_amount / 100,
+      };
 
-        return option;
-      }),
-    );
+      return option;
+    });
 
-    const options = _options?.sort(
+    const options = _options.sort(
       (a, b) => parseInt(a.price.unit_amount) - parseInt(b.price.unit_amount),
     );
 
