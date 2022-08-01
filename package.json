@@ -24,13 +24,13 @@
   "description": "",
   "dependencies": {
     "@11ty/eleventy": "^1.0.1",
+    "@11ty/eleventy-navigation": "^0.3.3",
     "date-fns": "^2.29.1",
     "graphql": "^16.5.0",
     "graphql-request": "^4.3.0",
     "stripe": "^9.16.0"
   },
   "devDependencies": {
-    "@11ty/eleventy-navigation": "^0.3.3",
     "@types/stripe-v3": "^3.1.27",
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
