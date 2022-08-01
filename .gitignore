@@ -5,6 +5,7 @@ build
 .idea
 .vscode
 .DS_Store
+.eslintcache
 
 # Local Netlify folder
 .netlify
