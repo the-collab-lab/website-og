@@ -213,8 +213,13 @@ h3 {
 blockquote {
   background: var(--main-color);
   color: var(--neutral-color);
-  margin: 2.5rem -1rem;
+  margin: 2.5rem 0;
   padding: 1rem 2rem;
+  box-sizing: border-box;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
 }
 blockquote p,
 blockquote dl {
