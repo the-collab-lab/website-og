@@ -217,6 +217,7 @@ blockquote {
   padding: 1rem 2rem;
   box-sizing: border-box;
   width: 100vw;
+  max-width: calc(100% + 2rem);
   position: relative;
   left: 50%;
   transform: translateX(-50%);
