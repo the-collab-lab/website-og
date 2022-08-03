@@ -50,6 +50,7 @@ The source repository for [The Collab Lab website](https://the-collab-lab.codes/
 
 - ⚡️ [11ty](https://www.11ty.dev/) - Static Site Generator built on top of various HTML template engines
 - 💧 [Liquid](https://shopify.github.io/liquid/) - Open source templating language
+- 📚 [Hygraph](https://hygraph.com/) (Previously GraphCMS) - Content management
 - 📡 [GraphQL](https://www.graphql.com/) - Data Querying from our CMS
 - 💵 [Stripe](https://stripe.com/docs/api?lang=node) - Processing payments for donations
 - 🖥 [Netlify](https://www.netlify.com/) - Continuous Deployment / Integration
