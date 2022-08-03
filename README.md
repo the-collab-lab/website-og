@@ -36,7 +36,7 @@ The source repository for [The Collab Lab website](https://the-collab-lab.codes/
       <a href="#-usage">🔬 Usage</a>
     </li>
     <li>
-      <a href="#-contributing">✨Contributing</a>
+      <a href="#contributing">✨Contributing</a>
       <ul>
         <li>
           <a href="#how-to-fork-the-project">How to Fork the Project</a>
