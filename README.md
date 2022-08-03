@@ -36,7 +36,7 @@ The source repository for [The Collab Lab website](https://the-collab-lab.codes/
       <a href="#-usage">🔬 Usage</a>
     </li>
     <li>
-      <a href="#contributing">✨Contributing</a>
+      <a href="#-contributing">✨Contributing</a>
       <ul>
         <li>
           <a href="#how-to-fork-the-project">How to Fork the Project</a>
@@ -138,7 +138,7 @@ To build and run the build version of the site:
 npm run build:serve # builds and serves the site in localhost:5000
 ```
 
-## ✨Contributing
+## ✨ Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
