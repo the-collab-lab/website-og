@@ -9,3 +9,8 @@ build
 
 # Local Netlify folder
 .netlify
+
+# GraphQL config files
+schema.graphql
+.graphqlconfig
+graphql.config.json
